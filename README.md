@@ -17,7 +17,7 @@ Here's how to iterate, test and evolve the templates (a guide for the internal R
 
 Adding another stack to the list:
 
-1. Open <todo>
+1. Open... _todo_
 
 ```yaml
 destinations:
@@ -26,9 +26,39 @@ destinations:
   organizationId: 0000-0000
   apiKey: secret
   currency: ZAR
+  currencyPrefix: R
 - host: api.uk.rootplatform.com
   country: GB
   organizationId: 0000-0000
   apiKey: secret
   currency: GBP
+  currencyPrefix: £
 ```
+
+### Todo list
+
+1. Update pet product to match spec
+  - quote schema: currency slider range limits
+  - application step
+  - policy issuing
+  - pricing
+  - reactivations
+  - alteration hook
+  - scheduled function
+  - docs
+1. Create github action that automatically deploys the templates to all the different stacks
+  - Set up where the script can pull the config for each stack
+  - Create a list containing all the stack's host orgs
+    - host (stack)
+    - org ID
+    - API key
+    - country
+    - currency
+  - Update the following fields in the root-config.json
+    - host
+    - organizationId
+    - settings.policyholder.idCountry
+    - settings.billing.currency
+  - Update the following fields in the quote-schema.json
+    - list.cover_amount.props.prefix
+  - Set the `root-auth`` temporarily for the stack's API key in order to push to that stack
