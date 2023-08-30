@@ -1,0 +1,28 @@
+[
+  {
+    "key": "pet_name",
+    "type": "text",
+    "label": "Pet name *",
+    "outputPath": "pet_name",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "pet_microchip_number",
+    "type": "text",
+    "label": "Microchip number *",
+    "outputPath": "pet_microchip_number",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  }
+]

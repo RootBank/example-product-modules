@@ -1,0 +1,124 @@
+[
+  {
+    "key": "cover_option",
+    "type": "select",
+    "label": "Cover option *",
+    "options": [
+      {
+        "label": "Standard (£3 000)",
+        "value": "standard"
+      },
+      {
+        "label": "Premium (£5 000)",
+        "value": "premium"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "species",
+    "type": "select",
+    "label": "Species *",
+    "options": [
+      {
+        "label": "Dog",
+        "value": "dog"
+      },
+      {
+        "label": "Cat",
+        "value": "cat"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "pet_breed",
+    "type": "select",
+    "label": "Pet breed *",
+    "outputPath": "pet_breed",
+    "options": [
+      {
+        "label": "Alaskan Husky",
+        "value": "Alaskan Husky"
+      },
+      {
+        "label": "Border Collie",
+        "value": "Border Collie"
+      },
+      {
+        "label": "Boston Terrier",
+        "value": "Boston Terrier"
+      },
+      {
+        "label": "German Shepherd",
+        "value": "German Shepherd"
+      },
+      {
+        "label": "Golden Retriever",
+        "value": "Golden Retriever"
+      },
+      {
+        "label": "Great Dane",
+        "value": "Great Dane"
+      },
+      {
+        "label": "Tamed Wolf",
+        "value": "Tamed Wolf"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "birth_year",
+    "type": "number",
+    "label": "Birth year *",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "sterilised",
+    "type": "radio",
+    "label": "Has your fluffy friend been sterilised? *",
+    "options": [
+      {
+        "label": "Yes, sterilised",
+        "value": "yes"
+      },
+      {
+        "label": "No",
+        "value": "no"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "defaultValue": false
+  }
+]
