@@ -1,124 +1,245 @@
 [
   {
-    "key": "cover_option",
-    "type": "select",
-    "label": "Cover option *",
-    "options": [
+    "type": "list",
+    "label": "Pets",
+    "maxNumber": 5,
+    "components": [
       {
-        "label": "Standard (£3 000)",
-        "value": "standard"
+        "key": "name",
+        "type": "text",
+        "label": "Hello. What’s your pet’s name?",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
       },
       {
-        "label": "Premium (£5 000)",
-        "value": "premium"
+        "key": "type",
+        "type": "select",
+        "label": "Is your pet a cat or dog?",
+        "options": [
+          {
+            "label": "Dog",
+            "value": "dog"
+          },
+          {
+            "label": "Cat",
+            "value": "cat"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "gender",
+        "type": "select",
+        "label": "Is your pet male or female?",
+        "options": [
+          {
+            "label": "Male",
+            "value": "male"
+          },
+          {
+            "label": "Female",
+            "value": "female"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "birth_date",
+        "type": "date-picker",
+        "label": "When is your pet’s birthday?",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "breed_dog",
+        "type": "select",
+        "label": "What is your pet’s breed?",
+        "outputPath": "pet_breed",
+        "options": [
+          {
+            "label": "Alaskan Husky",
+            "value": "Alaskan Husky"
+          },
+          {
+            "label": "Border Collie",
+            "value": "Border Collie"
+          },
+          {
+            "label": "Boston Terrier",
+            "value": "Boston Terrier"
+          },
+          {
+            "label": "German Shepherd",
+            "value": "German Shepherd"
+          },
+          {
+            "label": "Golden Retriever",
+            "value": "Golden Retriever"
+          },
+          {
+            "label": "Great Dane",
+            "value": "Great Dane"
+          },
+          {
+            "label": "Tamed Wolf",
+            "value": "Tamed Wolf"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ],
+        "displayConditions": [
+          {
+            "path": "type",
+            "value": "cat",
+            "condition": "!=="
+          }
+        ]
+      },
+      {
+        "key": "breed_cat",
+        "type": "select",
+        "label": "What is your pet’s breed?",
+        "outputPath": "pet_breed",
+        "options": [
+          {
+            "label": "British Shorthair",
+            "value": "british_shorthair"
+          },
+          {
+            "label": "Burmese",
+            "value": "burmese"
+          },
+          {
+            "label": "Persian",
+            "value": "persian"
+          },
+          {
+            "label": "Siamese",
+            "value": "siamese"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ],
+        "displayConditions": [
+          {
+            "path": "type",
+            "value": "cat",
+            "condition": "==="
+          }
+        ]
+      },
+      {
+        "type": "multiple-checkbox",
+        "key": "precondition",
+        "label": "Does your pet have any of the following medical conditions?",
+        "options": [
+          {
+            "label": "Chronic disease",
+            "value": "Chronic disease"
+          },
+          {
+            "label": "Diabetes",
+            "value": "Diabetes"
+          },
+          {
+            "label": "Epilepsy",
+            "value": "Epilepsy"
+          },
+          {
+            "label": "Elbow or hip joint dysplasia",
+            "value": "Elbow or hip joint dysplasia"
+          },
+          {
+            "label": "Physical disabilities",
+            "value": "Physical disabilities"
+          },
+          {
+            "label": "Tumours",
+            "value": "Tumours"
+          },
+          {
+            "label": "Thyroid disease",
+            "value": "Thyroid disease"
+          }
+        ]
+      },
+      {
+        "key": "cover_amount",
+        "type": "currency-slider",
+        "label": "Select the annual cover amount for your pet’s vet fees?",
+        "props": {
+          "prefix": "R",
+          "increment": 100000
+        },
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "excess_amount",
+        "type": "currency-slider",
+        "label": "Select the excess fee you will be responsible for when you claim?",
+        "props": {
+          "prefix": "R",
+          "increment": 100000
+        },
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "cover_start_date",
+        "type": "date-picker",
+        "label": "When do you want your cover to start?",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
       }
     ],
-    "validators": [
-      {
-        "validation": {
-          "type": "required"
-        }
-      }
-    ]
-  },
-  {
-    "key": "species",
-    "type": "select",
-    "label": "Species *",
-    "options": [
-      {
-        "label": "Dog",
-        "value": "dog"
-      },
-      {
-        "label": "Cat",
-        "value": "cat"
-      }
-    ],
-    "validators": [
-      {
-        "validation": {
-          "type": "required"
-        }
-      }
-    ]
-  },
-  {
-    "key": "pet_breed",
-    "type": "select",
-    "label": "Pet breed *",
-    "outputPath": "pet_breed",
-    "options": [
-      {
-        "label": "Alaskan Husky",
-        "value": "Alaskan Husky"
-      },
-      {
-        "label": "Border Collie",
-        "value": "Border Collie"
-      },
-      {
-        "label": "Boston Terrier",
-        "value": "Boston Terrier"
-      },
-      {
-        "label": "German Shepherd",
-        "value": "German Shepherd"
-      },
-      {
-        "label": "Golden Retriever",
-        "value": "Golden Retriever"
-      },
-      {
-        "label": "Great Dane",
-        "value": "Great Dane"
-      },
-      {
-        "label": "Tamed Wolf",
-        "value": "Tamed Wolf"
-      }
-    ],
-    "validators": [
-      {
-        "validation": {
-          "type": "required"
-        }
-      }
-    ]
-  },
-  {
-    "key": "birth_year",
-    "type": "number",
-    "label": "Birth year *",
-    "validators": [
-      {
-        "validation": {
-          "type": "required"
-        }
-      }
-    ]
-  },
-  {
-    "key": "sterilised",
-    "type": "radio",
-    "label": "Has your fluffy friend been sterilised? *",
-    "options": [
-      {
-        "label": "Yes, sterilised",
-        "value": "yes"
-      },
-      {
-        "label": "No",
-        "value": "no"
-      }
-    ],
-    "validators": [
-      {
-        "validation": {
-          "type": "required"
-        }
-      }
-    ],
-    "defaultValue": false
+    "outputPathList": "pets"
   }
 ]

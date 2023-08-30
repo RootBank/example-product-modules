@@ -63,7 +63,7 @@
       }
     },
     "policyAnniversaryNotification": {
-    	"daysBeforeToSend": 30
+      "daysBeforeToSend": 30
     },
     "policyholder": {
       "individualsAllowed": true,
