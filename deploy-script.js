@@ -47,7 +47,7 @@ async function main() {
         );
         const githubSecretKey = 'HOST__' + host.host.replace(/\./g, '_').toUpperCase(); // E.g. HOST__API_ROOTPLATFORM_COM
         const githubSecret = process.env[githubSecretKey];
-        await fs.writeFile(rootAuthPath, `ROOT_API_KEY=${'TEST'}`, 'utf8');
+        await fs.writeFile(rootAuthPath, `ROOT_API_KEY=${githubSecret}`, 'utf8');
 
         // Run deployment command in the subdirectory
         const deployCommand = spawnSync('rp', ['push', '-f'], {
