@@ -15,12 +15,13 @@ Here's how to iterate, test and evolve the templates (a guide for the internal R
 4. Submit a Pull Request with your changes to merge into `main`.
 4. When you merge a Pull Request into `main` on Github, a Github Action would automatically override the host and org details for each template and `rp push` them to the correct orgs on all the stacks.
 
-Adding another stack to the list:
+### Adding another stack to the list:
 
 1. Create the appropriate organisation on the new stack to house the template product modules.
 1. Create a product module for each template in this directory. Their keys must match the keys defined in `./deployment.yaml`.
 1. Open `./deployment.yaml` and add the stack & organisation to deploy to.
-1. Open the Github org's secrets and add an API key for `host`
+1. Open the Github org's secrets and add an API key for the new `host`, similar format to the others.
+1. Open `.github/workflows/deployment.yml` and add the new secret key to the env vars list.
 
 
 ### Todo list
@@ -34,19 +35,6 @@ Adding another stack to the list:
   - alteration hook
   - scheduled function
   - documents
-1. Create github action that automatically deploys the templates to all the different stacks
-  - Set up where the script can pull the config for each stack
-  - Create a list containing all the stack's host orgs
-    - host (stack)
-    - org ID
-    - API key
-    - country
-    - currency
-  - Update the following fields in the root-config.json
-    - host
-    - organizationId
-    - settings.policyholder.idCountry
-    - settings.billing.currency
-  - Update the following fields in the quote-schema.json
-    - list.cover_amount.props.prefix
+1. Github action
+  - Hook up the github action to run
   - Set the `root-auth`` temporarily for the stack's API key in order to push to that stack

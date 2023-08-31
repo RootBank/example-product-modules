@@ -8,7 +8,7 @@ const destinationsFile = './destinations.yaml';
 async function main() {
   try {
     const destinationsContent = await fs.readFile(destinationsFile, 'utf8');
-    const destinations = yaml.safeLoad(destinationsContent);
+    const destinations = yaml.load(destinationsContent);
     const hosts = destinations.hosts;
     const templates = destinations.templates;
 
@@ -45,6 +45,8 @@ async function main() {
           template.directory,
           '.root-auth'
         );
+        const githubSecretKey = 'HOST__' + host.host.replace(/\./g, '_').toUpperCase(); // E.g. HOST__API_ROOTPLATFORM_COM
+        const githubSecret = process.env[githubSecretKey];
         await fs.writeFile(rootAuthPath, `ROOT_API_KEY=${'TEST'}`, 'utf8');
 
         // Run deployment command in the subdirectory
