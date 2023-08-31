@@ -3,6 +3,10 @@
     "type": "list",
     "label": "Pets",
     "maxNumber": 5,
+    "props": {
+      "addButtonLabel": "Add another pet",
+      "removeButtonLabel": "Remove pet"
+    },
     "components": [
       {
         "key": "name",
@@ -76,7 +80,7 @@
         "key": "breed_dog",
         "type": "select",
         "label": "What is your pet’s breed?",
-        "outputPath": "pet_breed",
+        "outputPath": "breed",
         "options": [
           {
             "label": "Alaskan Husky",
@@ -126,7 +130,7 @@
         "key": "breed_cat",
         "type": "select",
         "label": "What is your pet’s breed?",
-        "outputPath": "pet_breed",
+        "outputPath": "breed",
         "options": [
           {
             "label": "British Shorthair",
@@ -247,18 +251,6 @@
             "validation": {
               "max": 25000,
               "type": "lessThanCurrency"
-            }
-          }
-        ]
-      },
-      {
-        "key": "cover_start_date",
-        "type": "date-picker",
-        "label": "When do you want your cover to start?",
-        "validators": [
-          {
-            "validation": {
-              "type": "required"
             }
           }
         ]

@@ -1,28 +1,15 @@
 [
   {
-    "key": "pet_name",
-    "type": "text",
-    "label": "Pet name *",
-    "outputPath": "pet_name",
-    "validators": [
+    "type": "list",
+    "label": "Pets",
+    "maxNumber": 5,
+    "components": [
       {
-        "validation": {
-          "type": "required"
-        }
+        "type": "text",
+        "key": "name",
+        "label": "Pet's Name"
       }
-    ]
-  },
-  {
-    "key": "pet_microchip_number",
-    "type": "text",
-    "label": "Microchip number *",
-    "outputPath": "pet_microchip_number",
-    "validators": [
-      {
-        "validation": {
-          "type": "required"
-        }
-      }
-    ]
+    ],
+    "outputPathList": "pets"
   }
 ]
