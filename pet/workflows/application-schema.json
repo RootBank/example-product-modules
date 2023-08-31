@@ -7,7 +7,7 @@
       {
         "type": "section-header",
         "key": "header-1",
-        "label": "Please give more information about {{name}}"
+        "label": "Please give more information about this pet"
       },
       {
         "type": "checkbox",
