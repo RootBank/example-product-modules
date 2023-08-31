@@ -39,13 +39,13 @@ destinations:
 
 1. Update pet product to match spec
   - ~~quote schema: currency slider range limits~~
-  - application step
-  - policy issuing
+  - ~~application step~~
+  - ~~policy issuing~~
   - pricing
   - reactivations
   - alteration hook
   - scheduled function
-  - docs
+  - documents
 1. Create github action that automatically deploys the templates to all the different stacks
   - Set up where the script can pull the config for each stack
   - Create a list containing all the stack's host orgs
