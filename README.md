@@ -17,23 +17,11 @@ Here's how to iterate, test and evolve the templates (a guide for the internal R
 
 Adding another stack to the list:
 
-1. Open... _todo_
+1. Create the appropriate organisation on the new stack to house the template product modules.
+1. Create a product module for each template in this directory. Their keys must match the keys defined in `./deployment.yaml`.
+1. Open `./deployment.yaml` and add the stack & organisation to deploy to.
+1. Open the Github org's secrets and add an API key for `host`
 
-```yaml
-destinations:
-- host: api.rootplatform.com
-  country: ZA
-  organizationId: 0000-0000
-  apiKey: secret
-  currency: ZAR
-  currencyPrefix: R
-- host: api.uk.rootplatform.com
-  country: GB
-  organizationId: 0000-0000
-  apiKey: secret
-  currency: GBP
-  currencyPrefix: £
-```
 
 ### Todo list
 

@@ -1,3 +1,4 @@
 # Ignore Root authentication file
 .root-auth
 sandbox/
+node_modules/

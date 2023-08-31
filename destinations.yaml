@@ -1,0 +1,14 @@
+hosts:
+- host: api.rootplatform.com
+  country: ZA
+  organizationId: 0000-0000
+  currency: ZAR
+  currencyPrefix: R
+- host: api.uk.rootplatform.com
+  country: GB
+  organizationId: 0000-0000
+  currency: GBP
+  currencyPrefix: £
+templates:
+- directory: pet
+  destinationProductKey: template_pet
