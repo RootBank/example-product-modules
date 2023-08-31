@@ -67,16 +67,16 @@
     },
     "policyholder": {
       "individualsAllowed": true,
-      "individualsIdAllowed": true,
-      "individualsPassportAllowed": true,
+      "individualsIdAllowed": false,
+      "individualsPassportAllowed": false,
       "individualsCellphoneAllowed": false,
       "individualsCustomIdAllowed": false,
-      "individualsEmailAllowed": false,
+      "individualsEmailAllowed": true,
       "companiesAllowed": false,
       "individualPolicyholderFields": {
         "address": {
           "suburb": {
-            "required": true
+            "required": false
           }
         },
         "dateOfBirth": {

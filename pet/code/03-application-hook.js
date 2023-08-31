@@ -15,8 +15,10 @@ const validateApplicationRequest = (data, policyholder, quote_package) => {
     data,
     Joi.object()
       .keys({
-        pet_name: Joi.string().min(1).max(50).required(),
-        pet_microchip_number: Joi.string().min(1).max(50).required(),
+        microchip: Joi.boolean().valid(false),
+        neutered: Joi.boolean().valid(false),
+        environment: Joi.valid("indoors", "outdoors").required(),
+        travel: Joi.boolean().valid(false),
       })
       .required(),
     { abortEarly: false },
@@ -43,8 +45,8 @@ const getApplication = (data, policyholder, quote_package) => {
     input_data: { ...data },
     module: {
       // The module object is used to store product-specific fields
-      ...quote_package.module,
-      ...data,
+      ...quote_package.module, // Clone all the module data from the quote package
+      ...data, // And store the application data in there as well
     },
   });
   return application;

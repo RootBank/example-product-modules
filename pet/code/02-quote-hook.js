@@ -34,11 +34,11 @@ const validateQuoteRequest = (data) => {
                 precondition: Joi.object() // Make sure all precondiftions are false
                   .keys({
                     "Chronic disease": Joi.boolean().valid(false),
-                    Diabetes: Joi.boolean().valid(false),
-                    Epilepsy: Joi.boolean().valid(false),
+                    "Diabetes": Joi.boolean().valid(false),
+                    "Epilepsy": Joi.boolean().valid(false),
                     "Elbow or hip joint dysplasia": Joi.boolean().valid(false),
                     "Physical disabilities": Joi.boolean().valid(false),
-                    Tumours: Joi.boolean().valid(false),
+                    "Tumours": Joi.boolean().valid(false),
                     "Thyroid disease": Joi.boolean().valid(false),
                   }),
               })
