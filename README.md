@@ -38,7 +38,7 @@ destinations:
 ### Todo list
 
 1. Update pet product to match spec
-  - quote schema: currency slider range limits
+  - ~~quote schema: currency slider range limits~~
   - application step
   - policy issuing
   - pricing
