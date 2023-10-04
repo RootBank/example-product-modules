@@ -9,9 +9,10 @@
  */
 const getPolicy = (application, policyholder, billing_day) => {
   const policy = new Policy({
-    package_name: application.package_name,
+    // package_name: application.package_name,
+    package_name: "Pet",
     sum_assured: application.sum_assured,
-    base_premium: application.base_premium,
+    base_premium: application.monthly_premium,
     monthly_premium: application.monthly_premium,
     start_date: moment().add(1, 'day').format(), // policy starts the day after issue
     end_date: null, // no policy end date
@@ -19,29 +20,6 @@ const getPolicy = (application, policyholder, billing_day) => {
       ...application.module,
     },
     charges: [
-      {
-        type: 'variable',
-        name: 'Risk premium',
-        description: 'Risk and claims component of the premium',
-        amount: 0.4,
-      },
-      {
-        type: 'variable',
-        name: 'Admin fees',
-        description: 'Admin and claims handling fees',
-        amount: 0.09,
-      },
-      {
-        type: 'variable',
-        name: 'Commission',
-        description: 'Sales and channel commission',
-        amount: 0.2,
-      },
-      {
-        type: 'balance',
-        name: 'Profit',
-        description: 'Remaining amount',
-      },
     ],
   });
   return policy;
