@@ -11,8 +11,7 @@
       {
         "key": "name",
         "type": "text",
-        "label": "Hello. What's your pet's name?",
-        "outputPath": "name",
+        "label": "Hello. What’s your pet’s name?",
         "validators": [
           {
             "validation": {
@@ -25,7 +24,6 @@
         "key": "type",
         "type": "select",
         "label": "Is your pet a cat or dog?",
-        "outputPath": "species",
         "options": [
           {
             "label": "Dog",
@@ -48,7 +46,6 @@
         "key": "gender",
         "type": "select",
         "label": "Is your pet male or female?",
-        "outputPath": "gender",
         "options": [
           {
             "label": "Male",
@@ -70,8 +67,7 @@
       {
         "key": "birth_date",
         "type": "date-picker",
-        "label": "When is your pet's birthday?",
-        "outputPath": "birth_date",
+        "label": "When is your pet’s birthday?",
         "validators": [
           {
             "validation": {
@@ -83,40 +79,36 @@
       {
         "key": "breed_dog",
         "type": "select",
-        "label": "What is your pet's breed?",
+        "label": "What is your pet’s breed?",
         "outputPath": "breed",
         "options": [
           {
             "label": "Alaskan Husky",
-            "value": "alaskan_husky"
+            "value": "Alaskan Husky"
           },
           {
             "label": "Border Collie",
-            "value": "border_collie"
+            "value": "Border Collie"
           },
           {
             "label": "Boston Terrier",
-            "value": "boston_terrier"
+            "value": "Boston Terrier"
           },
           {
             "label": "German Shepherd",
-            "value": "german_shepherd"
+            "value": "German Shepherd"
           },
           {
             "label": "Golden Retriever",
-            "value": "golden_retriever"
+            "value": "Golden Retriever"
           },
           {
             "label": "Great Dane",
-            "value": "great_dane"
+            "value": "Great Dane"
           },
           {
             "label": "Tamed Wolf",
-            "value": "tamed_wolf"
-          },
-          {
-            "label": "Mixed Breed",
-            "value": "mixed_breed"
+            "value": "Tamed Wolf"
           }
         ],
         "validators": [
@@ -131,40 +123,6 @@
             "path": "type",
             "value": "cat",
             "condition": "!=="
-          }
-        ]
-      },
-      {
-        "key": "dog_size",
-        "type": "select",
-        "label": "How large is your dog?",
-        "outputPath": "pet_size",
-        "options": [
-          {
-            "label": "Small",
-            "value": "small"
-          },
-          {
-            "label": "Medium",
-            "value": "medium"
-          },
-          {
-            "label": "Large",
-            "value": "large"
-          }
-        ],
-        "validators": [
-          {
-            "validation": {
-              "type": "required"
-            }
-          }
-        ],
-        "displayConditions": [
-          {
-            "path": "breed_dog",
-            "value": "mixed_breed",
-            "condition": "==="
           }
         ]
       },
@@ -189,10 +147,6 @@
           {
             "label": "Siamese",
             "value": "siamese"
-          },
-          {
-            "label": "Mixed Breed",
-            "value": "mixed_breed"
           }
         ],
         "validators": [
@@ -201,32 +155,12 @@
               "type": "required"
             }
           }
-        ]
-      },
-      {
-        "key": "cat_size",
-        "type": "select",
-        "label": "How large is your cat?",
-        "outputPath": "pet_size",
-        "options": [
-          {
-            "label": "Small",
-            "value": "small"
-          },
-          {
-            "label": "Medium",
-            "value": "medium"
-          },
-          {
-            "label": "Large",
-            "value": "large"
-          }
         ],
-        "validators": [
+        "displayConditions": [
           {
-            "validation": {
-              "type": "required"
-            }
+            "path": "type",
+            "value": "cat",
+            "condition": "==="
           }
         ]
       },
@@ -268,9 +202,9 @@
       {
         "key": "cover_amount",
         "type": "currency-slider",
-        "label": "Select the annual cover amount for your pet's vet fees",
+        "label": "Select the annual cover amount for your pet’s vet fees?",
         "props": {
-          "prefix": "£",
+          "prefix": "R",
           "increment": 100000
         },
         "validators": [
@@ -298,7 +232,7 @@
         "type": "currency-slider",
         "label": "Select the excess fee you will be responsible for when you claim?",
         "props": {
-          "prefix": "£",
+          "prefix": "R",
           "increment": 5000
         },
         "validators": [

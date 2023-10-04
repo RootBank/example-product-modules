@@ -83,7 +83,7 @@
           "required": true
         }
       },
-      "idCountry": "GB"
+      "idCountry": "ZA"
     },
     "beneficiaries": {
       "makePolicyholderABeneficiary": true,
@@ -92,23 +92,25 @@
     },
     "claims": {
       "checklistItems": [
-        "Is the date of claim within 90 days of the incident occurring?",
-        "Did the policyholder take out the appropriate coverage for this claim?",
-        "Have the waiting periods been seen out?"
+        "Has the claim form been fully completed?",
+        "Is the detailed invoice attached?",
+        "Is the proof of payment attached?",
+        "Is the full veterinary history attached (a vaccination certificate is not sufficient)?",
+        "Have all premiums been paid?"
       ],
       "documentLabels": [
-        "Quote and cost summary",
-        "Incident Report",
-        "Death certificate",
-        "Veterinary report"
+        "Claim form",
+        "Invoice",
+        "Proof of payment",
+        "Full vetinary history"
       ]
     },
     "billing": {
       "allowStartDateChange": true,
       "billBeforeWeekendEnabled": false,
       "billingFrequency": "monthly",
-      "consecutiveFailedPaymentsAllowed": 2,
-      "currency": "GBP",
+      "consecutiveFailedPaymentsAllowed": 4,
+      "currency": "ZAR",
       "enableBillingOnSandbox": true,
       "paymentSubmissionLeadTime": 0,
       "clientStatementReference": "INSURANCE",
