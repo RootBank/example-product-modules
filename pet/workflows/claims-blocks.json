@@ -1,12 +1,39 @@
 [
   {
     "block": {
-      "key": "waiting_period_alert",
+      "key": "claim_in_waiting_period",
+      "type": "alert",
+      "color": "danger",
+      "markdown": "Warning: General 14 day waiting period still in effect."
+    },
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '!==' 'natural death') '&&' (ifCondition claim.block_states.claim_type.value '!==' 'accidental death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='days') '<' 14)}}"
+  },
+  {
+    "block": {
+      "key": "accident_death_claim_in_waiting_period",
+      "type": "alert",
+      "color": "danger",
+      "markdown": "Warning: 1 month accidental death waiting period still in effect."
+    },
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '===' 'accidental death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='month') '<' 1)}}"
+  },
+  {
+    "block": {
+      "key": "natural_death_claim_in_waiting_period",
+      "type": "alert",
+      "color": "danger",
+      "markdown": "Warning: 6 month natural death waiting period still in effect."
+    },
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '===' 'natural death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='month') '<' 6)}}"
+  },
+  {
+    "block": {
+      "key": "date_warning_past",
       "type": "alert",
       "color": "warning",
-      "markdown": "Date of treatment is within the waiting period."
+      "markdown": "Warning: Claims must be logged within 90 days of the incident occurring."
     },
-    "show_if": "{{ifCondition (dateDifference claim.block_states.date_of_treatment.value claim.policy.start_date measurement='days') '<' 90}}"
+    "show_if": "{{ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='days') '<' 90}}"
   },
   {
     "block": {
@@ -22,171 +49,83 @@
       "title": "Event type",
       "options": [
         {
-          "key": "accident",
-          "value": "Accident"
+          "key": "Complementary treatment",
+          "value": "complementary treatment"
         },
         {
-          "key": "illness",
-          "value": "Illness"
+          "key": "Behavioural treatment",
+          "value": "behavioural treatment"
         },
         {
-          "key": "checkup",
-          "value": "Check-up"
+          "key": "Dental treatments",
+          "value": "dental treatment"
+        },
+        {
+          "key": "Theft or stray",
+          "value": "theft or stray"
+        },
+        {
+          "key": "Accidental Death",
+          "value": "accidental death"
+        },
+        {
+          "key": "Natural Death",
+          "value": "natural death"
+        },
+        {
+          "key": "Third-party liability",
+          "value": "third-party liability"
         }
       ]
     }
   },
   {
     "block": {
-      "key": "accident_event",
+      "key": "incident_date",
+      "type": "input.date",
+      "title": "Date of incident"
+    }
+  },
+  {
+    "block": {
+      "key": "incident_description",
       "type": "input.paragraph",
       "title": "Description of accident"
-    },
-    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'accident'}}"
+    }
   },
   {
     "block": {
-      "key": "date_of_first_clinical_signs",
-      "type": "input.date",
-      "title": "Date first showed clinical signs"
-    },
-    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'illness'}}"
-  },
-  {
-    "block": {
-      "key": "medical_diagnosis",
+      "key": "claimant_id",
       "type": "input.text",
-      "title": "Medical diagnosis"
-    },
-    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'illness'}}"
-  },
-  {
-    "block": {
-      "key": "condition_continuation",
-      "type": "radio",
-      "title": "Is this a continuation of a condition that existed before the treatment date?",
-      "options": [
-        {
-          "key": "no",
-          "value": "No"
-        },
-        {
-          "key": "yes",
-          "value": "Yes"
-        }
-      ],
-      "default_value": "No"
-    },
-    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'illness'}}"
-  },
-  {
-    "block": {
-      "key": "hereditary_condition",
-      "type": "radio",
-      "title": "Is this a hereditary condition?",
-      "options": [
-        {
-          "key": "no",
-          "value": "No"
-        },
-        {
-          "key": "yes",
-          "value": "Yes"
-        }
-      ],
-      "default_value": "No"
-    },
-    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'illness'}}"
-  },
-  {
-    "block": {
-      "key": "congenital_condition",
-      "type": "radio",
-      "title": "Is this a congenital condition?",
-      "options": [
-        {
-          "key": "no",
-          "value": "No"
-        },
-        {
-          "key": "yes",
-          "value": "Yes"
-        }
-      ],
-      "default_value": "No"
-    },
-    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'illness'}}"
-  },
-  {
-    "block": {
-      "key": "chronic_treatment",
-      "type": "radio",
-      "title": "Is the treatment chronic?",
-      "options": [
-        {
-          "key": "no",
-          "value": "No"
-        },
-        {
-          "key": "yes",
-          "value": "Yes"
-        }
-      ],
-      "default_value": "No"
-    },
-    "show_if": "{{ifCondition (ifCondition claim.block_states.claim_type.option_key '===' 'accident') '||' (ifCondition claim.block_states.claim_type.option_key '===' 'illness')}}"
-  },
-  {
-    "block": {
-      "key": "date_of_treatment",
-      "type": "input.date",
-      "title": "Date of first treatment"
+      "title": "Claimant ID"
     }
   },
   {
     "block": {
-      "key": "practice_name",
+      "key": "claimant_address_1",
       "type": "input.text",
-      "title": "Practice name"
+      "title": "Address Line 1"
     }
   },
   {
     "block": {
-      "key": "pet_admitted_at_practice",
-      "type": "radio",
-      "title": "Was the pet admitted at the practice?",
-      "options": [
-        {
-          "key": "no",
-          "value": "No"
-        },
-        {
-          "key": "yes",
-          "value": "Yes"
-        }
-      ],
-      "default_value": "No"
-    },
-    "show_if": "{{ifCondition (ifCondition claim.block_states.claim_type.option_key '===' 'accident') '||' (ifCondition claim.block_states.claim_type.option_key '===' 'illness')}}"
-  },
-  {
-    "block": {
-      "key": "additional_notes",
-      "type": "input.paragraph",
-      "title": "Additional vet notes"
+      "key": "claimant_address_2",
+      "type": "input.text",
+      "title": "Address Line 2"
     }
   },
   {
     "block": {
-      "key": "payout_details",
-      "type": "markdown",
-      "markdown": "### Payout details\n_Note: these fields are just by way of example and are completely configurable._"
+      "key": "claimant_address_3",
+      "type": "input.text",
+      "title": "Address Line 3"
     }
   },
   {
     "block": {
       "key": "payout_amount",
-      "max": "500000",
+      "min": "1",
+      "max": "{{ divide claim.policy.sum_assured 100 }}",
       "type": "input.currency",
       "title": "Payout amount",
       "isoCode": "GBP"
@@ -194,34 +133,81 @@
   },
   {
     "block": {
-      "key": "vet_account_number",
-      "max": "500000000",
-      "type": "input.number",
-      "title": "Vet's account number"
-    }
-  },
-  {
-    "block": {
-      "key": "claim_payout_request",
+      "key": "claim_payout_request_1",
       "type": "payout_request",
       "payee": {
         "type": "policyholder",
-        "amount": "{{#ifIsDefined claim.block_states.payout_amount.value}}{{claim.block_states.payout_amount.value}}{{else}}0{{/ifIsDefined}}",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[0].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.0.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.0.last_name}}",
         "percentage": 100,
         "payment_details": {
           "type": "eft",
           "details": {
-            "bank_name": "Access",
-            "branch_code": "123456",
-            "account_type": "cheque_account",
-            "account_number": "{{ claim.block_states.vet_account_number.value }}"
+            "bank_name": "{{ claim.policy.beneficiaries.0.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.0.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.0.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.0.payment_details.details.account_number }}"
           }
         },
         "policyholder_id": "{{ claim.policy.policyholder_id }}"
       },
       "title": "Claim payout",
       "amount": "{{ claim.block_states.payout_amount.value }}",
-      "description": "Details of payment to be made to policyholder"
-    }
+      "description": "To be paid out to the first beneficiary: {{claim.policy.beneficiaries.0.first_name}} {{claim.policy.beneficiaries.0.last_name}}"
+    },
+    "show_if": "{{ifCondition claim.approval_status '===' 'approved' }}"
+  },
+  {
+    "block": {
+      "key": "claim_payout_request_2",
+      "type": "payout_request",
+      "payee": {
+        "type": "beneficiary",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[1].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.1.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.1.last_name}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.1.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.1.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.1.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.1.payment_details.details.account_number }}"
+          }
+        }
+      },
+      "title": "Payout request for the 1st Beneficiary",
+      "amount": "{{ claim.policy.module.replacement_value }}",
+      "description": "To be paid out to the first beneficiary: {{claim.policy.beneficiaries.1.first_name}} {{claim.policy.beneficiaries.1.last_name}}"
+    },
+    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.1.relationship)}}"
+  },
+  {
+    "block": {
+      "key": "claim_payout_request_3",
+      "type": "payout_request",
+      "payee": {
+        "type": "beneficiary",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[2].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.2.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.2.last_name}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.2.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.2.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.2.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.2.payment_details.details.account_number }}"
+          }
+        }
+      },
+      "title": "Payout request for the 3rd Beneficiary",
+      "amount": "{{ claim.policy.module.replacement_value }}",
+      "description": "To be paid out to the third beneficiary: {{claim.policy.beneficiaries.2.first_name}} {{claim.policy.beneficiaries.2.last_name}}"
+    },
+    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.2.relationship)}}"
   }
 ]
