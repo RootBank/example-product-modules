@@ -6,8 +6,9 @@
   "host": "api.rootplatform.com",
   "codeFileOrder": [
     "main.js",
-    "00-helpers.js",
-    "01-ratings.js",
+    "00-ratings-tables.js",
+    "01-helper-utils.js",
+    "01-rating-utils.js",
     "02-quote-hook.js",
     "03-application-hook.js",
     "04-policy-issue-hook.js",
