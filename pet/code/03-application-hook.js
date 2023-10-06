@@ -1,17 +1,14 @@
-const applicationSchema = Joi.object()
-  .keys({
-    pets: Joi.array()
-      .items(
-        Joi.object()
-          .keys({
-            microchip: Joi.boolean().required(),
-            vaccinations: Joi.boolean().required(),
-            neutered: Joi.boolean().required(),
-            environment: Joi.valid("indoors", "outdoors").required(),
-            travel: Joi.boolean().required(),
-          })
-      )
-  })
+const applicationSchema = Joi.object().keys({
+  pets: Joi.array().items(
+    Joi.object().keys({
+      microchip: Joi.boolean().required(),
+      vaccinations: Joi.boolean().required(),
+      neutered: Joi.boolean().required(),
+      environment: Joi.valid('indoors', 'outdoors').required(),
+      travel: Joi.boolean().required(),
+    }),
+  ),
+});
 
 /**
  * Validates the application request data.
@@ -26,12 +23,7 @@ const applicationSchema = Joi.object()
  */
 const validateApplicationRequest = (data, policyholder, quote_package) => {
   // Custom validation can be specified in the function body
-  const result = Joi.validate(
-    data,
-    applicationSchema
-      .required(),
-    { abortEarly: false },
-  );
+  const result = Joi.validate(data, applicationSchema.required(), { abortEarly: false });
   return result;
 };
 
@@ -56,7 +48,7 @@ const getApplication = (data, policyholder, quote_package) => {
     input_data: { ...data },
     module: {
       // The module object is used to store product-specific fields
-      ...rebuiltApplicationModule
+      ...rebuiltApplicationModule,
     },
   });
   return application;

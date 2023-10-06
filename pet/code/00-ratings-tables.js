@@ -1,47 +1,24 @@
 // Valid Excess Values
-const excessValues = [
-    5000,
-    10000,
-    15000,
-    20000,
-    25000,
-];
+const excessValues = [5000, 10000, 15000, 20000, 25000];
 
 // Valid Excess Values
-const coverAmounts = [
-    100000,
-    200000,
-    400000,
-    600000,
-    800000,
-    1000000,
-];
+const coverAmounts = [100000, 200000, 400000, 600000, 800000, 1000000];
 
 // Dog Breeds
 const dogBreeds = [
-    "alaskan_husky",
-    "border_collie",
-    "boston_terrier",
-    "german_shepherd",
-    "golden_retriever",
-    "great_dane",
-    "tamed_wolf",
-    "mixed_breed",
-]
+  'alaskan_husky',
+  'border_collie',
+  'boston_terrier',
+  'german_shepherd',
+  'golden_retriever',
+  'great_dane',
+  'tamed_wolf',
+  'mixed_breed',
+];
 
-const catBreeds = [
-    "british_shorthair",
-    "burmese",
-    "persian",
-    "siamese",
-    "mixed_breed",
-]
+const catBreeds = ['british_shorthair', 'burmese', 'persian', 'siamese', 'mixed_breed'];
 
-const animalSizes = [
-    "small",
-    "medium",
-    "large",
-]
+const animalSizes = ['small', 'medium', 'large'];
 
 /**
  * Breeds risk csv
@@ -75,4 +52,4 @@ const claimContribution = `excess,multiplier
 10000 1.4
 20000 1.2
 25000 1
-`
+`;

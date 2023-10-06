@@ -11,23 +11,18 @@
  *    If there are no errors, the `value` property will contain the validated data, which is passed to `getAlteration`.
  * @see {@link https://docs.rootplatform.com/docs/alteration-hooks Alteration hooks}
  */
-const validateAlterationPackageRequest = ({
-  alteration_hook_key,
-  data,
-  policy,
-  policyholder,
-}) => {
+const validateAlterationPackageRequest = ({ alteration_hook_key, data, policy, policyholder }) => {
   switch (alteration_hook_key) {
-    case "amendment":
+    case 'amendment':
       const result = Joi.validate(
         data,
         Joi.object()
           .keys({
-            cover_option: Joi.valid(["standard", "premium"]).required(),
-            sterilised: Joi.valid(["yes", "no"]).required(),
+            cover_option: Joi.valid(['standard', 'premium']).required(),
+            sterilised: Joi.valid(['yes', 'no']).required(),
           })
           .required(),
-        { abortEarly: false }
+        { abortEarly: false },
       );
       return result;
     default:
@@ -49,23 +44,22 @@ const validateAlterationPackageRequest = ({
 const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
   let messageParts = [];
   if (data.cover_option !== policy.module.cover_option) {
-    messageParts.push("cover option");
+    messageParts.push('cover option');
   }
   if (data.sterilised !== policy.module.sterilised) {
-    messageParts.push("sterilisation status");
+    messageParts.push('sterilisation status');
   }
 
   // Get updated quote
   const quotePackage = getQuote({ ...policy.module, ...data })[0];
 
   switch (alteration_hook_key) {
-    case "amendment":
+    case 'amendment':
       const alterationPackage = new AlterationPackage({
         input_data: data,
         sum_assured: quotePackage.sum_assured,
         monthly_premium: quotePackage.suggested_premium,
-        change_description:
-          "Alteration - " + messageParts.join(" & ") + " updated",
+        change_description: 'Alteration - ' + messageParts.join(' & ') + ' updated',
         module: {
           ...policy.module,
           ...data,
@@ -88,14 +82,9 @@ const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
  * @return {AlteredPolicy} The altered policy. This object is **not** returned over the endpoint.
  *    Instead, the alteration package is returned with a status of `applied`.
  */
-const applyAlteration = ({
-  alteration_hook_key,
-  policy,
-  policyholder,
-  alteration_package,
-}) => {
+const applyAlteration = ({ alteration_hook_key, policy, policyholder, alteration_package }) => {
   switch (alteration_hook_key) {
-    case "amendment":
+    case 'amendment':
       const alteredPolicy = new AlteredPolicy({
         package_name: policy.package_name,
         sum_assured: alteration_package.sum_assured,

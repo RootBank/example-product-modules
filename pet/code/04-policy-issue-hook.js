@@ -19,8 +19,7 @@ const getPolicy = (application, policyholder, billing_day) => {
     module: {
       ...application.module,
     },
-    charges: [
-    ],
+    charges: [],
   });
   return policy;
 };
