@@ -10,7 +10,7 @@
 const getPolicy = (application, policyholder, billing_day) => {
   const policy = new Policy({
     // package_name: application.package_name,
-    package_name: "Pet",
+    package_name: application.package_name,
     sum_assured: application.sum_assured,
     base_premium: application.monthly_premium,
     monthly_premium: application.monthly_premium,

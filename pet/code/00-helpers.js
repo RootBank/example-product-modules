@@ -40,36 +40,6 @@ const getObjectFromCsv = (csv) => {
   return data;
 };
 
-/*
-{
-  "name": "irure",
-  "type": "cat",
-  "gender": "female",
-  "breed": "consectetur quis",
-  "birth_date": "1916-08-06T06:50:32.0Z",
-  "cover_amount": 100000,
-  "excess_amount": 20000,
-  "precondition": {
-    "Chronic disease": false
-  }
-}
-*/
-
-/*
-{
-  "name": "irure",
-  "type": "cat",
-  "gender": "female",
-  "breed": "consectetur quis",
-  "birth_date": "1916-08-06T06:50:32.0Z",
-  "cover_amount": 100000,
-  "excess_amount": 20000,
-  "precondition": {
-    "Chronic disease": false
-  }
-}
-*/
-
 /**
  * Generates a module data.
  * @param {Record<string, any>} data The validated data returned by `validateQuoteRequest` as `result.value`.
@@ -106,7 +76,7 @@ const buildPetModuleData = (pet) => {
 
 /**
  * Calculate premium per pet
- * @param {object} pet
+ * @param {Record<string, any>} pet
  * @returns premium for a single pet
  */
 const calcPremiumPerPet = (pet) => {
@@ -182,7 +152,7 @@ const getRiskFromSize = (size) => {
 
 /**
  * Retrieve the base premium of the pet to apply multipliers to
- * @param {Object} coverAmount The cover amount of the pet.
+ * @param {Record<string, any>} coverAmount The cover amount of the pet.
  * @return {Number} Base premium of pet based off cover amount.
  */
 const getBasePremium = (coverAmount) => {
@@ -209,7 +179,7 @@ const getAgregatedSumAssured = (pets) => {
 
 /**
  * Calculate the premium of the entire quote from all pets individual premiums
- * @param {Object} pets The pets module data.
+ * @param {Record<string, any>} pets The pets module data.
  * @return {Number} Total policy premium.
  */
 const getAgregatedPremium = (pets) => {

@@ -85,7 +85,7 @@ const getQuote = (data) => {
   // Compile the quote package
   const quotePackage = new QuotePackage({
     // Below are standard fields for all products
-    package_name: "Pet Cover", // The name of the "package" of cover
+    package_name: "Pet", // The name of the "package" of cover
     sum_assured: sum_assured, // Set the total, aggregated cover amount
     base_premium: premium, // Should be an integer, pence/cents
     suggested_premium: premium, // Should be an integer, pence/cents

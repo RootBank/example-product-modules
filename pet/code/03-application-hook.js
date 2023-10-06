@@ -49,7 +49,7 @@ const getApplication = (data, policyholder, quote_package) => {
 
   const application = new Application({
     // The top-level fields are standard across all product modules
-    package_name: "Pet",
+    package_name: quote_package.package_name,
     sum_assured: quote_package.sum_assured,
     base_premium: quote_package.base_premium,
     monthly_premium: quote_package.suggested_premium,
