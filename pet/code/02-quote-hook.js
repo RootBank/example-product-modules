@@ -8,12 +8,9 @@ const quoteSchema = Joi.object().keys({
           gender: Joi.valid('male', 'female').required(),
           breed: Joi.string()
             .when('species', {
-              is: 'dog',
-              then: Joi.valid(...dogBreeds).required(),
-            })
-            .when('species', {
               is: 'cat',
               then: Joi.valid(...catBreeds).required(),
+              otherwise: Joi.valid(...dogBreeds).required()
             }),
           pet_size: Joi.string().valid(animalSizes)
             .when('breed', {

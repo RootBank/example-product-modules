@@ -105,17 +105,7 @@ const buildApplicationModuleData = (originalData, mergeData) => {
  */
 const buildPetApplicationModuleData = (pet, mergeData) => {
   let petData = {
-    uuid: pet.uuid,
-    name: pet.name,
-    species: pet.species,
-    birth_date: pet.birth_date,
-    gender: pet.gender,
-    breed: pet.breed,
-    pet_age: pet.pet_age,
-    cover_amount: pet.cover_amount,
-    excess_amount: pet.excess_amount,
-    pet_premium_amount: pet.pet_premium_amount,
-    remaining_cover_limit_amount: pet.cover_amount,
+    ...pet,
     microchip: mergeData.microchip,
     vaccinations: mergeData.vaccinations,
     neutered: mergeData.neutered,
@@ -124,6 +114,7 @@ const buildPetApplicationModuleData = (pet, mergeData) => {
   };
 
   if (pet.pet_size) {
+    // @ts-ignore
     petData.pet_size = pet.pet_size;
   }
 

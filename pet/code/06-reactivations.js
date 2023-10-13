@@ -6,6 +6,7 @@
  */
 const getReactivationOptions = (policy) => {
     const settlementAmount = policy.balance < 0 ? -policy.balance : 0;
+
     return [
         new ReactivationOption({
             type: 'reactivation',

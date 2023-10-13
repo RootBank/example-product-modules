@@ -156,12 +156,7 @@
     {
       "functionName": "applyAnnualIncrease",
       "policyStatuses": [
-        "not_taken_up",
-        "cancelled",
-        "active",
-        "lapsed",
-        "expired",
-        "pending_initial_payment"
+        "active"
       ],
       "frequency": {
         "type": "daily",
