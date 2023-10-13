@@ -1,8 +1,8 @@
 // Valid Excess Values
-const excessValues = [5000, 10000, 15000, 20000, 25000];
+const excessValues = [0, 5000, 10000, 20000, 25000];
 
 // Valid Excess Values
-const coverAmounts = [100000, 200000, 400000, 600000, 800000, 1000000];
+const coverAmounts = [100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000];
 
 // Dog Breeds
 const dogBreeds = [
@@ -16,8 +16,10 @@ const dogBreeds = [
   'mixed_breed',
 ];
 
+// Valid breeds of cats
 const catBreeds = ['british_shorthair', 'burmese', 'persian', 'siamese', 'mixed_breed'];
 
+// Valid Animal Sizes
 const animalSizes = ['small', 'medium', 'large'];
 
 /**
@@ -40,9 +42,13 @@ siamese             medium
 const premiumToCoverAmount = `cover_amount,base_premium
 100000    1069
 200000    1741
+300000    2225
 400000    2709
+500000    3047
 600000    3386
+700000    3575
 800000    3764
+900000    4378
 1000000   4993
 `;
 

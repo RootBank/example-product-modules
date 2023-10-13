@@ -4,19 +4,22 @@ const quoteSchema = Joi.object().keys({
       Joi.object()
         .keys({
           name: Joi.string().min(1).max(250).required(),
-          type: Joi.valid('dog', 'cat').required(),
+          species: Joi.valid('dog', 'cat').required(),
           gender: Joi.valid('male', 'female').required(),
           breed: Joi.string()
-            .valid()
-            .when('type', {
+            .when('species', {
               is: 'dog',
               then: Joi.valid(...dogBreeds).required(),
             })
-            .when('type', {
+            .when('species', {
               is: 'cat',
               then: Joi.valid(...catBreeds).required(),
             }),
-          pet_size: Joi.string().valid(animalSizes).required(),
+          pet_size: Joi.string().valid(animalSizes)
+            .when('breed', {
+              is: 'mixed_breed',
+              then: Joi.required(),
+            }),
           birth_date: Joi.date().required(),
           cover_amount: Joi.number().integer().min(100000).max(1000000).valid(coverAmounts).required(),
           excess_amount: Joi.number().integer().min(5000).max(25000).valid(excessValues).required(),

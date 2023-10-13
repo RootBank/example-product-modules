@@ -15,7 +15,7 @@
       "color": "danger",
       "markdown": "Warning: 1 month accidental death waiting period still in effect."
     },
-    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '===' 'accidental death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='month') '<' 1)}}"
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '===' 'accidental death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='months') '<' 1)}}"
   },
   {
     "block": {
@@ -24,7 +24,16 @@
       "color": "danger",
       "markdown": "Warning: 6 month natural death waiting period still in effect."
     },
-    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '===' 'natural death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='month') '<' 6)}}"
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '==' 'natural death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='months') '<' 6)}}"
+  },
+  {
+    "block": {
+      "key": "payout_amount_more_than_sum_assured",
+      "type": "alert",
+      "color": "danger",
+      "markdown": "Warning: The payout amount of {{ divide claim.block_states.payout_amount.value 100 }} is more than the policy sum assured {{divide claim.policy.sum_assured 100}}."
+    },
+    "show_if": "{{if claim.block_states.payout_amount.value '>' claim.policy.sum_assured }}"
   },
   {
     "block": {
@@ -125,7 +134,6 @@
     "block": {
       "key": "payout_amount",
       "min": "1",
-      "max": "{{ divide claim.policy.sum_assured 100 }}",
       "type": "input.currency",
       "title": "Payout amount",
       "isoCode": "GBP"
@@ -138,8 +146,6 @@
       "payee": {
         "type": "policyholder",
         "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[0].percentage) 100}}",
-        "last_name": "{{ claim.policy.beneficiaries.0.first_name}}",
-        "first_name": "{{ claim.policy.beneficiaries.0.last_name}}",
         "percentage": 100,
         "payment_details": {
           "type": "eft",

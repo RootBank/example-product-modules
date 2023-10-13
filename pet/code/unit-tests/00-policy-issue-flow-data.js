@@ -2,7 +2,7 @@ const getQuoteData = () => ({
   "pets": [
     {
       "name": "Spot",
-      "type": "dog",
+      "species": "dog",
       "birth_date": "2020-04-12T08:46:39.0Z",
       "gender": "male",
       "breed": "mixed_breed",
@@ -19,11 +19,10 @@ const getQuoteData = () => ({
     },
     {
       "name": "Snowey",
-      "type": "cat",
+      "species": "cat",
       "birth_date": "2008-04-12T08:46:39.0Z",
       "gender": "female",
       "breed": "siamese",
-      "pet_size": "small",
       "cover_amount": 1000000,
       "excess_amount": 25000,
       "precondition": {
@@ -71,7 +70,7 @@ const expectedQuoteData = (petUuids) => ([
         {
           uuid: petUuids[0],
           name: "Spot",
-          type: "dog",
+          species: "dog",
           birth_date: "2020-04-12T08:46:39.0Z",
           gender: "male",
           breed: "mixed_breed",
@@ -80,21 +79,34 @@ const expectedQuoteData = (petUuids) => ([
           cover_amount: 600000,
           excess_amount: 20000,
           pet_premium_amount: 6095,
-          remaining_cover_limit_amount: 600000
+          remaining_cover_limit_amount: 600000,
+          precondition: {
+            "Chronic disease": false,
+            "Elbow or hip joint dysplasia": false,
+            "Epilepsy": false,
+            "Physical disabilities": false,
+            "Tumours": false
+          }
         },
         {
           uuid: petUuids[1],
           name: "Snowey",
-          type: "cat",
+          species: "cat",
           birth_date: "2008-04-12T08:46:39.0Z",
           gender: "female",
           breed: "siamese",
-          pet_size: "small",
           pet_age: 15,
           cover_amount: 1000000,
           excess_amount: 25000,
           pet_premium_amount: 6741,
-          remaining_cover_limit_amount: 1000000
+          remaining_cover_limit_amount: 1000000,
+          precondition: {
+            "Chronic disease": false,
+            "Elbow or hip joint dysplasia": false,
+            "Epilepsy": false,
+            "Physical disabilities": false,
+            "Tumours": false
+          }
         }
       ]
     },
@@ -102,7 +114,7 @@ const expectedQuoteData = (petUuids) => ([
       pets: [
         {
           name: "Spot",
-          type: "dog",
+          species: "dog",
           birth_date: "2020-04-12T08:46:39.0Z",
           gender: "male",
           breed: "mixed_breed",
@@ -119,11 +131,10 @@ const expectedQuoteData = (petUuids) => ([
         },
         {
           name: "Snowey",
-          type: "cat",
+          species: "cat",
           birth_date: "2008-04-12T08:46:39.0Z",
           gender: "female",
           breed: "siamese",
-          pet_size: "small",
           cover_amount: 1000000,
           excess_amount: 25000,
           precondition: {
@@ -167,7 +178,7 @@ const expectedApplicationData = (petUuids) => ({
       {
         uuid: petUuids[0],
         name: "Spot",
-        type: "dog",
+        species: "dog",
         birth_date: "2020-04-12T08:46:39.0Z",
         gender: "male",
         breed: "mixed_breed",
@@ -186,11 +197,10 @@ const expectedApplicationData = (petUuids) => ({
       {
         uuid: petUuids[1],
         name: "Snowey",
-        type: "cat",
+        species: "cat",
         birth_date: "2008-04-12T08:46:39.0Z",
         gender: "female",
         breed: "siamese",
-        pet_size: "small",
         pet_age: 15,
         cover_amount: 1000000,
         excess_amount: 25000,
@@ -206,7 +216,7 @@ const expectedApplicationData = (petUuids) => ({
   }
 })
 
-const expectedPolicyData = (petUuids,) => ({
+const expectedPolicyData = (petUuids) => ({
   package_name: "Pet",
   sum_assured: 1600000,
   base_premium: 12836,
@@ -214,11 +224,15 @@ const expectedPolicyData = (petUuids,) => ({
   start_date: moment().add(1, 'day').format(),
   end_date: null,
   module: {
+    applied_anniversary_increases: 0,
+    latest_policy_deactivation: null,
+    latest_policy_reactivation: null,
+    policy_deactivations: 0,
     pets: [
       {
         uuid: petUuids[0],
         name: "Spot",
-        type: "dog",
+        species: "dog",
         birth_date: "2020-04-12T08:46:39.0Z",
         gender: "male",
         breed: "mixed_breed",
@@ -237,11 +251,10 @@ const expectedPolicyData = (petUuids,) => ({
       {
         uuid: petUuids[1],
         name: "Snowey",
-        type: "cat",
+        species: "cat",
         birth_date: "2008-04-12T08:46:39.0Z",
         gender: "female",
         breed: "siamese",
-        pet_size: "small",
         pet_age: 15,
         cover_amount: 1000000,
         excess_amount: 25000,

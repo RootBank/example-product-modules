@@ -48,6 +48,7 @@ const getObjectFromCsv = (csv) => {
 const buildModuleData = (data) => {
   const petsModuleData = data.pets.map((pet) => buildPetModuleData(pet));
   return {
+    ...data,
     pets: petsModuleData,
   };
 };
@@ -58,20 +59,29 @@ const buildModuleData = (data) => {
  * @return {Record<string, any>} The module data for a single per
  */
 const buildPetModuleData = (pet) => {
-  return {
-    uuid: createUuid(),
+  const uuid = pet.uuid ? pet.uuid : createUuid();
+
+  let petData = {
+    ...pet,
+    uuid: uuid,
     name: pet.name,
-    type: pet.type,
+    species: pet.species,
     birth_date: pet.birth_date,
     gender: pet.gender,
     breed: pet.breed,
-    pet_size: pet.pet_size,
     pet_age: moment().diff(moment(pet.birth_date), 'years'),
     cover_amount: pet.cover_amount,
     excess_amount: pet.excess_amount,
     pet_premium_amount: calcPremiumPerPet(pet),
     remaining_cover_limit_amount: pet.cover_amount,
   };
+
+  if (pet.pet_size) {
+    // @ts-ignore
+    petData.pet_size = pet.pet_size;
+  }
+
+  return petData;
 };
 
 /**
@@ -94,14 +104,13 @@ const buildApplicationModuleData = (originalData, mergeData) => {
  * @return {Record<string, any>} The module data for a single pet
  */
 const buildPetApplicationModuleData = (pet, mergeData) => {
-  return {
+  let petData = {
     uuid: pet.uuid,
     name: pet.name,
-    type: pet.type,
+    species: pet.species,
     birth_date: pet.birth_date,
     gender: pet.gender,
     breed: pet.breed,
-    pet_size: pet.pet_size,
     pet_age: pet.pet_age,
     cover_amount: pet.cover_amount,
     excess_amount: pet.excess_amount,
@@ -113,4 +122,10 @@ const buildPetApplicationModuleData = (pet, mergeData) => {
     environment: mergeData.environment,
     travel: mergeData.travel,
   };
+
+  if (pet.pet_size) {
+    petData.pet_size = pet.pet_size;
+  }
+
+  return petData;
 };

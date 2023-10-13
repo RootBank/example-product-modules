@@ -32,6 +32,13 @@
             "label": "Outdoors",
             "value": "outdoors"
           }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
         ]
       },
       {

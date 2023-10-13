@@ -6,13 +6,17 @@
   "host": "api.rootplatform.com",
   "codeFileOrder": [
     "main.js",
-    "00-ratings-tables.js",
+    "00A-ratings-tables.js",
+    "00B-rating-utils.js",
     "01-helper-utils.js",
-    "01-rating-utils.js",
     "02-quote-hook.js",
     "03-application-hook.js",
     "04-policy-issue-hook.js",
-    "05-alteration-hooks.js"
+    "05A-alteration-hooks.js",
+    "05B-alteration-validators.js",
+    "05C-alteration-utils.js",
+    "06-reactivations.js",
+    "07-schedule-functions.js"
   ],
   "settings": {
     "policySchemeType": "individual",
@@ -144,10 +148,26 @@
   },
   "alterationHooks": [
     {
-      "key": "amendment",
-      "name": "Amend policy"
+      "key": "change_pet_excess",
+      "name": "Change Pet Excess"
     }
   ],
-  "scheduledFunctions": [],
+  "scheduledFunctions": [
+    {
+      "functionName": "applyAnnualIncrease",
+      "policyStatuses": [
+        "not_taken_up",
+        "cancelled",
+        "active",
+        "lapsed",
+        "expired",
+        "pending_initial_payment"
+      ],
+      "frequency": {
+        "type": "daily",
+        "timeOfDay": "02:00"
+      }
+    }
+  ],
   "fulfillmentTypes": []
 }

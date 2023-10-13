@@ -13,17 +13,8 @@
  */
 const validateAlterationPackageRequest = ({ alteration_hook_key, data, policy, policyholder }) => {
   switch (alteration_hook_key) {
-    case 'amendment':
-      const result = Joi.validate(
-        data,
-        Joi.object()
-          .keys({
-            cover_option: Joi.valid(['standard', 'premium']).required(),
-            sterilised: Joi.valid(['yes', 'no']).required(),
-          })
-          .required(),
-        { abortEarly: false },
-      );
+    case 'change_pet_excess':
+      const result = validateChangePetExcess({ data, policy, policyholder });
       return result;
     default:
       throw new Error(`Invalid alteration hook key "${alteration_hook_key}"`);
@@ -41,28 +32,23 @@ const validateAlterationPackageRequest = ({ alteration_hook_key, data, policy, p
  *     [Create an alteration package](https://docs.rootplatform.com/reference/create-an-alteration-package-1)
  *     endpoint.
  */
-const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
-  let messageParts = [];
-  if (data.cover_option !== policy.module.cover_option) {
-    messageParts.push('cover option');
-  }
-  if (data.sterilised !== policy.module.sterilised) {
-    messageParts.push('sterilisation status');
-  }
-
-  // Get updated quote
-  const quotePackage = getQuote({ ...policy.module, ...data })[0];
-
+const getAlteration = ({ alteration_hook_key, data, policy }) => {
   switch (alteration_hook_key) {
-    case 'amendment':
+    case 'change_pet_excess':
+      const message = updatedExcessAlterationMessage(data.pets, policy.module.pets);
+      // Rebuild Policy Module with updated excess data
+      const updatedPolicyModule = updatePetExcess(data, policy.module);
+      // Get updated quote
+      const quotePackage = getQuote(updatedPolicyModule)[0];
+
+      // Get alteration package
       const alterationPackage = new AlterationPackage({
         input_data: data,
         sum_assured: quotePackage.sum_assured,
         monthly_premium: quotePackage.suggested_premium,
-        change_description: 'Alteration - ' + messageParts.join(' & ') + ' updated',
+        change_description: "Alteration: " + message,
         module: {
-          ...policy.module,
-          ...data,
+          ...quotePackage.module,
         },
       });
       return alterationPackage;
@@ -84,15 +70,16 @@ const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
  */
 const applyAlteration = ({ alteration_hook_key, policy, policyholder, alteration_package }) => {
   switch (alteration_hook_key) {
-    case 'amendment':
+    case 'change_pet_excess':
       const alteredPolicy = new AlteredPolicy({
         package_name: policy.package_name,
         sum_assured: alteration_package.sum_assured,
         base_premium: alteration_package.monthly_premium,
         monthly_premium: alteration_package.monthly_premium,
-        module: alteration_package.module,
         end_date: policy.end_date,
         start_date: policy.start_date,
+        module: alteration_package.module,
+        charges: []
       });
       return alteredPolicy;
     default:

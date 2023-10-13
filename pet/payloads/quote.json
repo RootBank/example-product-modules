@@ -1,0 +1,54 @@
+{
+  "pets": [
+    {
+      "name": "elit occaecat aute",
+      "species": "dog",
+      "gender": "male",
+      "breed": "british_shorthair",
+      "pet_size": "large",
+      "birth_date": "1911-04-07T18:31:38.0Z",
+      "cover_amount": 100000,
+      "excess_amount": 10000,
+      "precondition": {
+        "Chronic disease": false,
+        "Diabetes": false,
+        "Epilepsy": false,
+        "Elbow or hip joint dysplasia": false,
+        "Physical disabilities": false,
+        "Tumours": false
+      }
+    },
+    {
+      "name": "commodo",
+      "species": "dog",
+      "gender": "female",
+      "breed": "british_shorthair",
+      "pet_size": "large",
+      "birth_date": "1935-10-01T23:49:29.0Z",
+      "cover_amount": 100000,
+      "excess_amount": 25000,
+      "precondition": {
+        "Epilepsy": false,
+        "Elbow or hip joint dysplasia": false
+      }
+    },
+    {
+      "name": "ut ullamco ",
+      "species": "dog",
+      "gender": "male",
+      "breed": "boston_terrier",
+      "pet_size": "small",
+      "birth_date": "1946-07-22T05:01:15.0Z",
+      "cover_amount": 400000,
+      "excess_amount": 5000,
+      "precondition": {
+        "Chronic disease": false,
+        "Diabetes": false,
+        "Epilepsy": false,
+        "Elbow or hip joint dysplasia": false,
+        "Physical disabilities": false,
+        "Tumours": false
+      }
+    }
+  ]
+}

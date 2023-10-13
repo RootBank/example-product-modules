@@ -1,9 +1,16 @@
 {
-  "include": ["./**/*"],
-  "exclude": ["./unit-tests/**/*"],
+  "include": [
+    "./**/*"
+  ],
+  "exclude": [
+    "./unit-tests/**/*"
+  ],
   "compilerOptions": {
     "checkJs": true,
-    "lib": ["es2018", "dom"],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "target": "ES2018"
   }
 }

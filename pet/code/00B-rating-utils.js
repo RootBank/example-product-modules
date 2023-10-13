@@ -5,7 +5,7 @@
  */
 const calcPremiumPerPet = (pet) => {
   // Animal type multiplier (Cats are more risk averse than dogs)
-  const typeMultiplier = pet.type == 'cat' ? 0.8 : 1;
+  const typeMultiplier = pet.species == 'cat' ? 0.8 : 1;
   // Gender multiplier (Female pets are more risk averse)
   const genderMultiplier = pet.gender == 'female' ? 0.9 : 1;
   // Pet age mutliplier (Pets older than 5 years yield 50% higher risk)

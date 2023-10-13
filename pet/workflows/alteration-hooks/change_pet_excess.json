@@ -1,0 +1,38 @@
+[
+  {
+    "type": "list",
+    "label": "Pets",
+    "maxNumber": 5,
+    "components": [
+      {
+        "key": "excess_amount",
+        "type": "currency-slider",
+        "label": "Select the excess fee you will be responsible for when you claim?",
+        "props": {
+          "prefix": "£",
+          "increment": 5000
+        },
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          },
+          {
+            "validation": {
+              "min": 5000,
+              "type": "greaterThanCurrency"
+            }
+          },
+          {
+            "validation": {
+              "max": 25000,
+              "type": "lessThanCurrency"
+            }
+          }
+        ]
+      }
+    ],
+    "outputPathList": "pets"
+  }
+]

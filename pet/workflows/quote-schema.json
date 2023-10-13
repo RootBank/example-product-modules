@@ -201,6 +201,13 @@
               "type": "required"
             }
           }
+        ],
+        "displayConditions": [
+          {
+            "path": "type",
+            "value": "cat",
+            "condition": "==="
+          }
         ]
       },
       {
@@ -227,6 +234,13 @@
             "validation": {
               "type": "required"
             }
+          }
+        ],
+        "displayConditions": [
+          {
+            "path": "breed_cat",
+            "value": "mixed_breed",
+            "condition": "==="
           }
         ]
       },

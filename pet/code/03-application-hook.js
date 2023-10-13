@@ -1,11 +1,11 @@
 const applicationSchema = Joi.object().keys({
   pets: Joi.array().items(
     Joi.object().keys({
-      microchip: Joi.boolean().required(),
-      vaccinations: Joi.boolean().required(),
-      neutered: Joi.boolean().required(),
+      microchip: Joi.boolean(),
+      vaccinations: Joi.boolean(),
+      neutered: Joi.boolean(),
       environment: Joi.valid('indoors', 'outdoors').required(),
-      travel: Joi.boolean().required(),
+      travel: Joi.boolean(),
     }),
   ),
 });
