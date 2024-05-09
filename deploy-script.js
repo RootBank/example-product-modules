@@ -115,7 +115,6 @@ async function main() {
         await prepareBuildDirectory();
         // Deploy the product
         await deployProduct(product, host);
-        return;
       }
     }
   } catch (error) {
