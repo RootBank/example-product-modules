@@ -69,14 +69,14 @@ const prepareProductForCurrency = async (productDirectory, host) => {
 const shellDeploy = async (productDirectory) =>
   spawnSync("rp", ["push", "-f"], {
     cwd: path.join(productDirectory),
-    stdio: "inherit",
+    stdio: ["ignore", "ignore", "inherit"],
     shell: true,
   });
 
 const shellPublish = async (productDirectory) =>
   spawnSync("rp", ["publish", "-f"], {
     cwd: path.join(productDirectory),
-    stdio: "inherit",
+    stdio: ["ignore", "ignore", "inherit"],
     shell: true,
   });
 
