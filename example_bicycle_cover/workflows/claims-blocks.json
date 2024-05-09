@@ -1,0 +1,98 @@
+[
+  {
+    "block": {
+      "key": "waiting_period_alert",
+      "type": "alert",
+      "color": "warning",
+      "markdown": "Date of claim is within the waiting period."
+    },
+    "show_if": "{{ifCondition (dateDifference claim.block_states.event_date.value claim.policy.start_date measurement='days') '<' 90}}"
+  },
+  {
+    "block": {
+      "key": "claim_details_heading",
+      "type": "markdown",
+      "markdown": "### Claim details"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_type",
+      "type": "dropdown",
+      "title": "Event type",
+      "options": [
+        {
+          "key": "accident",
+          "value": "Accident"
+        },
+        {
+          "key": "theft",
+          "value": "Theft"
+        },
+        {
+          "key": "other",
+          "value": "Other"
+        }
+      ]
+    }
+  },
+  {
+    "block": {
+      "key": "accident_event",
+      "type": "input.paragraph",
+      "title": "Description of accident"
+    },
+    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'accident'}}"
+  },
+  {
+    "block": {
+      "key": "incident_postcode",
+      "type": "input.text",
+      "title": "In which postcode did this incident occur?"
+    }
+  },
+  {
+    "block": {
+      "key": "additional_notes",
+      "type": "input.paragraph",
+      "title": "Additional notes on the claim"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_payout_divider",
+      "type": "divider"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_details",
+      "type": "markdown",
+      "markdown": "### Payout details"
+    }
+  },
+  {
+    "block": {
+      "type": "input.currency",
+      "key": "payout_requested_amount",
+      "max": 1000000,
+      "title": "How much is the claimant claiming for?",
+      "isoCode": "GBP"
+    }
+  },
+  {
+    "block": {
+      "type": "input.currency",
+      "key": "payout_approved_amount",
+      "max": 1000000,
+      "title": "How much payment is approved?",
+      "isoCode": "GBP"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_details_divider",
+      "type": "divider"
+    }
+  }
+]

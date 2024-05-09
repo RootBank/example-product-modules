@@ -1,0 +1,159 @@
+{
+  "$schema": "https://api.rootplatform.com/v1/cli/json-schemas/root-config",
+  "productModuleName": "Example Pet Cover",
+  "productModuleKey": "demo_pet_cover_gbp",
+  "organizationId": "b701babb-a66e-444f-8974-af3fd6ba14b5",
+  "host": "api.rootplatform.com",
+  "codeFileOrder": [
+    "main.js",
+    "00A-ratings-tables.js",
+    "00B-rating-utils.js",
+    "01-helper-utils.js",
+    "02-quote-hook.js",
+    "03-application-hook.js",
+    "04-policy-issue-hook.js",
+    "05A-alteration-hooks.js",
+    "05B-alteration-validators.js",
+    "05C-alteration-utils.js",
+    "06-reactivations.js",
+    "07-schedule-functions.js"
+  ],
+  "settings": {
+    "policySchemeType": "individual",
+    "dashboardIssuingEnabled": true,
+    "activatePoliciesOnEvent": "policy_issued",
+    "canReactivatePolicies": false,
+    "notTakenUpEnabled": true,
+    "welcomeLetterEnabled": false,
+    "policyDocuments": [
+      {
+        "type": "terms",
+        "fileName": "policy_{{ policy.policy_number }}_terms"
+      },
+      {
+        "type": "policy_schedule",
+        "fileName": "policy_{{ policy.policy_number }}_schedule"
+      },
+      {
+        "type": "certificate",
+        "enabled": false
+      }
+    ],
+    "canRequote": false,
+    "gracePeriod": {
+      "lapseOn": {
+        "afterFirstMissedPayment": {
+          "period": 31,
+          "periodType": "days"
+        },
+        "consecutiveMissedPayments": null,
+        "missedPaymentsOverPolicyTerm": null,
+        "missedPaymentsWithinPeriod": null
+      },
+      "lapseExclusionRules": {
+        "lapsePolicyWithProcessingPayment": false
+      }
+    },
+    "waitingPeriod": {
+      "applyTo": {
+        "theFullPolicy": null
+      }
+    },
+    "coolingOffPeriod": {
+      "applyTo": {
+        "theFullPolicy": {
+          "refundType": "all_premiums",
+          "period": 31,
+          "periodType": "days"
+        }
+      }
+    },
+    "policyAnniversaryNotification": null,
+    "policyholder": {
+      "individualsAllowed": true,
+      "individualsIdAllowed": false,
+      "individualsPassportAllowed": false,
+      "individualsCellphoneAllowed": false,
+      "individualsCustomIdAllowed": false,
+      "individualsEmailAllowed": true,
+      "companiesAllowed": false,
+      "individualPolicyholderFields": {
+        "address": {
+          "suburb": {
+            "required": true
+          }
+        },
+        "dateOfBirth": {
+          "required": false
+        }
+      },
+      "idCountry": "GB"
+    },
+    "beneficiaries": {
+      "makePolicyholderABeneficiary": true,
+      "min": 1,
+      "max": 1
+    },
+    "claims": {
+      "checklistItems": [
+        "Has the claim form been fully completed?",
+        "Is the detailed invoice attached?",
+        "Is the proof of payment attached?",
+        "Is the full veterinary history attached (a vaccination certificate is not sufficient)?",
+        "Have all premiums been paid?"
+      ],
+      "documentLabels": [
+        "Claim form",
+        "Invoice",
+        "Proof of payment",
+        "Full vetinary history"
+      ]
+    },
+    "billing": {
+      "allowStartDateChange": false,
+      "billBeforeWeekendEnabled": false,
+      "billingFrequency": "monthly",
+      "consecutiveFailedPaymentsAllowed": 4,
+      "currency": "GBP",
+      "enableBillingOnSandbox": false,
+      "paymentSubmissionLeadTime": 0,
+      "clientStatementReference": "PET-INS",
+      "paymentMethodTypes": {
+        "debitOrders": {
+          "enabled": true,
+          "strategy": "best_effort",
+          "naedoPoliciesInArrears": false
+        },
+        "card": {
+          "enabled": false
+        },
+        "eft": {
+          "enabled": false
+        },
+        "external": {
+          "enabled": false,
+          "createPayments": false
+        },
+        "collectionModules": []
+      },
+      "retryFailedPayments": {
+        "enabled": true,
+        "daysBetweenRetries": 5,
+        "numberOfRetries": 1
+      },
+      "proRataBilling": {
+        "enabled": true,
+        "proRataBillingOnIssue": false,
+        "minimumAmount": 0
+      }
+    }
+  },
+  "alterationHooks": [
+    {
+      "key": "amendment",
+      "name": "Update cover & excess"
+    }
+  ],
+  "scheduledFunctions": [],
+  "fulfillmentTypes": []
+}

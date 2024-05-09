@@ -1,0 +1,219 @@
+[
+  {
+    "block": {
+      "key": "claim_in_waiting_period",
+      "type": "alert",
+      "color": "danger",
+      "markdown": "Warning: General 14 day waiting period still in effect."
+    },
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '!==' 'natural death') '&&' (ifCondition claim.block_states.claim_type.value '!==' 'accidental death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='days') '<' 14)}}"
+  },
+  {
+    "block": {
+      "key": "accident_death_claim_in_waiting_period",
+      "type": "alert",
+      "color": "danger",
+      "markdown": "Warning: 1 month accidental death waiting period still in effect."
+    },
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '===' 'accidental death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='months') '<' 1)}}"
+  },
+  {
+    "block": {
+      "key": "natural_death_claim_in_waiting_period",
+      "type": "alert",
+      "color": "danger",
+      "markdown": "Warning: 6 month natural death waiting period still in effect."
+    },
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '==' 'natural death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='months') '<' 6)}}"
+  },
+  {
+    "block": {
+      "key": "payout_amount_more_than_sum_assured",
+      "type": "alert",
+      "color": "danger",
+      "markdown": "Warning: The payout amount of {{ divide claim.block_states.payout_amount.value 100 }} is more than the policy sum assured {{divide claim.policy.sum_assured 100}}."
+    },
+    "show_if": "{{if claim.block_states.payout_amount.value '>' claim.policy.sum_assured }}"
+  },
+  {
+    "block": {
+      "key": "date_warning_past",
+      "type": "alert",
+      "color": "warning",
+      "markdown": "Warning: Claims must be logged within 90 days of the incident occurring."
+    },
+    "show_if": "{{ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='days') '<' 90}}"
+  },
+  {
+    "block": {
+      "key": "claim_details_heading",
+      "type": "markdown",
+      "markdown": "### Claim details"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_type",
+      "type": "dropdown",
+      "title": "Event type",
+      "options": [
+        {
+          "key": "Complementary treatment",
+          "value": "complementary treatment"
+        },
+        {
+          "key": "Behavioural treatment",
+          "value": "behavioural treatment"
+        },
+        {
+          "key": "Dental treatments",
+          "value": "dental treatment"
+        },
+        {
+          "key": "Theft or stray",
+          "value": "theft or stray"
+        },
+        {
+          "key": "Accidental Death",
+          "value": "accidental death"
+        },
+        {
+          "key": "Natural Death",
+          "value": "natural death"
+        },
+        {
+          "key": "Third-party liability",
+          "value": "third-party liability"
+        }
+      ]
+    }
+  },
+  {
+    "block": {
+      "key": "incident_date",
+      "type": "input.date",
+      "title": "Date of incident"
+    }
+  },
+  {
+    "block": {
+      "key": "incident_description",
+      "type": "input.paragraph",
+      "title": "Description of accident"
+    }
+  },
+  {
+    "block": {
+      "key": "claimant_id",
+      "type": "input.text",
+      "title": "Claimant ID"
+    }
+  },
+  {
+    "block": {
+      "key": "claimant_address_1",
+      "type": "input.text",
+      "title": "Address Line 1"
+    }
+  },
+  {
+    "block": {
+      "key": "claimant_address_2",
+      "type": "input.text",
+      "title": "Address Line 2"
+    }
+  },
+  {
+    "block": {
+      "key": "claimant_address_3",
+      "type": "input.text",
+      "title": "Address Line 3"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_amount",
+      "min": "1",
+      "type": "input.currency",
+      "title": "Payout amount",
+      "isoCode": "GBP"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_payout_request_1",
+      "type": "payout_request",
+      "payee": {
+        "type": "policyholder",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[0].percentage) 100}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.0.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.0.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.0.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.0.payment_details.details.account_number }}"
+          }
+        },
+        "policyholder_id": "{{ claim.policy.policyholder_id }}"
+      },
+      "title": "Claim payout",
+      "amount": "{{ claim.block_states.payout_amount.value }}",
+      "description": "To be paid out to the first beneficiary: {{claim.policy.beneficiaries.0.first_name}} {{claim.policy.beneficiaries.0.last_name}}"
+    },
+    "show_if": "{{ifCondition claim.approval_status '===' 'approved' }}"
+  },
+  {
+    "block": {
+      "key": "claim_payout_request_2",
+      "type": "payout_request",
+      "payee": {
+        "type": "beneficiary",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[1].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.1.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.1.last_name}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.1.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.1.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.1.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.1.payment_details.details.account_number }}"
+          }
+        }
+      },
+      "title": "Payout request for the 1st Beneficiary",
+      "amount": "{{ claim.policy.module.replacement_value }}",
+      "description": "To be paid out to the first beneficiary: {{claim.policy.beneficiaries.1.first_name}} {{claim.policy.beneficiaries.1.last_name}}"
+    },
+    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.1.relationship)}}"
+  },
+  {
+    "block": {
+      "key": "claim_payout_request_3",
+      "type": "payout_request",
+      "payee": {
+        "type": "beneficiary",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[2].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.2.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.2.last_name}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.2.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.2.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.2.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.2.payment_details.details.account_number }}"
+          }
+        }
+      },
+      "title": "Payout request for the 3rd Beneficiary",
+      "amount": "{{ claim.policy.module.replacement_value }}",
+      "description": "To be paid out to the third beneficiary: {{claim.policy.beneficiaries.2.first_name}} {{claim.policy.beneficiaries.2.last_name}}"
+    },
+    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.2.relationship)}}"
+  }
+]

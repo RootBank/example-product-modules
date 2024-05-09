@@ -1,0 +1,60 @@
+[
+  {
+    "type": "list",
+    "label": "Bicycles",
+    "outputPathList": "bicycles",
+    "maxNumber": 5,
+    "props": {
+      "addButtonLabel": "Add bike",
+      "removeButtonLabel": "Remove bike"
+    },
+    "components": [
+      {
+        "type": "section-header",
+        "key": "headin",
+        "label": "Bicycle"
+      },
+      {
+        "key": "bike_make",
+        "type": "text",
+        "label": "What is the make of your bike?",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "bike_value",
+        "type": "currency",
+        "label": "What is the value of your bike?",
+        "props": {
+          "prefix": "R"
+        },
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "key": "is_ebike",
+        "label": "Is this bike an electric bike?"
+      },
+      {
+        "type": "horizontal-line",
+        "key": "line"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "key": "postcode",
+    "label": "Please provide your postal code of where you reside? *"
+  }
+]

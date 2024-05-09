@@ -1,0 +1,52 @@
+[
+  {
+    "type": "list",
+    "label": "Pets",
+    "maxNumber": 5,
+    "components": [
+      {
+        "type": "section-header",
+        "key": "header-1",
+        "label": "Please give more information about this pet"
+      },
+      {
+        "type": "checkbox",
+        "key": "microchip",
+        "label": "Has your pet been microchipped?"
+      },
+      {
+        "type": "checkbox",
+        "key": "neutered",
+        "label": "Has your pet been spayed or neutered?"
+      },
+      {
+        "type": "select",
+        "key": "environment",
+        "label": "Does your pet primarily live indoors or outdoors?",
+        "options": [
+          {
+            "label": "Indoors",
+            "value": "indoors"
+          },
+          {
+            "label": "Outdoors",
+            "value": "outdoors"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "key": "travel",
+        "label": "Does your pet travel frequently or stay at a boarding facility?"
+      }
+    ],
+    "outputPathList": "pets"
+  }
+]

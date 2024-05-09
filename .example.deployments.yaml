@@ -1,0 +1,18 @@
+# Demo factory (internal development):
+# - ZA Stack
+# - Org ID: b701babb-a66e-444f-8974-af3fd6ba14b5
+# - API Key: # INSERT LOCAL DEV API KEY FOR REFERENCE ONLY
+
+hosts:
+
+- host: api.uk.rootplatform.com
+  country: GB
+  organizationId: # INSERT ORG ID
+  currency: GBP
+  currencySymbol: £
+  apiKey: # INSERT API KEY
+  products: 
+  - directory: example_bicycle_cover
+    destinationProductKey: demo_bicycle_cover
+  - directory: example_pet_cover
+    destinationProductKey: demo_pet_cover

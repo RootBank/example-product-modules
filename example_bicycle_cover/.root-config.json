@@ -1,0 +1,168 @@
+{
+  "$schema": "https://api.rootplatform.com/v1/cli/json-schemas/root-config",
+  "productModuleName": "Example Bicycle Cover",
+  "productModuleKey": "demo_bicycle_cover_gbp",
+  "organizationId": "c6f3874e-8a65-4911-92a4-4990775874f0",
+  "host": "api.rootplatform.com",
+  "codeFileOrder": [
+    "main.js",
+    "00-helper-functions.js",
+    "01-ratings.js",
+    "02-quote-hook.js",
+    "03-application-hook.js",
+    "04-policy-hook.js",
+    "05-alteration-hooks.js",
+    "06-scheduled-functions.js",
+    "07-reactivation-flow.js",
+    "08-lifecycle-hooks.js"
+  ],
+  "settings": {
+    "policySchemeType": "individual",
+    "dashboardIssuingEnabled": true,
+    "activatePoliciesOnEvent": "policy_issued",
+    "canReactivatePolicies": false,
+    "notTakenUpEnabled": false,
+    "welcomeLetterEnabled": true,
+    "policyDocuments": [
+      {
+        "type": "terms",
+        "fileName": "policy_{{ policy.policy_number }}_terms"
+      },
+      {
+        "type": "policy_schedule",
+        "fileName": "policy_{{ policy.policy_number }}_schedule"
+      },
+      {
+        "type": "certificate",
+        "enabled": false
+      }
+    ],
+    "canRequote": false,
+    "gracePeriod": {
+      "lapseOn": {
+        "afterFirstMissedPayment": {
+          "period": 15,
+          "periodType": "days"
+        },
+        "consecutiveMissedPayments": null,
+        "missedPaymentsOverPolicyTerm": null,
+        "missedPaymentsWithinPeriod": null
+      },
+      "lapseExclusionRules": {
+        "lapsePolicyWithProcessingPayment": false
+      }
+    },
+    "waitingPeriod": {
+      "applyTo": {
+        "theFullPolicy": {
+          "period": 30,
+          "periodType": "days"
+        }
+      }
+    },
+    "coolingOffPeriod": {
+      "applyTo": {
+        "theFullPolicy": {
+          "refundType": "all_premiums",
+          "period": 1,
+          "periodType": "months"
+        }
+      }
+    },
+    "policyAnniversaryNotification": null,
+    "policyholder": {
+      "individualsAllowed": true,
+      "individualsIdAllowed": false,
+      "individualsPassportAllowed": false,
+      "individualsCellphoneAllowed": false,
+      "individualsCustomIdAllowed": false,
+      "individualsEmailAllowed": true,
+      "companiesAllowed": false,
+      "individualPolicyholderFields": {
+        "address": {
+          "suburb": {
+            "required": true
+          }
+        },
+        "dateOfBirth": {
+          "required": true
+        }
+      },
+      "idCountry": "GB"
+    },
+    "beneficiaries": {
+      "makePolicyholderABeneficiary": true,
+      "min": 1,
+      "max": 1
+    },
+    "claims": {
+      "checklistItems": [],
+      "documentLabels": [
+        "Police Report",
+        "Statement",
+        "Other"
+      ]
+    },
+    "billing": {
+      "allowStartDateChange": false,
+      "billBeforeWeekendEnabled": false,
+      "billingFrequency": "monthly",
+      "consecutiveFailedPaymentsAllowed": 4,
+      "currency": "GBP",
+      "enableBillingOnSandbox": false,
+      "paymentSubmissionLeadTime": 0,
+      "clientStatementReference": "<set_reference>",
+      "paymentMethodTypes": {
+        "debitOrders": {
+          "enabled": true,
+          "strategy": null,
+          "naedoPoliciesInArrears": false
+        },
+        "card": {
+          "enabled": false
+        },
+        "eft": {
+          "enabled": false
+        },
+        "external": {
+          "enabled": false,
+          "createPayments": false
+        },
+        "collectionModules": []
+      },
+      "retryFailedPayments": {
+        "enabled": true,
+        "daysBetweenRetries": 5,
+        "numberOfRetries": 1
+      },
+      "proRataBilling": {
+        "enabled": true,
+        "proRataBillingOnIssue": false,
+        "minimumAmount": 1000
+      }
+    }
+  },
+  "alterationHooks": [
+    {
+      "key": "change_package_type",
+      "name": "Change Package Type"
+    },
+    {
+      "key": "edit_bicycles",
+      "name": "Edit Bicycles"
+    }
+  ],
+  "scheduledFunctions": [],
+  "fulfillmentTypes": [
+    {
+      "key": "rental",
+      "label": "Rental bicycle",
+      "fulfillmentData": {
+        "extraction_date": {
+          "label": "Date of rental",
+          "valueType": "string"
+        }
+      }
+    }
+  ]
+}

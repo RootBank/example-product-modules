@@ -1,0 +1,9 @@
+# Ignore Root authentication file
+.deployments.yaml
+
+# Ignore the builds
+build
+
+node_modules
+/node_modules
+node_modules/*

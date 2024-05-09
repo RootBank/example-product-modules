@@ -1,0 +1,333 @@
+[
+  {
+    "type": "list",
+    "label": "Pets",
+    "maxNumber": 5,
+    "props": {
+      "addButtonLabel": "Add another pet",
+      "removeButtonLabel": "Remove pet"
+    },
+    "components": [
+      {
+        "key": "name",
+        "type": "text",
+        "label": "Hello. What's your pet's name?",
+        "outputPath": "name",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "type",
+        "type": "select",
+        "label": "Is your pet a cat or dog?",
+        "outputPath": "species",
+        "options": [
+          {
+            "label": "Dog",
+            "value": "dog"
+          },
+          {
+            "label": "Cat",
+            "value": "cat"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "gender",
+        "type": "select",
+        "label": "Is your pet male or female?",
+        "outputPath": "gender",
+        "options": [
+          {
+            "label": "Male",
+            "value": "male"
+          },
+          {
+            "label": "Female",
+            "value": "female"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "birth_date",
+        "type": "date-picker",
+        "label": "When is your pet's birthday?",
+        "outputPath": "birth_date",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "breed_dog",
+        "type": "select",
+        "label": "What is your pet's breed?",
+        "outputPath": "breed",
+        "options": [
+          {
+            "label": "Alaskan Husky",
+            "value": "alaskan_husky"
+          },
+          {
+            "label": "Border Collie",
+            "value": "border_collie"
+          },
+          {
+            "label": "Boston Terrier",
+            "value": "boston_terrier"
+          },
+          {
+            "label": "German Shepherd",
+            "value": "german_shepherd"
+          },
+          {
+            "label": "Golden Retriever",
+            "value": "golden_retriever"
+          },
+          {
+            "label": "Great Dane",
+            "value": "great_dane"
+          },
+          {
+            "label": "Tamed Wolf",
+            "value": "tamed_wolf"
+          },
+          {
+            "label": "Mixed Breed",
+            "value": "mixed_breed"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ],
+        "displayConditions": [
+          {
+            "path": "type",
+            "value": "cat",
+            "condition": "!=="
+          }
+        ]
+      },
+      {
+        "key": "dog_size",
+        "type": "select",
+        "label": "How large is your dog?",
+        "outputPath": "pet_size",
+        "options": [
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ],
+        "displayConditions": [
+          {
+            "path": "breed_dog",
+            "value": "mixed_breed",
+            "condition": "==="
+          }
+        ]
+      },
+      {
+        "key": "breed_cat",
+        "type": "select",
+        "label": "What is your pet’s breed?",
+        "outputPath": "breed",
+        "options": [
+          {
+            "label": "British Shorthair",
+            "value": "british_shorthair"
+          },
+          {
+            "label": "Burmese",
+            "value": "burmese"
+          },
+          {
+            "label": "Persian",
+            "value": "persian"
+          },
+          {
+            "label": "Siamese",
+            "value": "siamese"
+          },
+          {
+            "label": "Mixed Breed",
+            "value": "mixed_breed"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ],
+        "displayConditions": [
+          {
+            "path": "type",
+            "value": "cat",
+            "condition": "==="
+          }
+        ]
+      },
+      {
+        "key": "cat_size",
+        "type": "select",
+        "label": "How large is your cat?",
+        "outputPath": "pet_size",
+        "options": [
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ],
+        "displayConditions": [
+          {
+            "path": "breed_cat",
+            "value": "mixed_breed",
+            "condition": "==="
+          }
+        ]
+      },
+      {
+        "type": "multiple-checkbox",
+        "key": "precondition",
+        "label": "Does your pet have any of the following medical conditions?",
+        "options": [
+          {
+            "label": "Chronic disease - Diabetes",
+            "value": "diabetes"
+          },
+          {
+            "label": "Chronic disease - Epilepsy",
+            "value": "epilepsy"
+          },
+          {
+            "label": "Chronic disease - Elbow or hip joint dysplasia",
+            "value": "elbow_or_hip_joint_dysplasia"
+          },
+          {
+            "label": "Physical disabilities - Tumours",
+            "value": "tumours"
+          },
+          {
+            "label": "Physical disabilities - Thyroid disease",
+            "value": "thyroid_disease"
+          }
+        ]
+      },
+      {
+        "key": "cover_amount",
+        "type": "currency-slider",
+        "label": "Select the annual cover amount for your pet's vet fees",
+        "props": {
+          "prefix": "£",
+          "increment": 100000
+        },
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          },
+          {
+            "validation": {
+              "min": 100000,
+              "type": "greaterThanCurrency"
+            }
+          },
+          {
+            "validation": {
+              "max": 1000000,
+              "type": "lessThanCurrency"
+            }
+          }
+        ]
+      },
+      {
+        "key": "excess_amount",
+        "type": "currency-slider",
+        "label": "Select the excess fee you will be responsible for when you claim?",
+        "props": {
+          "prefix": "£",
+          "increment": 5000
+        },
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          },
+          {
+            "validation": {
+              "min": 5000,
+              "type": "greaterThanCurrency"
+            }
+          },
+          {
+            "validation": {
+              "max": 25000,
+              "type": "lessThanCurrency"
+            }
+          }
+        ]
+      }
+    ],
+    "outputPathList": "pets"
+  }
+]

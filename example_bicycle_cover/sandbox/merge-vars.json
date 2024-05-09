@@ -1,0 +1,209 @@
+{
+  "policy": {
+    "policy_id": "c5f3c521-9ab9-48d8-aba9-b17691c80dbb",
+    "scheme_type": "individual",
+    "created_at": "2024-05-02T10:02:21.813Z",
+    "created_by": {
+      "type": "user",
+      "id": "b705fe2a-8ec9-11e8-a573-ab2eeaa657b7"
+    },
+    "policy_number": "2F1461A43A",
+    "policyholder_id": "2e340be3-0de9-4159-8fa9-29c622b710d9",
+    "package_name": "Basic Cover",
+    "sum_assured": 240000,
+    "base_premium": 2000,
+    "monthly_premium": 2000,
+    "billing_amount": 2000,
+    "billing_frequency": "monthly",
+    "billing_month": null,
+    "billing_day": 1,
+    "next_billing_date": "2024-06-01T00:00:00.000Z",
+    "next_collection_date": "2024-06-03T00:00:00.000Z",
+    "start_date": "2024-05-03T10:02:21.000Z",
+    "end_date": null,
+    "cancelled_at": null,
+    "reason_cancelled": null,
+    "app_data": null,
+    "module": {
+      "type": "example_bicycle_cover",
+      "benefits": {
+        "theft": "Yes",
+        "vandalism": "No",
+        "race_events": "No",
+        "worldwide_cover": "Yes",
+        "accidental_damange": "No",
+        "200_k_legal_expenses": "Yes",
+        "25_k_personal_accident": "No",
+        "1_million_public_liability": "No"
+      },
+      "bicycles": [
+        {
+          "is_ebike": false,
+          "bike_make": "Merida",
+          "bike_value": 240000
+        }
+      ],
+      "postcode": "EC2N 4AG"
+    },
+    "product_module_id": "4dc7c3ea-7c15-4590-b483-43f5072713ef",
+    "product_module_definition_id": "bedbee67-99f7-4a2b-852a-b046256b4009",
+    "beneficiaries": [
+      {
+        "beneficiary_id": "79c3080b-3125-4a9e-a415-ddb64068fa60",
+        "policyholder_id": "2e340be3-0de9-4159-8fa9-29c622b710d9",
+        "percentage": 100,
+        "relationship": "policyholder"
+      }
+    ],
+    "current_version": 2,
+    "schedule_file_id": "0cc284d8-7224-46a2-8b03-d5308a9975fa",
+    "policy_schedule_uri": "https://sandbox.root.co.za/v1/insurance/policies/c5f3c521-9ab9-48d8-aba9-b17691c80dbb/schedule/schedule_latest.pdf",
+    "schedule_versions": [
+      {
+        "version": 1,
+        "created_at": "2024-05-02T10:02:23.219Z"
+      },
+      {
+        "version": 2,
+        "created_at": "2024-05-02T10:02:23.237Z"
+      }
+    ],
+    "terms_file_id": "0882d405-8be7-45b0-b10f-c38749dd48ad",
+    "terms_uri": "https://sandbox.root.co.za/v1/insurance/policies/c5f3c521-9ab9-48d8-aba9-b17691c80dbb/terms/terms.pdf",
+    "supplementary_terms_files": [],
+    "claim_ids": [
+      "d1be4095-2c1a-48b0-8194-2229133f3883"
+    ],
+    "complaint_ids": [],
+    "status": "active",
+    "balance": -1871,
+    "currency": "GBP",
+    "payment_method_id": "08825941-b972-4fcc-a748-9770f15a58e4",
+    "status_updated_at": "2024-05-02T10:02:21.899Z",
+    "updated_at": "2024-05-02T10:02:53.840Z",
+    "covered_people": [],
+    "application_id": "0c78905d-43b4-4193-bf6e-066f23eb08bc",
+    "charges": []
+  },
+  "policyholder": {
+    "policyholder_id": "2e340be3-0de9-4159-8fa9-29c622b710d9",
+    "type": "individual",
+    "initials": null,
+    "first_name": "Sarah",
+    "middle_name": null,
+    "last_name": "Barnard",
+    "id": {
+      "type": "email",
+      "number": "sarah@example.com",
+      "country": "GB"
+    },
+    "email": "sarah@example.com",
+    "cellphone": null,
+    "phone_other": null,
+    "date_of_birth": "20230503",
+    "gender": "male",
+    "created_at": "2024-05-02T09:49:15.068Z",
+    "app_data": null,
+    "policy_ids": [
+      "2620ebf9-81db-4482-ae71-e3ec6eb7584c",
+      "efa42ef0-1756-42fe-bd15-4b57cd690cd6",
+      "c5f3c521-9ab9-48d8-aba9-b17691c80dbb"
+    ],
+    "created_by": {
+      "type": "user",
+      "id": "b705fe2a-8ec9-11e8-a573-ab2eeaa657b7"
+    },
+    "updated_at": "2024-05-02T10:02:21.955Z"
+  },
+  "application": {
+    "application_id": "dd1f2974-af7e-4caf-8105-2b093416d8f0",
+    "policyholder_id": "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
+    "payment_method_id": "0157b955-8ffd-4a14-8625-8b2787a1684c",
+    "package_name": "Example package name",
+    "sum_assured": 1199900,
+    "monthly_premium": 50000,
+    "base_premium": 50000,
+    "module": {
+      "type": "example_module_type",
+      "key": "value"
+    },
+    "created_at": "2017-10-05T18:40:47.831Z",
+    "created_by": {
+      "type": "user",
+      "id": "00000000-0000-0000-0000-000000000001"
+    },
+    "currency": "ZAR",
+    "product_module_definition_id": "02e3d37d-05b7-4b88-9c64-e40766e64217",
+    "billing_frequency": "monthly",
+    "status": "pending",
+    "beneficiaries": [
+      {
+        "beneficiary_id": "dac0da11-cf95-47f5-af07-b45ecf546baa",
+        "policyholder_id": "e3ea736e-fb3e-4628-90d2-72eae2772c25",
+        "first_name": "Bachman",
+        "last_name": "Erlich",
+        "id": {
+          "type": "id",
+          "number": "6801015800084",
+          "country": "ZA"
+        },
+        "date_of_birth": "1994-10-07",
+        "percentage": 90,
+        "email": "erlich@aviato.com",
+        "relationship": "policyholder"
+      }
+    ]
+  },
+  "payment_method": {
+    "payment_method_id": "0157b955-8ffd-4a14-8625-8b2787a1684c",
+    "type": "debit_order",
+    "created_at": "2021-05-04T18:40:47.831Z",
+    "organization_id": "5b87186a-4215-46cd-9a43-b0150dc9818b",
+    "policyholder_id": "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
+    "policyholder": {
+      "policyholder_id": "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
+      "type": "individual",
+      "initials": "E",
+      "first_name": "Erlich",
+      "last_name": "Bachman",
+      "id": {
+        "type": "id",
+        "number": "6801015800084",
+        "country": "ZA"
+      },
+      "email": "erlich@aviato.com",
+      "cellphone": "+27823048184",
+      "phone_other": null,
+      "gender": "male",
+      "created_at": "2017-10-12T15:47:34.834Z",
+      "app_data": {
+        "key": "value"
+      },
+      "policy_ids": [
+        "dd1f2974-af7e-4caf-8105-2b093416d8f0"
+      ],
+      "created_by": {
+        "type": "user",
+        "id": "00000000-0000-0000-0000-000000000001"
+      },
+      "address": {
+        "line_1": "5230 Penfield Avenue",
+        "suburb": "Woodland Hills",
+        "city": "Los Angeles",
+        "country": "US",
+        "area_code": "CA 91364"
+      },
+      "updated_at": "2017-10-12T15:47:34.834Z"
+    },
+    "updated_at": "2021-05-04T18:40:47.831Z",
+    "bank_details": {
+      "account_holder": "E Bachman",
+      "bank": "absa",
+      "branch_code": "123456",
+      "account_number": "123456",
+      "account_type": "savings",
+      "banv_status": "verified",
+      "payment_method_id": "0157b955-8ffd-4a14-8625-8b2787a1684c"
+    }
+  }
+}
