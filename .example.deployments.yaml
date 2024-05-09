@@ -13,6 +13,6 @@ hosts:
   apiKey: # INSERT API KEY
   products: 
   - directory: example_bicycle_cover
-    destinationProductKey: demo_bicycle_cover
+    destinationProductKey: demo_factory_bicycle_cover
   - directory: example_pet_cover
-    destinationProductKey: demo_pet_cover
+    destinationProductKey: demo_factory_et_cover
