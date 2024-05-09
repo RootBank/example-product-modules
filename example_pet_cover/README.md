@@ -1,4 +1,4 @@
-# Template Pet Insurance
+# Example Pet Cover - Root product module template
 
 Hey there 👋
 

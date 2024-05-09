@@ -1,7 +1,7 @@
 {
   "$schema": "https://api.rootplatform.com/v1/cli/json-schemas/root-config",
   "productModuleName": "Example Pet Cover",
-  "productModuleKey": "demo_pet_cover_gbp",
+  "productModuleKey": "demo_factory_pet_cover",
   "organizationId": "b701babb-a66e-444f-8974-af3fd6ba14b5",
   "host": "api.rootplatform.com",
   "codeFileOrder": [

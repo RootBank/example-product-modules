@@ -1,7 +1,7 @@
 const fs = require("fs").promises;
 const { existsSync } = require("fs");
 const fse = require("fs-extra");
-const {glob} = require("glob");
+const { glob } = require("glob");
 const path = require("path");
 const { spawnSync } = require("child_process");
 const yaml = require("js-yaml");
@@ -66,6 +66,20 @@ const prepareProductForCurrency = async (productDirectory, host) => {
   }
 };
 
+const shellDeploy = async (productDirectory) =>
+  spawnSync("rp", ["push", "-f"], {
+    cwd: path.join(productDirectory),
+    stdio: "inherit",
+    shell: true,
+  });
+
+const shellPublish = async (productDirectory) =>
+  spawnSync("rp", ["publish", "-f"], {
+    cwd: path.join(productDirectory),
+    stdio: "inherit",
+    shell: true,
+  });
+
 const deployProduct = async (product, host) => {
   const buildProductDirectory = path.join(buildDirectory, product.directory);
 
@@ -88,17 +102,24 @@ const deployProduct = async (product, host) => {
   await fs.writeFile(rootAuthPath, `ROOT_API_KEY=${host.apiKey}`, "utf8");
 
   // Run deployment command in the subdirectory
-  const deployCommand = spawnSync("rp", ["push", "-f"], {
-    cwd: path.join(buildProductDirectory),
-    stdio: "inherit",
-    shell: true,
-  });
-
+  const deployCommand = await shellDeploy(buildProductDirectory);
   if (deployCommand.error) {
     console.error(`❌ Error deploying ${product.directory} to ${host.host}`);
     console.error(deployCommand.error.message);
   } else {
     console.log(`✅ Deployed ${product.directory} to ${host.host}`);
+  }
+};
+
+const publishProduct = async (product, host) => {
+  const buildProductDirectory = path.join(buildDirectory, product.directory);
+  // Run the publish command in the subdirectory
+  const publishCommand = await shellPublish(buildProductDirectory);
+  if (publishCommand.error) {
+    console.error(`❌ Error publishing ${product.directory} to ${host.host}`);
+    console.error(publishCommand.error.message);
+  } else {
+    console.log(`✅ Published ${product.directory} to ${host.host}`);
   }
 };
 
@@ -108,13 +129,14 @@ async function main() {
     const deployments = yaml.load(deploymentsFileContent);
     const hosts = deployments.hosts;
 
-
     for (const host of hosts) {
       for (const product of host.products) {
         // Reset the build space
         await prepareBuildDirectory();
         // Deploy the product
         await deployProduct(product, host);
+        // Publish the product
+        await publishProduct(product, host);
       }
     }
   } catch (error) {
