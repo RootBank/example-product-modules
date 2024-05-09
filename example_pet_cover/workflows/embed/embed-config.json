@@ -208,7 +208,7 @@
   },
   "styles": {
     "borderRadius": {
-      "button": "50px"
+      "button": "8px"
     },
     "colors": {
       "dark": "#00000",

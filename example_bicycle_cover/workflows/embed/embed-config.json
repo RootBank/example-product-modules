@@ -223,11 +223,11 @@
       "error": "#ff2b38",
       "light": "#FFFFFF",
       "border": "#dfdfdf",
-      "primary": "#240E8B",
+      "primary": "#0F1B4A",
       "success": "#1fc881",
       "warning": "#ffab00",
       "disabled": "#CDD4DE",
-      "highlight": "#FC64B1",
+      "highlight": "#2969FF",
       "policyStatusActive": "#1fc881",
       "policyStatusLapsed": "#d50001",
       "backgroundHighlight": "rgba(245, 247, 252, 1)",
@@ -241,9 +241,9 @@
       "body": "Lato"
     },
     "fontSize": {
-      "body": "16px",
+      "body": "15px",
       "title": "40px",
-      "button": "14px",
+      "button": "15px",
       "footer": "8px",
       "subTitle": "22px",
       "subscript": "8px"
