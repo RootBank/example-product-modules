@@ -55,7 +55,7 @@
     },
     "images": {},
     "links": {
-      "supportEmail": "support@your-company.com",
+      "supportEmail": "support@example.com",
       "supportUrl": {
         "label": "",
         "url": ""
@@ -159,7 +159,7 @@
       ],
       "title": "",
       "description": "Almost done! Please complete the payment below.",
-      "declaration": "Pet Insurance is a sample application by Root. The source code is MIT licensed, while the website content is licensed CC BY NC SA 4.0. Pet Insurance Ltd is an unauthorised financial services provider. FSP number: 123456. 3 Sauropoda Lane, Isla Nublar, 1337"
+      "declaration": "This is a sample application by Root. The configuration source code is MIT licensed and you are free to copy and modify it. See https://rootplatform.com for more information."
     },
     "images": {},
     "links": {},
@@ -182,7 +182,7 @@
     },
     "images": {},
     "links": {
-      "openClaim": "dinoparks.net/claims",
+      "openClaim": "https://rootplatform.com",
       "redirectOnCompletedUrl": ""
     },
     "displayOptionalSections": {
@@ -196,7 +196,7 @@
   },
   "footer": {
     "wording": {
-      "disclaimer": "Pet Insurance is a sample application by Root. The source code is MIT licensed, while the website content is licensed CC BY NC SA 4.0. Pet Insurance Ltd is an unauthorised financial services provider. FSP number: 123456. 3 Sauropoda Lane, Isla Nublar, 1337"
+      "disclaimer": "This is a sample application by Root. The configuration source code is MIT licensed and you are free to copy and modify it. See https://rootplatform.com for more information."
     },
     "images": {
       "disclaimerUrl": "https://storage.googleapis.com/root-production-public-client-images/Dinosure%20Demo/root-logo.svg"
@@ -245,7 +245,7 @@
   "settings": {
     "issuingFlowStartingStep": "default",
     "defaultCountryCodeFromBrowser": true,
-    "supportEmail": "support@your-company.com",
+    "supportEmail": "support@example.com",
     "supportUrl": {
       "label": "",
       "url": ""

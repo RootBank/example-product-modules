@@ -57,6 +57,7 @@ const getQuote = (data) => {
       module: {
         // Save any data, calculations, or results here for future re-use.
         ...data,
+        summary: 'Basic theft cover, including personal accident and legal expenses.',
         benefits: {
           'Theft': 'Yes',
           'Worldwide cover': 'Yes',
@@ -80,6 +81,7 @@ const getQuote = (data) => {
       module: {
         // Save any data, calculations, or results here for future re-use.
         ...data,
+        summary: 'Covers theft, personal accident, legal expenses, accidental damage, vandalism and race events.',
         benefits: {
           'Theft': 'Yes',
           'Worldwide cover': 'Yes',

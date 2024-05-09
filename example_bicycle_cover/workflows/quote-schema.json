@@ -55,6 +55,13 @@
   {
     "type": "text",
     "key": "postcode",
-    "label": "Please provide your postal code of where you reside? *"
+    "label": "Please provide your postal code of where you reside? *",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
   }
 ]

@@ -2,7 +2,7 @@
   "$schema": "https://api.rootplatform.com/v1/cli/json-schemas/root-config",
   "productModuleName": "Example Bicycle Cover",
   "productModuleKey": "demo_factory_bicycle_cover",
-  "organizationId": "c6f3874e-8a65-4911-92a4-4990775874f0",
+  "organizationId": "b701babb-a66e-444f-8974-af3fd6ba14b5",
   "host": "api.rootplatform.com",
   "codeFileOrder": [
     "main.js",

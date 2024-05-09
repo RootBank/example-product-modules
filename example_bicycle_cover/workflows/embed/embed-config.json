@@ -1,7 +1,7 @@
 {
   "header": {
     "wording": {
-      "title": "Get Dinosure"
+      "title": "Get Bicycle Insurance"
     },
     "links": {},
     "images": {
@@ -15,20 +15,26 @@
   },
   "landing": {
     "wording": {
-      "title": "Get Dinosure",
-      "subTitle": "From R19 p/m",
+      "title": "Get Bicycle Insurance",
+      "subTitle": "Get cover for your bike and your ride",
       "description": [
-        "Dinosure is a best of breed insurance scheme which not only provides life and disability insurance for dinosaur attacks, but also provides the following services to prevent that eventuality from ever occurring:"
+        "This example bicycle over has two different cover options, basic and comprehensive cover. Choose the option that suits your cycling needs the best."
       ],
       "descriptionBullets": [
-        "Early warning network",
-        "Extraction team"
+        "Theft",
+        "Worldwide cover",
+        "£200k legal expenses",
+        "£1 million public liability",
+        "£25k personal accident",
+        "Accidental damange",
+        "Vandalism",
+        "Race events"
       ],
       "createQuoteButton": "Let's get started!",
-      "videoTitle": "Dinosure Emergency Insurance"
+      "videoTitle": "Bicycle Insurance Video"
     },
     "images": {
-      "background": "https://storage.googleapis.com/root-production-public-client-images/Dinosure%20Demo/dinosure-grey-background.svg"
+      "background": "https://services-images-host.s3.amazonaws.com/root-template-landing.png"
     },
     "links": {
       "youTubeVideoId": "PJlmYh27MHg"
@@ -36,19 +42,19 @@
     "displayOptionalSections": {
       "displayLandingPage": false,
       "descriptionBullets": true,
-      "watchVideo": true
+      "watchVideo": false
     }
   },
   "quote": {
     "wording": {
       "title": "",
       "description": "Please complete the steps below to get a personalised quote. Let's dive right in!",
-      "coverRejected": "Life cover",
-      "summary": [],
+      "coverRejected": "Bicycle cover",
+      "summary": [
+        "summary"
+      ],
       "consentDisclaimer": {
-        "consentItems": [
-          "Consent to Dinosure collecting and processing your personal information to provide you with cover."
-        ],
+        "consentItems": [],
         "title": "Consent"
       },
       "screeningQuestions": [],
@@ -57,7 +63,7 @@
     },
     "images": {},
     "links": {
-      "supportEmail": "your-company@support.com",
+      "supportEmail": "support@example.com",
       "supportUrl": {
         "label": "",
         "url": ""
@@ -65,7 +71,7 @@
       "supportType": "email"
     },
     "displayOptionalSections": {
-      "consentDisclaimer": true,
+      "consentDisclaimer": false,
       "screeningQuestions": false,
       "screeningQuestionsRetry": false
     }
@@ -77,10 +83,10 @@
     },
     "images": {},
     "links": {
-      "exitRedirect": "https://dinoparks.net/"
+      "exitRedirect": ""
     },
     "displayOptionalSections": {
-      "displayPrePersonalDetailsCompliance": true
+      "displayPrePersonalDetailsCompliance": false
     }
   },
   "personalDetails": {
@@ -109,13 +115,13 @@
   },
   "beneficiaries": {
     "wording": {
-      "title": "Dinosure helps protect your loved ones",
-      "description": "Let’s list them as your beneficiaries here. You can add up to 10 beneficiaries now. You’ll be able to change them or add more later."
+      "title": "",
+      "description": ""
     },
     "images": {},
     "links": {},
     "displayOptionalSections": {
-      "displayManageBeneficiaries": true
+      "displayManageBeneficiaries": false
     }
   },
   "prePaymentCompliance": {
@@ -125,7 +131,7 @@
     },
     "images": {},
     "links": {
-      "exitRedirect": "https://dinoparks.net/"
+      "exitRedirect": ""
     },
     "displayOptionalSections": {
       "displayPrePaymentCompliance": false
@@ -161,7 +167,7 @@
       ],
       "title": "",
       "description": "Almost done! Please complete the payment below.",
-      "declaration": "Dinosure is a sample application by Root. The source code is MIT licensed, while the website content is licensed CC BY NC SA 4.0. Dinosure Services (Pty) Ltd is an unauthorised financial services provider. FSP number: 123456. 3 Sauropoda Lane, Isla Nublar, 1337"
+      "declaration": "This is a sample application by Root. The configuration source code is MIT licensed and you are free to copy and modify it. See https://rootplatform.com for more information."
     },
     "images": {},
     "links": {},
@@ -184,8 +190,8 @@
     },
     "images": {},
     "links": {
-      "openClaim": "dinoparks.net/claims",
-      "redirectOnCompletedUrl": "issue-policy"
+      "openClaim": "https://rootplatform.com",
+      "redirectOnCompletedUrl": ""
     },
     "displayOptionalSections": {
       "contactNumber": true,
@@ -198,7 +204,7 @@
   },
   "footer": {
     "wording": {
-      "disclaimer": "Dinosure is a sample application by Root. The source code is MIT licensed, while the website content is licensed CC BY NC SA 4.0. Dinosure Services (Pty) Ltd is an unauthorised financial services provider. FSP number: 123456. 3 Sauropoda Lane, Isla Nublar, 1337"
+      "disclaimer": "This is a sample application by Root. The configuration source code is MIT licensed and you are free to copy and modify it. See https://rootplatform.com for more information."
     },
     "images": {
       "disclaimerUrl": "https://storage.googleapis.com/root-production-public-client-images/Dinosure%20Demo/root-logo.svg"
@@ -247,7 +253,7 @@
   "settings": {
     "issuingFlowStartingStep": "default",
     "defaultCountryCodeFromBrowser": true,
-    "supportEmail": "your-company@support.com",
+    "supportEmail": "support@example.com",
     "supportUrl": {
       "label": "",
       "url": ""
