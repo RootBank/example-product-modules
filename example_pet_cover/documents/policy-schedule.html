@@ -167,14 +167,20 @@
         <div>{{ toStartCase name }}</div>
         <div>
           Gender: {{ toStartCase gender }}<br />
-          Birth year: {{ birth_date }}<br />
+          Birth date: {{ dateFormat birth_date }}<br />
           Breed: {{ toStartCase breed }}<br />
-          Vet fees cover: {{formatCurrency cover_amount "GBP" locale="en-GB"}}<br />
-          Excess: {{formatCurrency excess_amount "GBP" locale="en-GB"}}<br />
-          Premium: {{formatCurrency pet_premium_amount "GBP" locale="en-GB"}}<br />
         </div>
       </div>
       {{/policy.module.pets}}
+      <div class="one-three-split">
+        <div>Cover details for all pets on policy</div>
+        <div>
+          Area Code: {{ policy.module.area_code }}<br />
+          Reimbursement: {{ policy.module.reimbursement }}<br />
+          Annual Deductible: {{ policy.module.annual_deductible }}<br />
+          Annual Limit: {{ policy.module.annual_limit }}<br />
+        </div>
+      </div>
       <br /><br />
       <!-- Claims process -->
       <p><strong>CLAIMS PROCESS</strong></p>
