@@ -1,11 +1,6 @@
 /**
- * Validates the quote request data.
- * @param {Record<string, any>} data The data received in the body of the
- *     [Create a quote](https://docs.rootplatform.com/reference/getting-a-quote-2) request
- *     (without the `type` property).
- * @return {{error: any; result: any}} The [validation result](https://joi.dev/api/?v=12.1.0#validatevalue-schema-options-callback).
- *    If there are no errors, the `value` property will contain the validated data, which is passed to `getQuote`.
- * @see {@link https://docs.rootplatform.com/docs/quote-hook Quote hook}
+ * Validate the quote request data before passing it to the `getQuote` function.
+ * https://docs.rootplatform.com/reference/getting-a-quote-2
  */
 const validateQuoteRequest = (data) => {
   const validationResult = Joi.validate(
@@ -27,11 +22,8 @@ const validateQuoteRequest = (data) => {
 };
 
 /**
- * Generates an array of quote packages from the quote request data.
- * @param {Record<string, any>} data The validated data returned by `validateQuoteRequest` as `result.value`.
- * @return {QuotePackage[]} The quote package(s) that will be returned by the
- *     [Create a quote](https://docs.rootplatform.com/reference/getting-a-quote-2) endpoint.
- * @see {@link https://docs.rootplatform.com/docs/quote-hook Quote hook}
+ * Generate an array of Quote Packages from the quote request data.
+ * https://docs.rootplatform.com/reference/getting-a-quote-2
  */
 const getQuote = (data) => {
 
