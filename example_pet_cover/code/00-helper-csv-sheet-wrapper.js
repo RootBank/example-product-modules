@@ -4,7 +4,27 @@
 // Parses a CSV string into a 2D array
 const csvParser = (csvString) => {
   const rows = csvString.trim().split('\n');
-  return rows.map(row => row.split(','));
+  return rows.map(row => parseRow(row));
+};
+const parseRow = (row) => {
+  const result = [];
+  let inQuotes = false;
+  let value = '';
+
+  for (let i = 0; i < row.length; i++) {
+    const char = row[i];
+
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      result.push(value);
+      value = '';
+    } else {
+      value += char;
+    }
+  }
+  result.push(value);
+  return result;
 };
 
 // Gets a cell value from a 2D array using A1 notation (e.g. "B7")
@@ -29,7 +49,10 @@ const getRange = (data, range) => {
   for (let row = startRow; row <= endRow; row++) {
     const rowData = [];
     for (let col = startColumn; col <= endColumn; col++) {
-      rowData.push(data[row][col]);
+      let cellData = data[row][col];
+      if (cellData !== undefined)
+        cellData = cellData.trim();
+      rowData.push(cellData);
     }
     rangeData.push(rowData);
   }

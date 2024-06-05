@@ -6,40 +6,18 @@
     "components": [
       {
         "type": "section-header",
-        "key": "header-1",
+        "key": "h-1",
         "label": "Please give more information about this pet"
       },
       {
-        "type": "checkbox",
-        "key": "microchip",
-        "label": "Has your pet been microchipped?"
+        "type": "text",
+        "key": "microchip_number",
+        "label": "If they are microchipped, please provide the microchip number"
       },
       {
-        "type": "checkbox",
-        "key": "neutered",
-        "label": "Has your pet been spayed or neutered?"
-      },
-      {
-        "type": "select",
-        "key": "environment",
-        "label": "Does your pet primarily live indoors or outdoors?",
-        "options": [
-          {
-            "label": "Indoors",
-            "value": "indoors"
-          },
-          {
-            "label": "Outdoors",
-            "value": "outdoors"
-          }
-        ],
-        "validators": [
-          {
-            "validation": {
-              "type": "required"
-            }
-          }
-        ]
+        "type": "text",
+        "key": "vet_code",
+        "label": "Provide their vet's registration code"
       },
       {
         "type": "checkbox",

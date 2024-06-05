@@ -166,7 +166,8 @@
     "displayOptionalSections": {
       "editBillingDay": true,
       "displayPaymentMethod": true,
-      "displayPaymentDeclaration": true
+      "displayPaymentDeclaration": true,
+      "billingDay": true
     }
   },
   "confirmation": {
