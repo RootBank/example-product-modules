@@ -104,10 +104,10 @@ const deployProduct = async (product, host) => {
   // Run deployment command in the subdirectory
   const deployCommand = await shellDeploy(buildProductDirectory);
   if (deployCommand.error) {
-    console.error(`❌ Error deploying ${product.directory} to ${host.host}`);
+    console.error(`❌ Error deploying ${product.directory} to ${host.organizationName} (${host.host})`);
     console.error(deployCommand.error.message);
   } else {
-    console.log(`✅ Deployed ${product.directory} to ${host.host}`);
+    console.log(`✅ Deployed ${product.directory} to ${host.organizationName} (${host.host})`);
   }
 };
 
@@ -116,10 +116,10 @@ const publishProduct = async (product, host) => {
   // Run the publish command in the subdirectory
   const publishCommand = await shellPublish(buildProductDirectory);
   if (publishCommand.error) {
-    console.error(`❌ Error publishing ${product.directory} to ${host.host}`);
+    console.error(`❌ Error publishing ${product.directory} to ${host.organizationName} (${host.host})`);
     console.error(publishCommand.error.message);
   } else {
-    console.log(`✅ Published ${product.directory} to ${host.host}`);
+    console.log(`✅ Published ${product.directory} to ${host.organizationName} (${host.host})`);
   }
 };
 
@@ -127,7 +127,10 @@ async function main() {
   try {
     const deploymentsFileContent = await fs.readFile(deploymentsFile, "utf8");
     const deployments = yaml.load(deploymentsFileContent);
-    const hosts = deployments.hosts;
+    let hosts = deployments.hosts;
+
+    if (process.argv.includes('--factory'))
+      hosts = [hosts[0]];
 
     for (const host of hosts) {
       for (const product of host.products) {

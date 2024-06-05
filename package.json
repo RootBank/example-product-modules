@@ -4,7 +4,8 @@
   "description": "",
   "main": "deploy-script.js",
   "scripts": {
-    "deploy": "node deploy-script.js"
+    "deploy": "node deploy-script.js",
+    "deploy-factory": "node deploy-script.js --factory"
   },
   "author": "",
   "license": "ISC",
