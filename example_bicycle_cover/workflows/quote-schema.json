@@ -31,7 +31,7 @@
         "type": "currency",
         "label": "What is the value of your bike?",
         "props": {
-          "prefix": "R"
+          "prefix": "£"
         },
         "validators": [
           {
