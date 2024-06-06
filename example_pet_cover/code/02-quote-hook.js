@@ -78,7 +78,8 @@ const getQuote = (data) => {
     ); // age last birthday
 
     // Calculate the premium for the pet
-    let petPremium = 100 * 100; // base annual premium for pet in pence/cents
+    const baseAmount = 100; // £
+    let petPremium = baseAmount * 100; // base annual premium for pet in pence/cents
     const breedCode = breedsSheet
       .getRange("B2:C359")
       .find((row) => row[0] === pet.breed)[1];

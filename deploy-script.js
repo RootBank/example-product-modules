@@ -35,11 +35,28 @@ const prepareBuildDirectory = async () => {
 };
 
 const prepareProductForCurrency = async (productDirectory, host) => {
-  const { currencyCode, currencySymbol, country } = host;
+  const { currencyCode, currencySymbol, currencyMultiplier, country } = host;
   // We need to replace all occurences of:
   // - '£' with currencySymbol
   // - 'GBP' with currencyCode
   // - 'GB' with country
+
+  // Helper function to convert currency amounts using the currency multiplier
+  const convertCurrencyAmount = (rawCode, currencySymbol, currencyMultiplier) => {
+    return rawCode.replace(/£([\d,]+)/g, (match, p1) => {
+      const amount = parseFloat(p1.replace(/,/g, ''));
+      const newAmount = (amount * currencyMultiplier).toLocaleString();
+      return `${currencySymbol}${newAmount}`;
+    });
+  };
+  // Helper function to convert base cover amount using the currency multiplier
+  const convertBaseAmount = (rawCode, currencySymbol, currencyMultiplier) => {
+    return rawCode.replace(/(const\s+baseAmount\s*=\s*)(\d+)(\s*;\s*\/\/\s*£)/g, (match, p1, p2, p3) => {
+      const amount = parseFloat(p2);
+      const newAmount = amount * currencyMultiplier;
+      return `${p1}${newAmount}${p3.replace('£', currencySymbol)}`;
+    });
+  };
 
   // Loop through all code files in {productDirectory}/code
   const codeDirectory = path.join(productDirectory, "code");
@@ -47,6 +64,8 @@ const prepareProductForCurrency = async (productDirectory, host) => {
   for (const codeFile of codeFiles) {
     const codeFilePath = path.join(codeDirectory, codeFile);
     let rawCode = await fs.readFile(codeFilePath, "utf8");
+    rawCode = convertBaseAmount(rawCode, currencySymbol, currencyMultiplier);
+    rawCode = convertCurrencyAmount(rawCode, currencySymbol, currencyMultiplier);
     rawCode = rawCode.replace(/£/g, currencySymbol);
     rawCode = rawCode.replace(/GBP/g, currencyCode);
     rawCode = rawCode.replace(/GB/g, country);
@@ -59,6 +78,7 @@ const prepareProductForCurrency = async (productDirectory, host) => {
   for (const workflowFile of workflowFiles) {
     const workflowFilePath = path.join(workflowsDirectory, workflowFile);
     let rawWorkflow = await fs.readFile(workflowFilePath, "utf8");
+    rawWorkflow = convertCurrencyAmount(rawWorkflow, currencySymbol, currencyMultiplier);
     rawWorkflow = rawWorkflow.replace(/£/g, currencySymbol);
     rawWorkflow = rawWorkflow.replace(/GBP/g, currencyCode);
     rawWorkflow = rawWorkflow.replace(/GB/g, country);
@@ -130,7 +150,7 @@ async function main() {
     let hosts = deployments.hosts;
 
     if (process.argv.includes('--factory'))
-      hosts = [hosts[0]];
+      hosts = [hosts[0]]; // Only deploy the factory
 
     for (const host of hosts) {
       for (const product of host.products) {

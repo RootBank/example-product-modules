@@ -12,6 +12,7 @@ hosts:
   organizationId: # INSERT ORG ID
   currency: GBP
   currencySymbol: £
+  currencyMultiplier: 1
   apiKey: # INSERT API KEY
   products: 
   - directory: example_bicycle_cover
