@@ -1,25 +1,62 @@
 {
   "policy": {
-    "policy_id": "c4ba8724-53ec-4441-a7ae-c781fabdd65d",
+    "policy_id": "51fa7689-6bb1-47eb-8974-dab61a92d809",
     "scheme_type": "individual",
-    "created_at": "2024-05-03T13:01:45.049Z",
+    "created_at": "2024-06-06T07:05:28.888Z",
     "created_by": {
       "type": "user",
       "id": "b705fe2a-8ec9-11e8-a573-ab2eeaa657b7"
     },
-    "policy_number": "C53A2377A6",
-    "policyholder_id": "17d39816-512a-4670-904b-43edf0a3a646",
-    "package_name": "Pet",
-    "sum_assured": 500000,
-    "base_premium": 4799,
-    "monthly_premium": 4799,
-    "billing_amount": 4799,
+    "policy_number": "D02BAA1AC3",
+    "policyholder_id": "760c34ba-fcd0-4e87-a087-b106be4068c4",
+    "policyholder": {
+      "policyholder_id": "760c34ba-fcd0-4e87-a087-b106be4068c4",
+      "type": "individual",
+      "initials": null,
+      "first_name": "John",
+      "middle_name": null,
+      "last_name": "Smith",
+      "id": {
+        "type": "email",
+        "number": "john@example.com",
+        "country": "ZA"
+      },
+      "email": "john@example.com",
+      "cellphone": "+447102192999",
+      "phone_other": null,
+      "date_of_birth": "19900101",
+      "gender": "male",
+      "created_at": "2024-05-09T12:13:53.119Z",
+      "app_data": null,
+      "policy_ids": [
+        "c5ae8893-7f8b-4151-a7d6-f793e3303ed0",
+        "067a93a5-4b5f-49f9-852e-5ace7ccf1961",
+        "b2dca3b8-c825-43ac-b93d-a9f6e93a28a7",
+        "05390b82-1d94-449d-b9f1-dbcf1458f295",
+        "739348ca-2289-4e2b-b4ab-4fcb27bd8b52",
+        "ca92527b-dea2-4bb8-87dd-b1af7510cbc0",
+        "1e433a0b-ac1d-42c7-9373-f0a5a1950275",
+        "3ad84c0d-5424-4354-ac68-591a0ba84fbf",
+        "51fa7689-6bb1-47eb-8974-dab61a92d809"
+      ],
+      "created_by": {
+        "type": "api_key",
+        "id": "56c104f3-d2a8-490e-97a3-72396c5ac04a",
+        "ownerId": "b701babb-a66e-444f-8974-af3fd6ba14b5"
+      },
+      "updated_at": "2024-06-06T07:05:29.620Z"
+    },
+    "package_name": "Single Pet Cover",
+    "sum_assured": 800000,
+    "base_premium": 1398,
+    "monthly_premium": 1398,
+    "billing_amount": 1398,
     "billing_frequency": "monthly",
     "billing_month": null,
     "billing_day": 1,
-    "next_billing_date": "2024-06-01T00:00:00.000Z",
-    "next_collection_date": "2024-06-03T00:00:00.000Z",
-    "start_date": "2024-05-04T13:01:45.000Z",
+    "next_billing_date": "2024-07-01T00:00:00.000Z",
+    "next_collection_date": "2024-07-01T00:00:00.000Z",
+    "start_date": "2024-06-07T07:05:29.000Z",
     "end_date": null,
     "cancelled_at": null,
     "reason_cancelled": null,
@@ -27,198 +64,71 @@
     "module": {
       "pets": [
         {
-          "name": "Bella",
-          "uuid": "5f1da7ea-bbfb-432b-bf14-5fdfc5e7e9c1",
-          "breed": "boston_terrier",
-          "gender": "female",
-          "travel": false,
-          "pet_age": 0,
-          "species": "dog",
-          "neutered": false,
-          "microchip": false,
-          "birth_date": "2023-05-03T23:00:00.000Z",
-          "environment": "outdoors",
-          "cover_amount": 500000,
-          "precondition": {
-            "tumours": false,
-            "diabetes": false,
-            "epilepsy": false,
-            "thyroid_disease": false,
-            "elbow_or_hip_joint_dysplasia": false
-          },
-          "excess_amount": 10000,
-          "pet_premium_amount": 4799,
-          "remaining_cover_limit_amount": 500000
+          "name": "Cooper",
+          "breed": "German Shepherd",
+          "gender": "Male",
+          "travel": true,
+          "species": "Dog",
+          "vet_code": "V999",
+          "birth_date": "2021-05-31T22:00:00.000Z",
+          "microchip_number": "M1292"
         }
       ],
-      "type": "pet_demo_2024",
+      "type": "demo_factory_pet_cover",
+      "discount": "-15.000000000000002%",
+      "area_code": "SW10",
+      "annual_limit": "£8,000",
+      "reimbursement": "70.0%",
+      "discount_options": {
+        "military": true,
+        "neutered": false,
+        "multi_pet": true,
+        "micro_chipped": false,
+        "affinity_group": false
+      },
+      "general_loadings": [],
+      "annual_deductible": "£250",
       "policy_deactivations": 0,
       "latest_policy_deactivation": null,
       "latest_policy_reactivation": null,
       "applied_anniversary_increases": 0
     },
-    "product_module_id": "01d9b882-a40f-405b-921b-6ce6628ec73d",
-    "product_module_definition_id": "a6920272-470a-4699-9125-2c9df0e4476e",
+    "product_module_id": "ea860f06-9375-4db6-8803-612a021d5957",
+    "product_module_definition_id": "59eafd89-4986-4dc2-a08b-71e48bf6ff16",
     "beneficiaries": [
       {
-        "beneficiary_id": "88782c65-6acb-4ded-a4d4-4b178f5ef581",
-        "policyholder_id": "17d39816-512a-4670-904b-43edf0a3a646",
+        "beneficiary_id": "6abadb30-152f-4865-a54b-de0a9996dad3",
+        "policyholder_id": "760c34ba-fcd0-4e87-a087-b106be4068c4",
         "percentage": 100,
         "relationship": "policyholder"
       }
     ],
     "current_version": 2,
-    "schedule_file_id": "3e5a035b-32cd-4da4-86b2-37d18313e283",
-    "policy_schedule_uri": "https://sandbox.root.co.za/v1/insurance/policies/c4ba8724-53ec-4441-a7ae-c781fabdd65d/schedule/schedule_latest.pdf",
+    "schedule_file_id": "43bfd514-ab70-4316-9f21-51e7e55ab8a2",
+    "policy_schedule_uri": "https://sandbox.rootplatform.com/v1/insurance/policies/51fa7689-6bb1-47eb-8974-dab61a92d809/schedule/schedule_latest.pdf",
     "schedule_versions": [
       {
         "version": 1,
-        "created_at": "2024-05-03T13:01:47.390Z"
+        "created_at": "2024-06-06T07:05:31.495Z"
       },
       {
         "version": 2,
-        "created_at": "2024-05-03T13:01:48.243Z"
+        "created_at": "2024-06-06T07:05:31.614Z"
       }
     ],
-    "terms_file_id": "ec76a1a1-c3ba-409a-b434-ae6b0664d1cc",
-    "terms_uri": "https://sandbox.root.co.za/v1/insurance/policies/c4ba8724-53ec-4441-a7ae-c781fabdd65d/terms/terms.pdf",
+    "terms_file_id": "a5aecbd6-8714-42a0-9aae-b9f266b33065",
+    "terms_uri": "https://sandbox.rootplatform.com/v1/insurance/policies/51fa7689-6bb1-47eb-8974-dab61a92d809/terms/terms.pdf",
     "supplementary_terms_files": [],
     "claim_ids": [],
     "complaint_ids": [],
     "status": "active",
-    "balance": -3165,
+    "balance": -1118,
     "currency": "GBP",
-    "payment_method_id": "871e59ac-e8ae-4dd8-9adf-7a6dfaabf8fa",
-    "status_updated_at": "2024-05-03T13:01:45.194Z",
-    "updated_at": "2024-05-03T13:01:59.974Z",
+    "payment_method_id": "db688ebc-9871-4bd9-a484-95f5cb6ad877",
+    "status_updated_at": "2024-06-06T07:05:29.566Z",
+    "updated_at": "2024-06-06T07:05:31.614Z",
     "covered_people": [],
-    "application_id": "5ef0a71a-09fc-4960-8f22-03cf1ca15923",
+    "application_id": "36fa01d5-a4b4-47ed-aca9-4cd098fb4db2",
     "charges": []
-  },
-  "policyholder": {
-    "policyholder_id": "17d39816-512a-4670-904b-43edf0a3a646",
-    "type": "individual",
-    "initials": "E",
-    "first_name": "Erlich",
-    "last_name": "Bachman",
-    "id": {
-      "type": "id",
-      "number": "6801015800084",
-      "country": "ZA"
-    },
-    "email": "erlich@aviato.com",
-    "cellphone": "+27823048184",
-    "phone_other": null,
-    "gender": "male",
-    "created_at": "2017-10-12T15:47:34.834Z",
-    "app_data": {
-      "key": "value"
-    },
-    "policy_ids": [
-      "dd1f2974-af7e-4caf-8105-2b093416d8f0"
-    ],
-    "created_by": {
-      "type": "user",
-      "id": "00000000-0000-0000-0000-000000000001"
-    },
-    "address": {
-      "line_1": "5230 Penfield Avenue",
-      "suburb": "Woodland Hills",
-      "city": "Los Angeles",
-      "country": "US",
-      "area_code": "CA 91364"
-    },
-    "updated_at": "2017-10-12T15:47:34.834Z"
-  },
-  "application": {
-    "application_id": "dd1f2974-af7e-4caf-8105-2b093416d8f0",
-    "policyholder_id": "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
-    "payment_method_id": "0157b955-8ffd-4a14-8625-8b2787a1684c",
-    "package_name": "Example package name",
-    "sum_assured": 1199900,
-    "monthly_premium": 50000,
-    "base_premium": 50000,
-    "module": {
-      "type": "example_module_type",
-      "key": "value"
-    },
-    "created_at": "2017-10-05T18:40:47.831Z",
-    "created_by": {
-      "type": "user",
-      "id": "00000000-0000-0000-0000-000000000001"
-    },
-    "currency": "ZAR",
-    "product_module_definition_id": "02e3d37d-05b7-4b88-9c64-e40766e64217",
-    "billing_frequency": "monthly",
-    "status": "pending",
-    "beneficiaries": [
-      {
-        "beneficiary_id": "dac0da11-cf95-47f5-af07-b45ecf546baa",
-        "policyholder_id": "e3ea736e-fb3e-4628-90d2-72eae2772c25",
-        "first_name": "Bachman",
-        "last_name": "Erlich",
-        "id": {
-          "type": "id",
-          "number": "6801015800084",
-          "country": "ZA"
-        },
-        "date_of_birth": "1994-10-07",
-        "percentage": 90,
-        "email": "erlich@aviato.com",
-        "relationship": "policyholder"
-      }
-    ]
-  },
-  "payment_method": {
-    "payment_method_id": "0157b955-8ffd-4a14-8625-8b2787a1684c",
-    "type": "debit_order",
-    "created_at": "2021-05-04T18:40:47.831Z",
-    "organization_id": "5b87186a-4215-46cd-9a43-b0150dc9818b",
-    "policyholder_id": "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
-    "policyholder": {
-      "policyholder_id": "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
-      "type": "individual",
-      "initials": "E",
-      "first_name": "Erlich",
-      "last_name": "Bachman",
-      "id": {
-        "type": "id",
-        "number": "6801015800084",
-        "country": "ZA"
-      },
-      "email": "erlich@aviato.com",
-      "cellphone": "+27823048184",
-      "phone_other": null,
-      "gender": "male",
-      "created_at": "2017-10-12T15:47:34.834Z",
-      "app_data": {
-        "key": "value"
-      },
-      "policy_ids": [
-        "dd1f2974-af7e-4caf-8105-2b093416d8f0"
-      ],
-      "created_by": {
-        "type": "user",
-        "id": "00000000-0000-0000-0000-000000000001"
-      },
-      "address": {
-        "line_1": "5230 Penfield Avenue",
-        "suburb": "Woodland Hills",
-        "city": "Los Angeles",
-        "country": "US",
-        "area_code": "CA 91364"
-      },
-      "updated_at": "2017-10-12T15:47:34.834Z"
-    },
-    "updated_at": "2021-05-04T18:40:47.831Z",
-    "bank_details": {
-      "account_holder": "E Bachman",
-      "bank": "absa",
-      "branch_code": "123456",
-      "account_number": "123456",
-      "account_type": "savings",
-      "banv_status": "verified",
-      "payment_method_id": "0157b955-8ffd-4a14-8625-8b2787a1684c"
-    }
   }
 }

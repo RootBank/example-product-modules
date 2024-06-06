@@ -159,19 +159,6 @@
         <div>Payment Frequency</div>
         <div>Monthly on the {{ ordinalString policy.billing_day }} day of the month</div>
       </div>
-      <br /><br />
-
-      <p><strong>PETS COVERED DETAILS</strong></p>
-      {{#policy.module.pets}}
-      <div class="one-three-split">
-        <div>{{ toStartCase name }} ({{ species }})</div>
-        <div>
-          Gender: {{ toStartCase gender }}<br />
-          Birth date: {{ dateFormat birth_date }}<br />
-          Breed: {{ toStartCase breed }}<br />
-        </div>
-      </div>
-      {{/policy.module.pets}}
       <div class="one-three-split">
         <div>Cover details for all pets on policy</div>
         <div>
@@ -184,23 +171,36 @@
       <div class="one-three-split">
         <div>Discounts applied</div>
         <div>
-          {{#if policy.module.discount_options.military}}
-            Military<br />
-          {{/if}}
-          {{#if policy.module.discount_options.neutered}}
-            Neutered<br />
-          {{/if}}
-          {{#if policy.module.discount_options.multi_pet}}
-            Multi-Pet<br />
-          {{/if}}
-          {{#if policy.module.discount_options.micro_chipped}}
-            Micro-Chipped<br />
-          {{/if}}
-          {{#if policy.module.discount_options.affinity_group}}
-            Affinity Group<br />
-          {{/if}}
+          {{#ifEquals policy.module.discount_options.military true}}
+            Military discount<br />
+          {{/ifEquals}}
+          {{#ifEquals policy.module.discount_options.neutered true}}
+            Neutered discount<br />
+          {{/ifEquals}}
+          {{#ifEquals policy.module.discount_options.multi_pet true}}
+            Multi-Pet discount<br />
+          {{/ifEquals}}
+          {{#ifEquals policy.module.discount_options.micro_chipped true}}
+            Micro-Chipped discount<br />
+          {{/ifEquals}}
+          {{#ifEquals policy.module.discount_options.affinity_group true}}
+            Affinity Group discount<br />
+          {{/ifEquals}}
         </div>
       </div>
+      <br /><br />
+
+      <p><strong>PETS COVERED</strong></p>
+      {{#policy.module.pets}}
+      <div class="one-three-split">
+        <div>{{ toStartCase name }} ({{ species }})</div>
+        <div>
+          Gender: {{ toStartCase gender }}<br />
+          Birth date: {{ dateFormat birth_date }}<br />
+          Breed: {{ toStartCase breed }}<br />
+        </div>
+      </div>
+      {{/policy.module.pets}}
       <br /><br />
       <!-- Claims process -->
       <p><strong>CLAIMS PROCESS</strong></p>
