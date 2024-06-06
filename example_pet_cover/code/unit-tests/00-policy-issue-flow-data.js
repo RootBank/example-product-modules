@@ -13,11 +13,11 @@ const getQuoteData = () => ({
   annual_deductible: "£250",
   annual_limit: "£14,000",
   discount_options: {
-    Military: false,
-    "Multi Pet": false,
-    "Affinity Group": true,
-    MicroChipped: true,
-    Neutered: true,
+    military: false,
+    neutered: true,
+    multi_pet: false,
+    micro_chipped: true,
+    affinity_group: true,
   },
 });
 

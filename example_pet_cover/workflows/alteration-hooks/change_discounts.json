@@ -14,23 +14,23 @@
     "options": [
       {
         "label": "Military",
-        "value": "Military"
+        "value": "military"
       },
       {
         "label": "Multi Pet",
-        "value": "Multi Pet"
+        "value": "multi_pet"
       },
       {
         "label": "Affinity Group",
-        "value": "Affinity Group"
+        "value": "affinity_group"
       },
       {
         "label": "MicroChipped",
-        "value": "MicroChipped"
+        "value": "micro_chipped"
       },
       {
         "label": "Neutered",
-        "value": "Neutered"
+        "value": "neutered"
       }
     ]
   }

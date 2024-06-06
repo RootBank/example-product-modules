@@ -2,7 +2,7 @@
  * Generates an alteration package from the alteration package request data, policy and policyholder.
  * https://docs.rootplatform.com/docs/alteration-hooks
  */
-const getAlteration = ({ alteration_hook_key, data, policy }) => {
+const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
   let changeDescription = "";
   let quoteData = policy.module;
 
@@ -12,25 +12,32 @@ const getAlteration = ({ alteration_hook_key, data, policy }) => {
       changeDescription = `cover changed to ${data.area_code}, ${data.reimbursement}, ${data.annual_deductible}, ${data.annual_limit}.`;
       // Merge new data into existing data, override if key exists
       quoteData = { ...quoteData, ...data };
+      break;
 
     case "change_discounts":
       const keys = Object.keys(data.discount_options) || ["no discount"];
       changeDescription = `discounts changed to ${keys.join(", ")}.`;
       // Merge new data into existing data, override if key exists
       quoteData = { ...quoteData, ...data };
+      break;
 
     case "change_pets":
       const petNames = data.pets.map((pet) => pet.name);
       changeDescription = `pets changed to include ${petNames.join(", ")}.`;
-      // Merge new data into existing data, override if key exists
-      quoteData = { ...quoteData, ...data };
+      // Merge old pets' extra data into new pets
+      const newPets = data.pets.map((newPet) => {
+        const oldPet = quoteData.pets.find((pet) => pet.name === newPet.name);
+        return { ...oldPet, ...newPet };
+      });
+      quoteData = { ...quoteData, pets: newPets };
+      break;
 
     default:
       throw new Error(`Invalid alteration hook key "${alteration_hook_key}"`);
   }
 
   // Get an alteration package based on new data
-  const quotePackage = getQuote(quoteData);
+  const quotePackage = getQuote(quoteData)[0];
   return new AlterationPackage({
     input_data: data,
     sum_assured: quotePackage.sum_assured,

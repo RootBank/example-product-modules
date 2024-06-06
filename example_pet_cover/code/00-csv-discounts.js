@@ -10,6 +10,6 @@ Affinity Group ,(15.0%)
 Marketing Partner ,(10.0%)
 Monthly Pay,0.0% 
 Annual Pay ,(10.0%)
-MicroChipped,(5.0%)
+Micro Chipped,(5.0%)
 Neutered,(10.0%)
 `;

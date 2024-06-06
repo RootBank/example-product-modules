@@ -3,10 +3,7 @@
 describe('Policy issue flow', function () {
   before(function () {
     quotePackageData = getQuoteData();
-    // quotePackage = getQuote(quotePackageData);
     applicationPackageData = getApplicationData();
-    // applicationPackage = getApplication(applicationPackageData, undefined, ...quotePackage);
-    // policy = getPolicy(applicationPackage, undefined, undefined);
   });
 
   // Quote hook

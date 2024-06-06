@@ -1,82 +1,87 @@
-const validAlterationData = {
-  "pets": [
-    {
-      "excess_amount": 20000
-    },
-    {
-      "excess_amount": 10000
-    }
-  ]
-};
-
-const invalidAlterationData = {
-  "pets": [
-    {
-      "excess_amount": 26000
-    },
-    {
-      "excess_amount": 0
-    }
-  ]
-};
-
-const excessAlterationPackage = (petUuids, expectedAlterationMessage) => ({
-  "input_data": {
-    "pets": [
+const subsetPolicyForAlterationHookTests = {
+  package_name: "Single Pet Cover",
+  sum_assured: 500000,
+  base_premium: 1421,
+  monthly_premium: 1421,
+  start_date: "2024-06-07T05:48:05.000Z",
+  end_date: null,
+  module: {
+    pets: [
       {
-        "excess_amount": 20000
+        name: "Cooper",
+        breed: "German Shepherd",
+        gender: "Male",
+        travel: true,
+        species: "Dog",
+        vet_code: "V09210",
+        birth_date: "2023-05-31T22:00:00.000Z",
+        microchip_number: "M29101",
       },
-      {
-        "excess_amount": 10000
-      }
-    ]
+    ],
+    type: "demo_factory_pet_cover",
+    discount: "-10%",
+    area_code: "SW9",
+    annual_limit: "£5,000",
+    reimbursement: "90.0%",
+    discount_options: {
+      military: true,
+      neutered: false,
+      multi_pet: false,
+      micro_chipped: true,
+      affinity_group: false,
+    },
+    general_loadings: [],
+    annual_deductible: "£200",
+    policy_deactivations: 0,
+    latest_policy_deactivation: null,
+    latest_policy_reactivation: null,
+    applied_anniversary_increases: 0,
   },
-  "sum_assured": 1600000,
-  "monthly_premium": 15532,
-  "change_description": `Alteration: ${expectedAlterationMessage}`,
-  "module": {
-    "policy_deactivations": 0,
-    "latest_policy_deactivation": null,
-    "latest_policy_reactivation": null,
-    "applied_anniversary_increases": 0,
-    "pets": [
-      {
-        "uuid": petUuids[0],
-        "name": "Spot",
-        "species": "dog",
-        "birth_date": "2020-04-12T08:46:39.0Z",
-        "gender": "male",
-        "breed": "mixed_breed",
-        "pet_size": "large",
-        "pet_age": 3,
-        "cover_amount": 600000,
-        "excess_amount": 20000,
-        "pet_premium_amount": 6095,
-        "remaining_cover_limit_amount": 600000,
-        "microchip": false,
-        "environment": "outdoors",
-        "neutered": true,
-        "travel": true,
-        "vaccinations": true
+  charges: [],
+};
+
+const alterationRequestData = {
+  changeCover: {
+    alteration_hook_key: "change_cover",
+    data: {
+      area_code: "SW9",
+      reimbursement: "80.0%",
+      annual_deductible: "£200",
+      annual_limit: "£5,000",
+    },
+    policy: { ...subsetPolicyForAlterationHookTests },
+    policyholder: undefined, // unused
+  },
+
+  changeDiscounts: {
+    alteration_hook_key: "change_discounts",
+    data: {
+      discount_options: {
+        military: false,
+        neutered: false,
+        multi_pet: true,
+        micro_chipped: true,
+        affinity_group: true,
       },
-      {
-        "uuid": petUuids[1],
-        "name": "Snowey",
-        "species": "cat",
-        "birth_date": "2008-04-12T08:46:39.0Z",
-        "gender": "female",
-        "breed": "siamese",
-        "pet_age": 15,
-        "cover_amount": 1000000,
-        "excess_amount": 10000,
-        "pet_premium_amount": 9437,
-        "remaining_cover_limit_amount": 1000000,
-        "environment": "indoors",
-        "microchip": false,
-        "neutered": true,
-        "travel": false,
-        "vaccinations": true,
-      }
-    ]
-  }
-});
+    },
+    policy: { ...subsetPolicyForAlterationHookTests },
+    policyholder: undefined, // unused
+  },
+
+  changePets: {
+    alteration_hook_key: "change_pets",
+    data: {
+      pets: [
+        {
+          name: "Cooper",
+          species: "Dog",
+          gender: "Male",
+          breed: "German Shepherd",
+          birth_date: "2023-05-31T22:00:00.000Z",
+        },
+      ],
+    },
+    policy: { ...subsetPolicyForAlterationHookTests },
+    policyholder: undefined, // unused
+  },
+};

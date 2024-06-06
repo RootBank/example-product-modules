@@ -15,7 +15,7 @@ const validateAlterationPackageRequest = ({
         Joi.object()
           .keys({
             // Cover details
-            area_code: Joi.string().required(),// Joi.valid(pricingFactorAreaSheet.getRange("A2:A34153")).required(), // Demo list of codes
+            area_code: Joi.string().required(), // Joi.valid(pricingFactorAreaSheet.getRange("A2:A34153")).required(), // Demo list of codes
             reimbursement: Joi.valid(
               pricingFactorReimbursementSheet.getRange("A2:A5").flat()
             ).required(),
@@ -36,10 +36,16 @@ const validateAlterationPackageRequest = ({
         Joi.object()
           .keys({
             // Discounts
-            discount_options: Joi.object(discountsSheet.getRange("A2:A10").flat().reduce((acc, key) => {
-                acc[key] = Joi.boolean();
-                return acc;
-              }, {})
+            discount_options: Joi.object(
+              discountsSheet
+                .getRange("A2:A10")
+                .flat()
+                // convert to snake_case
+                .map((discount) => discount.toLowerCase().replace(/\s+/g, "_"))
+                .reduce((acc, key) => {
+                  acc[key] = Joi.boolean();
+                  return acc;
+                }, {})
             ).required(),
           })
           .required(),

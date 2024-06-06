@@ -1,73 +1,40 @@
-// // @ts-nocheck
-// describe('Change pet excess altration hook', function () {
-//     // Alteration key for this test
-//     const alterationHookKey = 'change_pet_excess';
-//     // Setup (EAH = ExcessAlterationHook)
-//     let quotePackageEAH;
-//     let quotePackageDataEAH;
-//     let applicationPackageEAH;
-//     let applicationPackageDataEAH;
-//     let policyPackageEAH;
-//     let validationResultEAH;
-//     let alterationPackageEAH;
-//     let expectedAlterationPackageEAH;
-//     let appliedAlterationPackageEAH;
+// @ts-nocheck
 
-//     before(function () {
-//         // Quote Data to generate package
-//         quotePackageDataEAH = getQuoteData();
-//         // Quote Package
-//         quotePackageEAH = getQuote(quotePackageDataEAH);
-//         // Application Data to generate package
-//         applicationPackageDataEAH = getApplicationData();
-//         // Application Package
-//         applicationPackageEAH = getApplication(applicationPackageDataEAH, undefined, quotePackageEAH[0]);
-//         // Policy Package
-//         policyPackageEAH = getPolicy(applicationPackageEAH);
-//         // Alteration input validation
-//         validationResultEAH = validateAlterationPackageRequest({
-//             alteration_hook_key: alterationHookKey,
-//             data: validAlterationData,
-//         });
-//         // Inavlid Alteration input validation (Should return error)
-//         invalidationResultEAH = validateAlterationPackageRequest({
-//             alteration_hook_key: alterationHookKey,
-//             data: invalidAlterationData,
-//         });
-//         // Alteration Package
-//         alterationPackageEAH = getAlteration({
-//             alteration_hook_key: alterationHookKey,
-//             data: validAlterationData,
-//             // @ts-ignore
-//             policy: { ...policyPackageEAH },
-//         });
-//         // Applied Alteration Package
-//         appliedAlterationPackageEAH = applyAlteration({
-//             alteration_hook_key: alterationHookKey,
-//             policy: { ...policyPackageEAH },
-//             alteration_package: alterationPackageEAH
-//         });
+describe('Alteration hooks', function () {
 
-//         // Expected Alteration Package JSON
-//         messageForExpectedAlterationPackageEAH = updatedExcessAlterationMessage(validAlterationData.pets, policyPackageEAH.module.pets);
-//         expectedAlterationPackageEAH = excessAlterationPackage([policyPackageEAH.module.pets[0].uuid, policyPackageEAH.module.pets[1].uuid], messageForExpectedAlterationPackageEAH)
+  describe('Change cover', function () {
+    it('should pass validation', function () {
+      const validationResult = validateAlterationPackageRequest(alterationRequestData.changeCover);
+      expect(validationResult.error).to.equal(null);
+    });
+    it('should calculate the correct premium', function () {
+      const validationResult = validateAlterationPackageRequest(alterationRequestData.changeCover);
+      const alterationPackage = getAlteration(alterationRequestData.changeCover);
+      expect(alterationPackage.monthly_premium).to.equal(1279);
+    });
+  });
 
-//         // console.log("Quote: " + JSON.stringify(quotePackageEAH))
-//         // console.log("Application: " + JSON.stringify(applicationPackageEAH));
-//         // console.log("Policy: " + JSON.stringify(policyPackageEAH))
-//         // console.log("Alteration: " + JSON.stringify(alterationPackageEAH))
-//         // console.log("AppliedAlteration: " + JSON.stringify(appliedAlterationPackageEAH))
-//     });
+  describe('Change discounts', function () {
+    it('should pass validation', function () {
+      const validationResult = validateAlterationPackageRequest(alterationRequestData.changeDiscounts);
+      expect(validationResult.error).to.equal(null);
+    });
+    it('should calculate the correct premium', function () {
+      const validationResult = validateAlterationPackageRequest(alterationRequestData.changeDiscounts);
+      const alterationPackage = getAlteration(alterationRequestData.changeDiscounts);
+      expect(alterationPackage.monthly_premium).to.equal(1680);
+    });
+  });
 
-//     it('valid data should pass validation', function () {
-//         expect(validationResultEAH.error).to.equal(null);
-//     });
-
-//     it('invalid data should not pass validation', function () {
-//         expect(invalidationResultEAH.error.message).to.not.equal(null);
-//     });
-
-//     // it('should return valid alteration package', function () {
-//     //     expect(alterationPackageEAH).to.deep.equal(expectedAlterationPackageEAH);
-//     // });
-// });
+  describe('Change pets', function () {
+    it('should pass validation', function () {
+      const validationResult = validateAlterationPackageRequest(alterationRequestData.changePets);
+      expect(validationResult.error).to.equal(null);
+    });
+    it('should calculate the correct premium', function () {
+      const validationResult = validateAlterationPackageRequest(alterationRequestData.changePets);
+      const alterationPackage = getAlteration(alterationRequestData.changePets);
+      expect(alterationPackage.monthly_premium).to.equal(1421);
+    });
+  });
+});
