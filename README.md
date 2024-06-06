@@ -11,7 +11,7 @@ This repository showcases a few example product modules designed for the [Root p
 
 This repository and example products are also used by the Root platform to generate templates for quicker "getting started" on the platform.
 
-If you require any assistance, please [reach out to use here](https://rootplatform.com/contact).
+If you require any assistance, please [reach out to us](https://rootplatform.com/contact).
 
 ------
 
