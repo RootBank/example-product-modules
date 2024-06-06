@@ -20,9 +20,8 @@
     "02-quote-hook.js",
     "03-application-hook.js",
     "04-policy-issue-hook.js",
-    "05A-alteration-hooks.js",
-    "05B-alteration-validators.js",
-    "05C-alteration-utils.js",
+    "05a-alteration-validate-request.js",
+    "05b-alteration-get.js",
     "06-reactivations.js",
     "07-schedule-functions.js"
   ],
@@ -158,8 +157,16 @@
   },
   "alterationHooks": [
     {
-      "key": "amendment",
-      "name": "Update cover & excess"
+      "key": "change_cover",
+      "name": "Update cover"
+    },
+    {
+      "key": "change_discounts",
+      "name": "Update discounts"
+    },
+    {
+      "key": "change_pets",
+      "name": "Update pets"
     }
   ],
   "scheduledFunctions": [],

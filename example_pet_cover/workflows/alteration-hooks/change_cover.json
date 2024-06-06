@@ -1,0 +1,168 @@
+[
+  {
+    "type": "section-header",
+    "key": "h-cover",
+    "label": "Cover details",
+    "props": {
+      "headingTag": "h3"
+    }
+  },
+  {
+    "key": "area_code",
+    "type": "text",
+    "label": "When is the area code? *",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "reimbursement",
+    "type": "select",
+    "label": "Select the reimbursement package? *",
+    "options": [
+      {
+        "label": "90.0%",
+        "value": "90.0%"
+      },
+      {
+        "label": "80.0%",
+        "value": "80.0%"
+      },
+      {
+        "label": "70.0%",
+        "value": "70.0%"
+      },
+      {
+        "label": "65.0%",
+        "value": "65.0%"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "annual_deductible",
+    "type": "select",
+    "label": "Select the annual deductible? *",
+    "options": [
+      {
+        "label": "£100",
+        "value": "£100"
+      },
+      {
+        "label": "£200",
+        "value": "£200"
+      },
+      {
+        "label": "£250",
+        "value": "£250"
+      },
+      {
+        "label": "£300",
+        "value": "£300"
+      },
+      {
+        "label": "£400",
+        "value": "£400"
+      },
+      {
+        "label": "£500",
+        "value": "£500"
+      },
+      {
+        "label": "£600",
+        "value": "£600"
+      },
+      {
+        "label": "£700",
+        "value": "£700"
+      },
+      {
+        "label": "£750",
+        "value": "£750"
+      },
+      {
+        "label": "£800",
+        "value": "£800"
+      },
+      {
+        "label": "£900",
+        "value": "£900"
+      },
+      {
+        "label": "£1,000",
+        "value": "£1,000"
+      },
+      {
+        "label": "£1,250",
+        "value": "£1,250"
+      },
+      {
+        "label": "£1,500",
+        "value": "£1,500"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "annual_limit",
+    "type": "select",
+    "label": "Select the annual limit? *",
+    "options": [
+      {
+        "label": "£2,000",
+        "value": "£2,000"
+      },
+      {
+        "label": "£5,000",
+        "value": "£5,000"
+      },
+      {
+        "label": "£8,000",
+        "value": "£8,000"
+      },
+      {
+        "label": "£10,000",
+        "value": "£10,000"
+      },
+      {
+        "label": "£14,000",
+        "value": "£14,000"
+      },
+      {
+        "label": "£15,000",
+        "value": "£15,000"
+      },
+      {
+        "label": "£20,000",
+        "value": "£20,000"
+      },
+      {
+        "label": "£30,000",
+        "value": "£30,000"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  }
+]

@@ -164,7 +164,7 @@
       <p><strong>PETS COVERED DETAILS</strong></p>
       {{#policy.module.pets}}
       <div class="one-three-split">
-        <div>{{ toStartCase name }}</div>
+        <div>{{ toStartCase name }} ({{ species }})</div>
         <div>
           Gender: {{ toStartCase gender }}<br />
           Birth date: {{ dateFormat birth_date }}<br />
@@ -179,6 +179,26 @@
           Reimbursement: {{ policy.module.reimbursement }}<br />
           Annual Deductible: {{ policy.module.annual_deductible }}<br />
           Annual Limit: {{ policy.module.annual_limit }}<br />
+        </div>
+      </div>
+      <div class="one-three-split">
+        <div>Discounts applied</div>
+        <div>
+          {{#if policy.module.discount_options.military}}
+            Military<br />
+          {{/if}}
+          {{#if policy.module.discount_options.neutered}}
+            Neutered<br />
+          {{/if}}
+          {{#if policy.module.discount_options.multi_pet}}
+            Multi-Pet<br />
+          {{/if}}
+          {{#if policy.module.discount_options.micro_chipped}}
+            Micro-Chipped<br />
+          {{/if}}
+          {{#if policy.module.discount_options.affinity_group}}
+            Affinity Group<br />
+          {{/if}}
         </div>
       </div>
       <br /><br />
