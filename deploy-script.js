@@ -72,6 +72,20 @@ const prepareProductForCurrency = async (productDirectory, host) => {
     await fs.writeFile(codeFilePath, rawCode, "utf8");
   }
 
+
+  // Loop through all html document files in {productDirectory}/documents
+  const documentsDirectory = path.join(productDirectory, "documents");
+  const documentsFiles = await glob("**/*.html", { cwd: documentsDirectory });
+  for (const documentFile of documentsFiles) {
+    const documentFilePath = path.join(documentsDirectory, documentFile);
+    let rawHTML = await fs.readFile(documentFilePath, "utf8");
+    rawHTML = convertCurrencyAmount(rawHTML, currencySymbol, currencyMultiplier);
+    rawHTML = rawHTML.replace(/£/g, currencySymbol);
+    rawHTML = rawHTML.replace(/GBP/g, currencyCode);
+    rawHTML = rawHTML.replace(/GB/g, country);
+    await fs.writeFile(documentFilePath, rawHTML, "utf8");
+  }
+
   // Loop through all JSON files in {productDirectory}/workflows (including files in sub-directories)
   const workflowsDirectory = path.join(productDirectory, "workflows");
   const workflowFiles = await glob("**/*.json", { cwd: workflowsDirectory });
