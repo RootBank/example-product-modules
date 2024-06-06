@@ -21,8 +21,9 @@
         "Pet Insurance is a template product to show how a typical Pet Insurance product will look like in the wild. You'll be able to issue a policy and see how benefits chosen and rating factors confirmed can dynamically give a premium."
       ],
       "descriptionBullets": [
-        "Standard (£3,000)",
-        "Premium (£5,000)"
+        "Annual limit up to £30,000",
+        "Reimbursement up to 90%",
+        "Various discounts available"
       ],
       "createQuoteButton": "Let's get started!",
       "videoTitle": "Pet Insurance Video"

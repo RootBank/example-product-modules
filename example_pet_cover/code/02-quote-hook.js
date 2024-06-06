@@ -128,6 +128,7 @@ const getQuote = (data) => {
         parseInt(cell.replace("(", "-").replace(/[^0-9.-]+/g, "")) / 100;
     }
   }
+  discount = parseFloat(discount.toFixed(2))
   annualPremium *= 1 - discount;
 
   // How to access an external pricing service:
