@@ -32,9 +32,9 @@
         "race_events": "No",
         "worldwide_cover": "Yes",
         "accidental_damange": "No",
-        "200_k_legal_expenses": "Yes",
-        "25_k_personal_accident": "No",
-        "1_million_public_liability": "No"
+        "legal_expenses": "Yes",
+        "personal_accident": "No",
+        "public_liability": "No"
       },
       "bicycles": [
         {
