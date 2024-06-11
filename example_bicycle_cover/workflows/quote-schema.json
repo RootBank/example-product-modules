@@ -12,7 +12,10 @@
       {
         "type": "section-header",
         "key": "h-1",
-        "label": "Bicycle"
+        "label": "Bicycle",
+        "props": {
+          "headingTag": "h4"
+        }
       },
       {
         "key": "bike_make",
@@ -1587,9 +1590,47 @@
     ]
   },
   {
+    "type": "section-header",
+    "key": "h-1",
+    "label": "Cover details",
+    "props": {
+      "headingTag": "h3"
+    }
+  },
+  {
+    "type": "radio-button",
+    "key": "worldwide_cover",
+    "label": "Would you like worldwide cover? *",
+    "options": [
+      {
+        "label": "Yes",
+        "value": "yes"
+      },
+      {
+        "label": "No",
+        "value": "no"
+      }
+    ]
+  },
+  {
+    "type": "radio-button",
+    "key": "racing_cover",
+    "label": "Would you like racing cover? *",
+    "options": [
+      {
+        "label": "Yes",
+        "value": "yes"
+      },
+      {
+        "label": "No",
+        "value": "no"
+      }
+    ]
+  },
+  {
     "type": "text",
-    "key": "postcode",
-    "label": "Please provide your postal code of where you reside? *",
+    "key": "area_code",
+    "label": "When is your area code? *",
     "validators": [
       {
         "validation": {

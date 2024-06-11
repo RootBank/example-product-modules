@@ -13,7 +13,9 @@ const validateQuoteRequest = (data) => {
             bike_value: Joi.number().required(),
             is_ebike: Joi.boolean().required(),
           })).required(),
-        postcode: Joi.string().required(),
+          worldwide_cover: Joi.string().valid(["yes", "no"]).required(),
+          racing_cover: Joi.string().valid(["yes", "no"]).required(),
+          area_code: Joi.string().required(),
       })
       .required(),
     { abortEarly: false },
@@ -32,10 +34,20 @@ const getQuote = (data) => {
   console.log('Sum assured:', sumAssured); // debugging
 
   // Determine total premium
-  const annualBasePremiumCents = data.bicycles.reduce((acc, bike) => acc + getBikePremium(bike.bike_value, bike.is_ebike, false), 0);
-  const annualComprehensivePremiumCents = data.bicycles.reduce((acc, bike) => acc + getBikePremium(bike.bike_value, bike.is_ebike, true), 0);
+  let annualBasePremiumCents = data.bicycles.reduce((acc, bike) => acc + getBikePremium(bike.bike_value, bike.is_ebike, false), 0);
+  let annualComprehensivePremiumCents = data.bicycles.reduce((acc, bike) => acc + getBikePremium(bike.bike_value, bike.is_ebike, true), 0);
   console.log('Annual base premium:', annualBasePremiumCents); // debugging
   console.log('Annual comprehensive premium:', annualComprehensivePremiumCents); // debugging
+
+  // Apply rating factors for worldwide and racing cover
+  if (data.worldwide_cover === 'yes') {
+    annualBasePremiumCents *= 1.3;
+    annualComprehensivePremiumCents *= 1.3;
+  }
+  if (data.racing_cover === 'yes') {
+    annualBasePremiumCents *= 1.4;
+    annualComprehensivePremiumCents *= 1.4;
+  }
 
   // Return two cover options
   return [
@@ -52,13 +64,13 @@ const getQuote = (data) => {
         summary: 'Basic theft cover, including personal accident and legal expenses.',
         benefits: {
           'Theft': 'Yes',
-          'Worldwide cover': 'Yes',
+          'Worldwide cover': (data.worldwide_cover === 'yes' ? 'Yes' : 'No'),
           '£200k legal expenses': 'Yes',
           '£1 million public liability': 'No',
           '£25k personal accident': 'No',
-          'Accidental damange': 'No',
+          'Accidental damage': 'No',
           'Vandalism': 'No',
-          'Race events': 'No',
+          'Race events': (data.racing_cover === 'yes' ? 'Yes' : 'No'),
         }
       },
       input_data: { ...data },
@@ -76,13 +88,13 @@ const getQuote = (data) => {
         summary: 'Covers theft, personal accident, legal expenses, accidental damage, vandalism and race events.',
         benefits: {
           'Theft': 'Yes',
-          'Worldwide cover': 'Yes',
+          'Worldwide cover': (data.worldwide_cover === 'yes' ? 'Yes' : 'No'),
           '£200k legal expenses': 'Yes',
           '£1 million public liability': 'Yes',
           '£25k personal accident': 'Yes',
-          'Accidental damange': 'Yes',
+          'Accidental damage': 'Yes',
           'Vandalism': 'Yes',
-          'Race events': 'Yes',
+          'Race events': (data.racing_cover === 'yes' ? 'Yes' : 'No'),
         }
       },
       input_data: { ...data },
