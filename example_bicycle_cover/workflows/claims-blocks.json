@@ -17,21 +17,29 @@
   },
   {
     "block": {
-      "key": "claim_type",
+      "key": "claim_event_type",
       "type": "dropdown",
       "title": "Event type",
       "options": [
-        {
-          "key": "accident",
-          "value": "Accident"
-        },
         {
           "key": "theft",
           "value": "Theft"
         },
         {
-          "key": "other",
-          "value": "Other"
+          "key": "vandalism",
+          "value": "Vandalism"
+        },
+        {
+          "key": "accident",
+          "value": "Accident"
+        },
+        {
+          "key": "legal_case",
+          "value": "Legal case"
+        },
+        {
+          "key": "liability",
+          "value": "Liability"
         }
       ]
     }
@@ -40,15 +48,41 @@
     "block": {
       "key": "accident_event",
       "type": "input.paragraph",
-      "title": "Description of accident"
+      "title": "Description of claim"
+    }
+  },
+  {
+    "block": {
+      "key": "country_of_event",
+      "type": "radio",
+      "title": "Did this occur in another country whilst traveling?",
+      "default_value": "no",
+      "options": [
+        {
+          "key": "no",
+          "value": "No"
+        },
+        {
+          "key": "yes",
+          "value": "Yes"
+        }
+      ]
+    }
+  },
+  {
+    "block": {
+      "key": "claim_alert_outside_country",
+      "type": "alert",
+      "markdown": "This policy does not include worldwide coverage. Please ensure the claim is within the policy's coverage area.",
+      "color": "danger"
     },
-    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'accident'}}"
+    "show_if": "{{ifCondition (ifCondition claim.policy.module.benefits.worldwide_cover '===' 'No') '&&' (ifCondition claim.block_states.country_of_event.option_key '===' 'yes') }}"
   },
   {
     "block": {
       "key": "incident_area_code",
       "type": "input.text",
-      "title": "In which area_code did this incident occur?"
+      "title": "In which area code did this incident occur?"
     }
   },
   {
@@ -66,6 +100,15 @@
   },
   {
     "block": {
+      "type": "input.currency",
+      "key": "payout_requested_amount",
+      "max": 10000000,
+      "title": "How much is the claimant claiming for?",
+      "isoCode": "GBP"
+    }
+  },
+  {
+    "block": {
       "key": "payout_details",
       "type": "markdown",
       "markdown": "### Payout details"
@@ -74,17 +117,8 @@
   {
     "block": {
       "type": "input.currency",
-      "key": "payout_requested_amount",
-      "max": 1000000,
-      "title": "How much is the claimant claiming for?",
-      "isoCode": "GBP"
-    }
-  },
-  {
-    "block": {
-      "type": "input.currency",
       "key": "payout_approved_amount",
-      "max": 1000000,
+      "max": 10000000,
       "title": "How much payment is approved?",
       "isoCode": "GBP"
     }
