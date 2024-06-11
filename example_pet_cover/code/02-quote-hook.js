@@ -98,7 +98,7 @@ const getQuote = (data) => {
   }
 
   // Calculate general loadings
-  let generalLoadings = [];
+  let generalLoadings = {};
   // generalLoadings['area_code'] = pricingFactorAreaSheet.getRange("A2:C34153").find(row => row[0] === data.area_code)[2];
   generalLoadings["reimbursement"] = pricingFactorReimbursementSheet
     .getRange("A2:B5")

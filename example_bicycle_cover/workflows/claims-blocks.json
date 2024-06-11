@@ -4,7 +4,7 @@
       "key": "waiting_period_alert",
       "type": "alert",
       "color": "warning",
-      "markdown": "Date of claim is within the waiting period."
+      "markdown": "Warning: date of claim is within the waiting period."
     },
     "show_if": "{{ifCondition (dateDifference claim.block_states.event_date.value claim.policy.start_date measurement='days') '<' 90}}"
   },
