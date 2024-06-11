@@ -48,7 +48,7 @@
     "block": {
       "key": "claim_details_heading",
       "type": "markdown",
-      "markdown": "### Claim details"
+      "markdown": "### Claim event details"
     }
   },
   {
@@ -104,30 +104,25 @@
   },
   {
     "block": {
-      "key": "claimant_id",
-      "type": "input.text",
-      "title": "Claimant ID"
+      "key": "claimed_amount_requested",
+      "min": "1",
+      "type": "input.currency",
+      "title": "Claimed amount requested",
+      "isoCode": "GBP"
     }
   },
   {
     "block": {
-      "key": "claimant_address_1",
-      "type": "input.text",
-      "title": "Address Line 1"
+      "key": "b-2",
+      "type": "markdown",
+      "markdown": "### Claim payout details"
     }
   },
   {
     "block": {
-      "key": "claimant_address_2",
-      "type": "input.text",
-      "title": "Address Line 2"
-    }
-  },
-  {
-    "block": {
-      "key": "claimant_address_3",
-      "type": "input.text",
-      "title": "Address Line 3"
+      "key": "payout_description",
+      "type": "input.paragraph",
+      "title": "Description of claim payout"
     }
   },
   {
@@ -135,9 +130,18 @@
       "key": "payout_amount",
       "min": "1",
       "type": "input.currency",
-      "title": "Payout amount",
+      "title": "Approved amount to pay out",
       "isoCode": "GBP"
     }
+  },
+  {
+    "block": {
+      "key": "alert_not_approved",
+      "type": "alert",
+      "color": "info",
+      "markdown": "Claim payout process only available once claim has been marked as 'approved'."
+    },
+    "hide_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
   },
   {
     "block": {
@@ -158,62 +162,19 @@
         },
         "policyholder_id": "{{ claim.policy.policyholder_id }}"
       },
-      "title": "Claim payout",
+      "title": "Manage payout",
       "amount": "{{ claim.block_states.payout_amount.value }}",
-      "description": "To be paid out to the first beneficiary: {{claim.policy.beneficiaries.0.first_name}} {{claim.policy.beneficiaries.0.last_name}}"
+      "description": "Claim reimbursement payment."
     },
-    "show_if": "{{ifCondition claim.approval_status '===' 'approved' }}"
+    "show_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
   },
   {
     "block": {
-      "key": "claim_payout_request_2",
-      "type": "payout_request",
-      "payee": {
-        "type": "beneficiary",
-        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[1].percentage) 100}}",
-        "last_name": "{{ claim.policy.beneficiaries.1.first_name}}",
-        "first_name": "{{ claim.policy.beneficiaries.1.last_name}}",
-        "percentage": 100,
-        "payment_details": {
-          "type": "eft",
-          "details": {
-            "bank_name": "{{ claim.policy.beneficiaries.1.payment_details.details.bank_name }}",
-            "branch_code": "{{ claim.policy.beneficiaries.1.payment_details.details.branch_code }}",
-            "account_type": "{{ claim.policy.beneficiaries.1.payment_details.details.account_type }}",
-            "account_number": "{{ claim.policy.beneficiaries.1.payment_details.details.account_number }}"
-          }
-        }
-      },
-      "title": "Payout request for the 1st Beneficiary",
-      "amount": "{{ claim.policy.module.replacement_value }}",
-      "description": "To be paid out to the first beneficiary: {{claim.policy.beneficiaries.1.first_name}} {{claim.policy.beneficiaries.1.last_name}}"
+      "key": "alert_info_details",
+      "type": "alert",
+      "color": "light",
+      "markdown": "Update bank details directly on the beneficiary."
     },
-    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.1.relationship)}}"
-  },
-  {
-    "block": {
-      "key": "claim_payout_request_3",
-      "type": "payout_request",
-      "payee": {
-        "type": "beneficiary",
-        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[2].percentage) 100}}",
-        "last_name": "{{ claim.policy.beneficiaries.2.first_name}}",
-        "first_name": "{{ claim.policy.beneficiaries.2.last_name}}",
-        "percentage": 100,
-        "payment_details": {
-          "type": "eft",
-          "details": {
-            "bank_name": "{{ claim.policy.beneficiaries.2.payment_details.details.bank_name }}",
-            "branch_code": "{{ claim.policy.beneficiaries.2.payment_details.details.branch_code }}",
-            "account_type": "{{ claim.policy.beneficiaries.2.payment_details.details.account_type }}",
-            "account_number": "{{ claim.policy.beneficiaries.2.payment_details.details.account_number }}"
-          }
-        }
-      },
-      "title": "Payout request for the 3rd Beneficiary",
-      "amount": "{{ claim.policy.module.replacement_value }}",
-      "description": "To be paid out to the third beneficiary: {{claim.policy.beneficiaries.2.first_name}} {{claim.policy.beneficiaries.2.last_name}}"
-    },
-    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.2.relationship)}}"
+    "show_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
   }
 ]
