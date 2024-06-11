@@ -41,7 +41,7 @@ const getQuote = (data) => {
   return [
     // Option 1
     new QuotePackage({
-      package_name: 'Basic Cover', // The name of the "package" of cover
+      package_name: 'Basic Bicycle Cover', // The name of the "package" of cover
       sum_assured: Math.round(sumAssured), // Set the total, aggregated cover amount
       base_premium: Math.round(annualBasePremiumCents / 12), // Should be an integer, cents
       suggested_premium: Math.round(annualBasePremiumCents / 12), // Should be an integer, cents
@@ -65,7 +65,7 @@ const getQuote = (data) => {
     }),
     // Option 2
     new QuotePackage({
-      package_name: 'Comprehensive Cover', // The name of the "package" of cover
+      package_name: 'Comprehensive Bicycle Cover', // The name of the "package" of cover
       sum_assured: Math.round(sumAssured), // Set the total, aggregated cover amount
       base_premium: Math.round(annualComprehensivePremiumCents / 12), // Should be an integer, cents
       suggested_premium: Math.round(annualComprehensivePremiumCents / 12), // Should be an integer, cents
