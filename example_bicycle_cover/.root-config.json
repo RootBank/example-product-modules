@@ -96,8 +96,20 @@
       "max": 1
     },
     "claims": {
-      "checklistItems": [],
+      "checklistItems": [
+        "All required documents have been submitted",
+        "Information in claim matches document information",
+        "Claim details assessed relative to policy terms and cover",
+        "Fraud checks have been completed"
+      ],
       "documentLabels": [
+        "Claim Form",
+        "Proof of Ownership",
+        "Photo of Damage",
+        "Photo of Accessories",
+        "Repair Estimate",
+        "Repair Invoice",
+        "Legal Fees Invoice",
         "Police Report",
         "Statement",
         "Other"

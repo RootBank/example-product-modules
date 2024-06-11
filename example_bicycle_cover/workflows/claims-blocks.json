@@ -46,9 +46,9 @@
   },
   {
     "block": {
-      "key": "incident_postcode",
+      "key": "incident_area_code",
       "type": "input.text",
-      "title": "In which postcode did this incident occur?"
+      "title": "In which area_code did this incident occur?"
     }
   },
   {
