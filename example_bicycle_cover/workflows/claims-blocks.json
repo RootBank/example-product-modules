@@ -1,12 +1,12 @@
 [
   {
     "block": {
-      "key": "waiting_period_alert",
+      "key": "claim_in_waiting_period",
       "type": "alert",
-      "color": "warning",
-      "markdown": "Warning: date of claim is within the waiting period."
+      "color": "danger",
+      "markdown": "Warning: The claim incident date is within the policy's 14-day waiting period."
     },
-    "show_if": "{{ifCondition (dateDifference claim.block_states.event_date.value claim.policy.start_date measurement='days') '<' 90}}"
+    "show_if": "{{ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='days') '<' 14}}"
   },
   {
     "block": {
@@ -109,23 +109,80 @@
   },
   {
     "block": {
-      "key": "payout_details",
+      "key": "b-2",
       "type": "markdown",
-      "markdown": "### Payout details"
+      "markdown": "### Claim payout details"
     }
   },
   {
     "block": {
+      "key": "payout_description",
+      "type": "input.paragraph",
+      "title": "Description of claim payout"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_amount",
+      "min": "1",
       "type": "input.currency",
-      "key": "payout_approved_amount",
-      "max": 10000000,
-      "title": "How much payment is approved?",
+      "title": "Approved amount to pay out",
       "isoCode": "GBP"
     }
   },
   {
     "block": {
-      "key": "claim_details_divider",
+      "key": "payment_summary",
+      "type": "markdown",
+      "markdown": "**Summary**\n- Claimant request: {{#ifIsDefined claim.block_states.payout_requested_amount.value}}{{formatCurrency claim.block_states.payout_requested_amount.value 'GBP' locale='en-GB'}}{{else}}£0.00{{/ifIsDefined}}\n- Excess due: {{claim.policy.module.excess}}.00\n- Approved amount: {{#ifIsDefined claim.block_states.payout_amount.value}}{{formatCurrency claim.block_states.payout_amount.value 'GBP' locale='en-GB'}}{{else}}£0.00{{/ifIsDefined}}"
+    }
+  },
+  {
+    "block": {
+      "key": "alert_not_approved",
+      "type": "alert",
+      "color": "info",
+      "markdown": "Claim payout process only available once claim has been marked as 'approved'."
+    },
+    "hide_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
+  },
+  {
+    "block": {
+      "key": "claim_payout_request",
+      "type": "payout_request",
+      "payee": {
+        "type": "policyholder",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[0].percentage) 100}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.0.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.0.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.0.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.0.payment_details.details.account_number }}"
+          }
+        },
+        "policyholder_id": "{{ claim.policy.policyholder_id }}"
+      },
+      "title": "Manage payout",
+      "amount": "{{ claim.block_states.payout_amount.value }}",
+      "description": "Claim reimbursement payment."
+    },
+    "show_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
+  },
+  {
+    "block": {
+      "key": "alert_info_details",
+      "type": "alert",
+      "color": "light",
+      "markdown": "Update bank details directly on the beneficiary."
+    },
+    "show_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
+  },
+  {
+    "block": {
+      "key": "d-bottom",
       "type": "divider"
     }
   }

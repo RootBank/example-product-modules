@@ -1734,5 +1734,14 @@
     "type": "text",
     "key": "discount_code",
     "label": "If you have a discount code, enter it here."
+  },
+  {
+    "type": "paragraph",
+    "key": "p-1",
+    "label": "_Demo note: use key BIKE123 to showcase discount._"
+  },
+  {
+    "type": "blank-space",
+    "key": "bs-1"
   }
 ]

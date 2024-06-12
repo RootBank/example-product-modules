@@ -4,18 +4,9 @@
       "key": "claim_in_waiting_period",
       "type": "alert",
       "color": "danger",
-      "markdown": "Warning: General 14 day waiting period still in effect."
+      "markdown": "Warning: The claim incident date is within the policy's 14-day waiting period."
     },
-    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '!==' 'natural death') '&&' (ifCondition claim.block_states.claim_type.value '!==' 'accidental death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='days') '<' 14)}}"
-  },
-  {
-    "block": {
-      "key": "accident_death_claim_in_waiting_period",
-      "type": "alert",
-      "color": "danger",
-      "markdown": "Warning: 1 month accidental death waiting period still in effect."
-    },
-    "show_if": "{{if (ifCondition claim.block_states.claim_type.value '===' 'accidental death') '&&' (ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='months') '<' 1)}}"
+    "show_if": "{{ifCondition (dateDifference claim.block_states.incident_date.value claim.policy.start_date measurement='days') '<' 14}}"
   },
   {
     "block": {
@@ -145,7 +136,7 @@
   },
   {
     "block": {
-      "key": "claim_payout_request_1",
+      "key": "claim_payout_request",
       "type": "payout_request",
       "payee": {
         "type": "policyholder",
@@ -176,5 +167,11 @@
       "markdown": "Update bank details directly on the beneficiary."
     },
     "show_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
+  },
+  {
+    "block": {
+      "key": "d-bottom",
+      "type": "divider"
+    }
   }
 ]
