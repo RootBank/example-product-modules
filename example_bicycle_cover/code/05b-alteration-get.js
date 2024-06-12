@@ -26,7 +26,7 @@ const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
       // Merge old bikes' extra data into new bikes
       const newBicycles = data.bicycles.map((newBicycle) => {
         const oldBicycle = quoteData.bicycles.find((bicycle) => bicycle.name === newBicycle.name);
-        return { ...oldBicycle, ...oldBicycle };
+        return { ...oldBicycle, ...newBicycle };
       });
       quoteData = { ...quoteData, bicycles: newBicycles };
       break;
