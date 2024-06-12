@@ -1,0 +1,1592 @@
+[
+  {
+    "type": "list",
+    "label": "Bicycles",
+    "outputPathList": "bicycles",
+    "maxNumber": 5,
+    "props": {
+      "addButtonLabel": "Add another bike",
+      "removeButtonLabel": "Remove bike"
+    },
+    "components": [
+      {
+        "type": "section-header",
+        "key": "h-1",
+        "label": "Bicycle",
+        "props": {
+          "headingTag": "h4"
+        }
+      },
+      {
+        "key": "bike_make",
+        "type": "select",
+        "label": "What is the make of your bike?",
+        "options": [
+          {
+            "label": "3T Cycling",
+            "value": "3T Cycling"
+          },
+          {
+            "label": "A-bike",
+            "value": "A-bike"
+          },
+          {
+            "label": "Abici",
+            "value": "Abici"
+          },
+          {
+            "label": "Adler",
+            "value": "Adler"
+          },
+          {
+            "label": "AIST",
+            "value": "AIST"
+          },
+          {
+            "label": "ALAN",
+            "value": "ALAN"
+          },
+          {
+            "label": "Al Carter",
+            "value": "Al Carter"
+          },
+          {
+            "label": "Alcyon",
+            "value": "Alcyon"
+          },
+          {
+            "label": "American Bicycle Company",
+            "value": "American Bicycle Company"
+          },
+          {
+            "label": "American Bicycle Group",
+            "value": "American Bicycle Group"
+          },
+          {
+            "label": "American Eagle",
+            "value": "American Eagle"
+          },
+          {
+            "label": "American Machine and Foundry",
+            "value": "American Machine and Foundry"
+          },
+          {
+            "label": "American Star Bicycle",
+            "value": "American Star Bicycle"
+          },
+          {
+            "label": "Aprilia",
+            "value": "Aprilia"
+          },
+          {
+            "label": "Argon 18",
+            "value": "Argon 18"
+          },
+          {
+            "label": "Ariel",
+            "value": "Ariel"
+          },
+          {
+            "label": "Atala",
+            "value": "Atala"
+          },
+          {
+            "label": "Author",
+            "value": "Author"
+          },
+          {
+            "label": "Avanti",
+            "value": "Avanti"
+          },
+          {
+            "label": "Baltik vairas",
+            "value": "Baltik vairas"
+          },
+          {
+            "label": "Bacchetta",
+            "value": "Bacchetta"
+          },
+          {
+            "label": "Basso_Bikes",
+            "value": "Basso_Bikes"
+          },
+          {
+            "label": "Batavus",
+            "value": "Batavus"
+          },
+          {
+            "label": "Battaglin",
+            "value": "Battaglin"
+          },
+          {
+            "label": "BH",
+            "value": "BH"
+          },
+          {
+            "label": "Bianchi",
+            "value": "Bianchi"
+          },
+          {
+            "label": "Bickerton",
+            "value": "Bickerton"
+          },
+          {
+            "label": "Bike Friday",
+            "value": "Bike Friday"
+          },
+          {
+            "label": "Bilenky",
+            "value": "Bilenky"
+          },
+          {
+            "label": "Biomega",
+            "value": "Biomega"
+          },
+          {
+            "label": "Birdy",
+            "value": "Birdy"
+          },
+          {
+            "label": "BMC",
+            "value": "BMC"
+          },
+          {
+            "label": "Boardman Bikes",
+            "value": "Boardman Bikes"
+          },
+          {
+            "label": "Bohemian Bicycles",
+            "value": "Bohemian Bicycles"
+          },
+          {
+            "label": "Bontrager",
+            "value": "Bontrager"
+          },
+          {
+            "label": "Bootie",
+            "value": "Bootie"
+          },
+          {
+            "label": "Bottecchia",
+            "value": "Bottecchia"
+          },
+          {
+            "label": "Bradbury",
+            "value": "Bradbury"
+          },
+          {
+            "label": "Brasil & Movimento",
+            "value": "Brasil & Movimento"
+          },
+          {
+            "label": "Brennabor",
+            "value": "Brennabor"
+          },
+          {
+            "label": "Bridgestone",
+            "value": "Bridgestone"
+          },
+          {
+            "label": "British Eagle",
+            "value": "British Eagle"
+          },
+          {
+            "label": "Brodie Bicycles",
+            "value": "Brodie Bicycles"
+          },
+          {
+            "label": "Brompton Bicycle",
+            "value": "Brompton Bicycle"
+          },
+          {
+            "label": "Brunswick",
+            "value": "Brunswick"
+          },
+          {
+            "label": "BSA",
+            "value": "BSA"
+          },
+          {
+            "label": "B’Twin",
+            "value": "B’Twin"
+          },
+          {
+            "label": "Burley Design",
+            "value": "Burley Design"
+          },
+          {
+            "label": "Calcott Brothers",
+            "value": "Calcott Brothers"
+          },
+          {
+            "label": "Calfee Design",
+            "value": "Calfee Design"
+          },
+          {
+            "label": "Caloi",
+            "value": "Caloi"
+          },
+          {
+            "label": "Campion Cycle Company",
+            "value": "Campion Cycle Company"
+          },
+          {
+            "label": "Cannondale",
+            "value": "Cannondale"
+          },
+          {
+            "label": "Canyon bicycles",
+            "value": "Canyon bicycles"
+          },
+          {
+            "label": "Catrike",
+            "value": "Catrike"
+          },
+          {
+            "label": "CCM",
+            "value": "CCM"
+          },
+          {
+            "label": "Centurion",
+            "value": "Centurion"
+          },
+          {
+            "label": "Cervélo",
+            "value": "Cervélo"
+          },
+          {
+            "label": "Chater-Lea",
+            "value": "Chater-Lea"
+          },
+          {
+            "label": "Chicago Bicycle Company",
+            "value": "Chicago Bicycle Company"
+          },
+          {
+            "label": "Cilo",
+            "value": "Cilo"
+          },
+          {
+            "label": "Cinelli",
+            "value": "Cinelli"
+          },
+          {
+            "label": "Citizen Bike",
+            "value": "Citizen Bike"
+          },
+          {
+            "label": "Clark-Kent",
+            "value": "Clark-Kent"
+          },
+          {
+            "label": "Claud Butler",
+            "value": "Claud Butler"
+          },
+          {
+            "label": "Clément",
+            "value": "Clément"
+          },
+          {
+            "label": "Co-Motion Cycles",
+            "value": "Co-Motion Cycles"
+          },
+          {
+            "label": "Coker",
+            "value": "Coker"
+          },
+          {
+            "label": "Colnago",
+            "value": "Colnago"
+          },
+          {
+            "label": "Columbia Bicycles",
+            "value": "Columbia Bicycles"
+          },
+          {
+            "label": "Corima",
+            "value": "Corima"
+          },
+          {
+            "label": "Cortina Cycles",
+            "value": "Cortina Cycles"
+          },
+          {
+            "label": "Coventry-Eagle",
+            "value": "Coventry-Eagle"
+          },
+          {
+            "label": "Cruzbike",
+            "value": "Cruzbike"
+          },
+          {
+            "label": "Cube",
+            "value": "Cube"
+          },
+          {
+            "label": "Currys",
+            "value": "Currys"
+          },
+          {
+            "label": "Cycle Force Group",
+            "value": "Cycle Force Group"
+          },
+          {
+            "label": "Cycles Devinci",
+            "value": "Cycles Devinci"
+          },
+          {
+            "label": "Cycleuropa Group",
+            "value": "Cycleuropa Group"
+          },
+          {
+            "label": "Cyfac",
+            "value": "Cyfac"
+          },
+          {
+            "label": "Dahon",
+            "value": "Dahon"
+          },
+          {
+            "label": "Dawes Cycles",
+            "value": "Dawes Cycles"
+          },
+          {
+            "label": "Decauville",
+            "value": "Decauville"
+          },
+          {
+            "label": "Defiance Cycle Company",
+            "value": "Defiance Cycle Company"
+          },
+          {
+            "label": "Demorest",
+            "value": "Demorest"
+          },
+          {
+            "label": "Den Beste Sykkel",
+            "value": "Den Beste Sykkel"
+          },
+          {
+            "label": "Derby Cycle",
+            "value": "Derby Cycle"
+          },
+          {
+            "label": "De Rosa",
+            "value": "De Rosa"
+          },
+          {
+            "label": "Di Blasi Industriale",
+            "value": "Di Blasi Industriale"
+          },
+          {
+            "label": "Diamant",
+            "value": "Diamant"
+          },
+          {
+            "label": "Diamondback Bicycles",
+            "value": "Diamondback Bicycles"
+          },
+          {
+            "label": "Dolan Bikes",
+            "value": "Dolan Bikes"
+          },
+          {
+            "label": "Dorel Sports",
+            "value": "Dorel Sports"
+          },
+          {
+            "label": "Dunelt",
+            "value": "Dunelt"
+          },
+          {
+            "label": "Dynacraft",
+            "value": "Dynacraft"
+          },
+          {
+            "label": "Eagle Bicycle Manufacturing Company",
+            "value": "Eagle Bicycle Manufacturing Company"
+          },
+          {
+            "label": "Eddy Merckx Cycles",
+            "value": "Eddy Merckx Cycles"
+          },
+          {
+            "label": "Electra Bicycle Company",
+            "value": "Electra Bicycle Company"
+          },
+          {
+            "label": "Ellis Briggs",
+            "value": "Ellis Briggs"
+          },
+          {
+            "label": "Ellsworth Handcrafted Bicycles",
+            "value": "Ellsworth Handcrafted Bicycles"
+          },
+          {
+            "label": "Emilio Bozzi",
+            "value": "Emilio Bozzi"
+          },
+          {
+            "label": "Ērenpreiss Bicycles",
+            "value": "Ērenpreiss Bicycles"
+          },
+          {
+            "label": "Excelsior",
+            "value": "Excelsior"
+          },
+          {
+            "label": "Falcon Cycles",
+            "value": "Falcon Cycles"
+          },
+          {
+            "label": "Fat City Cycles",
+            "value": "Fat City Cycles"
+          },
+          {
+            "label": "Favorit",
+            "value": "Favorit"
+          },
+          {
+            "label": "Felt",
+            "value": "Felt"
+          },
+          {
+            "label": "Flying Pigeon",
+            "value": "Flying Pigeon"
+          },
+          {
+            "label": "Flying Scot",
+            "value": "Flying Scot"
+          },
+          {
+            "label": "Focus Bikes",
+            "value": "Focus Bikes"
+          },
+          {
+            "label": "Cycles Follis",
+            "value": "Cycles Follis"
+          },
+          {
+            "label": "Folmer & Schwing",
+            "value": "Folmer & Schwing"
+          },
+          {
+            "label": "Fondriest",
+            "value": "Fondriest"
+          },
+          {
+            "label": "Fram",
+            "value": "Fram"
+          },
+          {
+            "label": "Freddie Grubb",
+            "value": "Freddie Grubb"
+          },
+          {
+            "label": "Fuji Bikes",
+            "value": "Fuji Bikes"
+          },
+          {
+            "label": "Fyxation",
+            "value": "Fyxation"
+          },
+          {
+            "label": "Gazelle",
+            "value": "Gazelle"
+          },
+          {
+            "label": "Gendron Bicycles",
+            "value": "Gendron Bicycles"
+          },
+          {
+            "label": "Genesis",
+            "value": "Genesis"
+          },
+          {
+            "label": "Gepida",
+            "value": "Gepida"
+          },
+          {
+            "label": "Ghost",
+            "value": "Ghost"
+          },
+          {
+            "label": "Giant Manufacturing",
+            "value": "Giant Manufacturing"
+          },
+          {
+            "label": "Gimson",
+            "value": "Gimson"
+          },
+          {
+            "label": "Gitane",
+            "value": "Gitane"
+          },
+          {
+            "label": "Gladiator Cycle Company",
+            "value": "Gladiator Cycle Company"
+          },
+          {
+            "label": "Gnome et Rhône",
+            "value": "Gnome et Rhône"
+          },
+          {
+            "label": "Gocycle",
+            "value": "Gocycle"
+          },
+          {
+            "label": "Gormully & Jeffery",
+            "value": "Gormully & Jeffery"
+          },
+          {
+            "label": "Gräf & Stift",
+            "value": "Gräf & Stift"
+          },
+          {
+            "label": "GT Bicycles",
+            "value": "GT Bicycles"
+          },
+          {
+            "label": "Guerciotti",
+            "value": "Guerciotti"
+          },
+          {
+            "label": "Gustavs Ērenpreis Bicycle Factory",
+            "value": "Gustavs Ērenpreis Bicycle Factory"
+          },
+          {
+            "label": "Gunnar",
+            "value": "Gunnar"
+          },
+          {
+            "label": "Halfords",
+            "value": "Halfords"
+          },
+          {
+            "label": "Harley-Davidson",
+            "value": "Harley-Davidson"
+          },
+          {
+            "label": "Haro Bikes",
+            "value": "Haro Bikes"
+          },
+          {
+            "label": "Harry Quinn",
+            "value": "Harry Quinn"
+          },
+          {
+            "label": "Hase bikes",
+            "value": "Hase bikes"
+          },
+          {
+            "label": "Heinkel",
+            "value": "Heinkel"
+          },
+          {
+            "label": "Helkama",
+            "value": "Helkama"
+          },
+          {
+            "label": "Henley Bicycle Works",
+            "value": "Henley Bicycle Works"
+          },
+          {
+            "label": "Hercules (UK)",
+            "value": "Hercules (UK)"
+          },
+          {
+            "label": "Hercules (Germany)",
+            "value": "Hercules (Germany)"
+          },
+          {
+            "label": "Hero Cycles Ltd",
+            "value": "Hero Cycles Ltd"
+          },
+          {
+            "label": "René Herse",
+            "value": "René Herse"
+          },
+          {
+            "label": "Hetchins",
+            "value": "Hetchins"
+          },
+          {
+            "label": "Hillman",
+            "value": "Hillman"
+          },
+          {
+            "label": "Hoffman BMX Bikes",
+            "value": "Hoffman BMX Bikes"
+          },
+          {
+            "label": "Hoffmann",
+            "value": "Hoffmann"
+          },
+          {
+            "label": "Holdsworth",
+            "value": "Holdsworth"
+          },
+          {
+            "label": "Huffy",
+            "value": "Huffy"
+          },
+          {
+            "label": "Humber",
+            "value": "Humber"
+          },
+          {
+            "label": "Hurtu",
+            "value": "Hurtu"
+          },
+          {
+            "label": "Husqvarna",
+            "value": "Husqvarna"
+          },
+          {
+            "label": "Hutch BMX",
+            "value": "Hutch BMX"
+          },
+          {
+            "label": "Ibis",
+            "value": "Ibis"
+          },
+          {
+            "label": "Ideal Bikes",
+            "value": "Ideal Bikes"
+          },
+          {
+            "label": "Indian",
+            "value": "Indian"
+          },
+          {
+            "label": "IFA",
+            "value": "IFA"
+          },
+          {
+            "label": "Independent Fabrication",
+            "value": "Independent Fabrication"
+          },
+          {
+            "label": "Inspired Cycle Engineering",
+            "value": "Inspired Cycle Engineering"
+          },
+          {
+            "label": "Iride",
+            "value": "Iride"
+          },
+          {
+            "label": "Iron Horse Bicycles",
+            "value": "Iron Horse Bicycles"
+          },
+          {
+            "label": "Islabikes",
+            "value": "Islabikes"
+          },
+          {
+            "label": "Italvega",
+            "value": "Italvega"
+          },
+          {
+            "label": "Ivel Cycle Works",
+            "value": "Ivel Cycle Works"
+          },
+          {
+            "label": "Iver Johnson",
+            "value": "Iver Johnson"
+          },
+          {
+            "label": "Iverson",
+            "value": "Iverson"
+          },
+          {
+            "label": "Jan Janssen",
+            "value": "Jan Janssen"
+          },
+          {
+            "label": "JMC Bicycles",
+            "value": "JMC Bicycles"
+          },
+          {
+            "label": "Jamis Bicycles",
+            "value": "Jamis Bicycles"
+          },
+          {
+            "label": "Kalkhoff",
+            "value": "Kalkhoff"
+          },
+          {
+            "label": "Kangaroo",
+            "value": "Kangaroo"
+          },
+          {
+            "label": "Karbon Kinetics Limited",
+            "value": "Karbon Kinetics Limited"
+          },
+          {
+            "label": "K2 Sports",
+            "value": "K2 Sports"
+          },
+          {
+            "label": "Kent",
+            "value": "Kent"
+          },
+          {
+            "label": "Kestrel USA",
+            "value": "Kestrel USA"
+          },
+          {
+            "label": "Kettler",
+            "value": "Kettler"
+          },
+          {
+            "label": "KHS",
+            "value": "KHS"
+          },
+          {
+            "label": "Kia",
+            "value": "Kia"
+          },
+          {
+            "label": "Kinesis Industry",
+            "value": "Kinesis Industry"
+          },
+          {
+            "label": "Klein",
+            "value": "Klein"
+          },
+          {
+            "label": "KOGA",
+            "value": "KOGA"
+          },
+          {
+            "label": "Kogswell Cycles",
+            "value": "Kogswell Cycles"
+          },
+          {
+            "label": "Kona",
+            "value": "Kona"
+          },
+          {
+            "label": "Kronan",
+            "value": "Kronan"
+          },
+          {
+            "label": "Kross",
+            "value": "Kross"
+          },
+          {
+            "label": "KTM",
+            "value": "KTM"
+          },
+          {
+            "label": "Kuota",
+            "value": "Kuota"
+          },
+          {
+            "label": "Kuwahara",
+            "value": "Kuwahara"
+          },
+          {
+            "label": "Laurin & Klement",
+            "value": "Laurin & Klement"
+          },
+          {
+            "label": "Lapierre",
+            "value": "Lapierre"
+          },
+          {
+            "label": "LeMond",
+            "value": "LeMond"
+          },
+          {
+            "label": "Alexander Leutner & Co.",
+            "value": "Alexander Leutner & Co."
+          },
+          {
+            "label": "Lightning Cycle Dynamics",
+            "value": "Lightning Cycle Dynamics"
+          },
+          {
+            "label": "Litespeed",
+            "value": "Litespeed"
+          },
+          {
+            "label": "Look",
+            "value": "Look"
+          },
+          {
+            "label": "Louison Bobet",
+            "value": "Louison Bobet"
+          },
+          {
+            "label": "Lotus",
+            "value": "Lotus"
+          },
+          {
+            "label": "Magna",
+            "value": "Magna"
+          },
+          {
+            "label": "Malvern Star",
+            "value": "Malvern Star"
+          },
+          {
+            "label": "Marin Bikes",
+            "value": "Marin Bikes"
+          },
+          {
+            "label": "Masi Bicycles",
+            "value": "Masi Bicycles"
+          },
+          {
+            "label": "Matchless",
+            "value": "Matchless"
+          },
+          {
+            "label": "Matra",
+            "value": "Matra"
+          },
+          {
+            "label": "Melon Bicycles",
+            "value": "Melon Bicycles"
+          },
+          {
+            "label": "Mercian Cycles",
+            "value": "Mercian Cycles"
+          },
+          {
+            "label": "Merida Bikes",
+            "value": "Merida Bikes"
+          },
+          {
+            "label": "Merlin",
+            "value": "Merlin"
+          },
+          {
+            "label": "Merckx",
+            "value": "Merckx"
+          },
+          {
+            "label": "Milwaukee Bicycle Co.",
+            "value": "Milwaukee Bicycle Co."
+          },
+          {
+            "label": "Minerva",
+            "value": "Minerva"
+          },
+          {
+            "label": "Miyata",
+            "value": "Miyata"
+          },
+          {
+            "label": "Mochet",
+            "value": "Mochet"
+          },
+          {
+            "label": "Monark",
+            "value": "Monark"
+          },
+          {
+            "label": "Mondia",
+            "value": "Mondia"
+          },
+          {
+            "label": "Mongoose",
+            "value": "Mongoose"
+          },
+          {
+            "label": "Montague",
+            "value": "Montague"
+          },
+          {
+            "label": "Moots Cycles",
+            "value": "Moots Cycles"
+          },
+          {
+            "label": "Motobécane",
+            "value": "Motobécane"
+          },
+          {
+            "label": "Moulton",
+            "value": "Moulton"
+          },
+          {
+            "label": "Mountain Equipment Co-op",
+            "value": "Mountain Equipment Co-op"
+          },
+          {
+            "label": "Murray",
+            "value": "Murray"
+          },
+          {
+            "label": "Muddy Fox",
+            "value": "Muddy Fox"
+          },
+          {
+            "label": "Nagasawa",
+            "value": "Nagasawa"
+          },
+          {
+            "label": "National",
+            "value": "National"
+          },
+          {
+            "label": "Neil Pryde",
+            "value": "Neil Pryde"
+          },
+          {
+            "label": "Neobike",
+            "value": "Neobike"
+          },
+          {
+            "label": "NEXT",
+            "value": "NEXT"
+          },
+          {
+            "label": "Nishiki",
+            "value": "Nishiki"
+          },
+          {
+            "label": "Norco",
+            "value": "Norco"
+          },
+          {
+            "label": "Norman Cycles",
+            "value": "Norman Cycles"
+          },
+          {
+            "label": "Novara",
+            "value": "Novara"
+          },
+          {
+            "label": "NSU",
+            "value": "NSU"
+          },
+          {
+            "label": "Nymanbolagen",
+            "value": "Nymanbolagen"
+          },
+          {
+            "label": "Olmo",
+            "value": "Olmo"
+          },
+          {
+            "label": "Opel",
+            "value": "Opel"
+          },
+          {
+            "label": "Orbea",
+            "value": "Orbea"
+          },
+          {
+            "label": "Órbita",
+            "value": "Órbita"
+          },
+          {
+            "label": "Orient Bikes",
+            "value": "Orient Bikes"
+          },
+          {
+            "label": "Overman Wheel Company",
+            "value": "Overman Wheel Company"
+          },
+          {
+            "label": "Pacific Cycle",
+            "value": "Pacific Cycle"
+          },
+          {
+            "label": "Pacific Cycles",
+            "value": "Pacific Cycles"
+          },
+          {
+            "label": "Panasonic",
+            "value": "Panasonic"
+          },
+          {
+            "label": "Pashley Cycles",
+            "value": "Pashley Cycles"
+          },
+          {
+            "label": "Pedersen bicycle",
+            "value": "Pedersen bicycle"
+          },
+          {
+            "label": "Pegas",
+            "value": "Pegas"
+          },
+          {
+            "label": "Peugeot",
+            "value": "Peugeot"
+          },
+          {
+            "label": "Phillips Cycles",
+            "value": "Phillips Cycles"
+          },
+          {
+            "label": "Phoenix",
+            "value": "Phoenix"
+          },
+          {
+            "label": "Pierce Cycle Company",
+            "value": "Pierce Cycle Company"
+          },
+          {
+            "label": "Pinarello",
+            "value": "Pinarello"
+          },
+          {
+            "label": "Planet X Bikes",
+            "value": "Planet X Bikes"
+          },
+          {
+            "label": "Pocket Bicycles",
+            "value": "Pocket Bicycles"
+          },
+          {
+            "label": "Pogliaghi",
+            "value": "Pogliaghi"
+          },
+          {
+            "label": "Polygon Bikes",
+            "value": "Polygon Bikes"
+          },
+          {
+            "label": "Pope Manufacturing Company",
+            "value": "Pope Manufacturing Company"
+          },
+          {
+            "label": "Premier",
+            "value": "Premier"
+          },
+          {
+            "label": "Prophete",
+            "value": "Prophete"
+          },
+          {
+            "label": "Puch",
+            "value": "Puch"
+          },
+          {
+            "label": "Quadrant Cycle Company",
+            "value": "Quadrant Cycle Company"
+          },
+          {
+            "label": "Quality Bicycle Products",
+            "value": "Quality Bicycle Products"
+          },
+          {
+            "label": "Quintana Roo",
+            "value": "Quintana Roo"
+          },
+          {
+            "label": "R+E Cycles",
+            "value": "R+E Cycles"
+          },
+          {
+            "label": "Radio Flyer",
+            "value": "Radio Flyer"
+          },
+          {
+            "label": "Rabasa Cycles",
+            "value": "Rabasa Cycles"
+          },
+          {
+            "label": "Raleigh",
+            "value": "Raleigh"
+          },
+          {
+            "label": "Rambler",
+            "value": "Rambler"
+          },
+          {
+            "label": "Rans Designs",
+            "value": "Rans Designs"
+          },
+          {
+            "label": "Razor",
+            "value": "Razor"
+          },
+          {
+            "label": "Redline bicycles",
+            "value": "Redline bicycles"
+          },
+          {
+            "label": "Rhoades Car",
+            "value": "Rhoades Car"
+          },
+          {
+            "label": "Ridgeback",
+            "value": "Ridgeback"
+          },
+          {
+            "label": "Ridley",
+            "value": "Ridley"
+          },
+          {
+            "label": "Riese und Müller",
+            "value": "Riese und Müller"
+          },
+          {
+            "label": "RIH",
+            "value": "RIH"
+          },
+          {
+            "label": "Riley Cycle Company",
+            "value": "Riley Cycle Company"
+          },
+          {
+            "label": "Rivendell Bicycle Works",
+            "value": "Rivendell Bicycle Works"
+          },
+          {
+            "label": "Roadmaster",
+            "value": "Roadmaster"
+          },
+          {
+            "label": "Roberts Cycles",
+            "value": "Roberts Cycles"
+          },
+          {
+            "label": "Robin Hood",
+            "value": "Robin Hood"
+          },
+          {
+            "label": "Rocky Mountain Bicycles",
+            "value": "Rocky Mountain Bicycles"
+          },
+          {
+            "label": "ROMET Bike Factory",
+            "value": "ROMET Bike Factory"
+          },
+          {
+            "label": "ROSE Bikes",
+            "value": "ROSE Bikes"
+          },
+          {
+            "label": "Ross",
+            "value": "Ross"
+          },
+          {
+            "label": "Rover Company",
+            "value": "Rover Company"
+          },
+          {
+            "label": "Rowbike",
+            "value": "Rowbike"
+          },
+          {
+            "label": "Rudge-Whitworth",
+            "value": "Rudge-Whitworth"
+          },
+          {
+            "label": "Salcano",
+            "value": "Salcano"
+          },
+          {
+            "label": "Samchuly",
+            "value": "Samchuly"
+          },
+          {
+            "label": "Santa Cruz Bikes",
+            "value": "Santa Cruz Bikes"
+          },
+          {
+            "label": "Santana Cycles",
+            "value": "Santana Cycles"
+          },
+          {
+            "label": "Saracen Cycles",
+            "value": "Saracen Cycles"
+          },
+          {
+            "label": "Maskinfabriks-aktiebolaget Scania",
+            "value": "Maskinfabriks-aktiebolaget Scania"
+          },
+          {
+            "label": "Schwinn Bicycle Company",
+            "value": "Schwinn Bicycle Company"
+          },
+          {
+            "label": "SCOTT Sports",
+            "value": "SCOTT Sports"
+          },
+          {
+            "label": "SE Racing",
+            "value": "SE Racing"
+          },
+          {
+            "label": "Serotta",
+            "value": "Serotta"
+          },
+          {
+            "label": "Seven Cycles",
+            "value": "Seven Cycles"
+          },
+          {
+            "label": "Shelby Cycle Company",
+            "value": "Shelby Cycle Company"
+          },
+          {
+            "label": "Shimano",
+            "value": "Shimano"
+          },
+          {
+            "label": "Simpel",
+            "value": "Simpel"
+          },
+          {
+            "label": "Simson",
+            "value": "Simson"
+          },
+          {
+            "label": "Sinclair Research",
+            "value": "Sinclair Research"
+          },
+          {
+            "label": "Singer",
+            "value": "Singer"
+          },
+          {
+            "label": "Softride",
+            "value": "Softride"
+          },
+          {
+            "label": "Sohrab",
+            "value": "Sohrab"
+          },
+          {
+            "label": "Solé Bicycle Co.",
+            "value": "Solé Bicycle Co."
+          },
+          {
+            "label": "Solex",
+            "value": "Solex"
+          },
+          {
+            "label": "Solifer",
+            "value": "Solifer"
+          },
+          {
+            "label": "SOMA Fabrications",
+            "value": "SOMA Fabrications"
+          },
+          {
+            "label": "Somec",
+            "value": "Somec"
+          },
+          {
+            "label": "Spacelander Bicycle",
+            "value": "Spacelander Bicycle"
+          },
+          {
+            "label": "Spalding",
+            "value": "Spalding"
+          },
+          {
+            "label": "Sparta B.V.",
+            "value": "Sparta B.V."
+          },
+          {
+            "label": "Specialized",
+            "value": "Specialized"
+          },
+          {
+            "label": "Speedwell bicycles",
+            "value": "Speedwell bicycles"
+          },
+          {
+            "label": "Star Cycle Company",
+            "value": "Star Cycle Company"
+          },
+          {
+            "label": "Stearns",
+            "value": "Stearns"
+          },
+          {
+            "label": "Stelber Cycle Corp",
+            "value": "Stelber Cycle Corp"
+          },
+          {
+            "label": "Stella",
+            "value": "Stella"
+          },
+          {
+            "label": "Sterling Bicycle Co.",
+            "value": "Sterling Bicycle Co."
+          },
+          {
+            "label": "Steyr",
+            "value": "Steyr"
+          },
+          {
+            "label": "Strida",
+            "value": "Strida"
+          },
+          {
+            "label": "Sun Cycle & Fittings Co.",
+            "value": "Sun Cycle & Fittings Co."
+          },
+          {
+            "label": "Sunbeam",
+            "value": "Sunbeam"
+          },
+          {
+            "label": "Surly Bikes",
+            "value": "Surly Bikes"
+          },
+          {
+            "label": "Suzuki",
+            "value": "Suzuki"
+          },
+          {
+            "label": "Swift Folder",
+            "value": "Swift Folder"
+          },
+          {
+            "label": "Swing Bike",
+            "value": "Swing Bike"
+          },
+          {
+            "label": "Škoda",
+            "value": "Škoda"
+          },
+          {
+            "label": "Tern",
+            "value": "Tern"
+          },
+          {
+            "label": "TerraTrike",
+            "value": "TerraTrike"
+          },
+          {
+            "label": "Terrot",
+            "value": "Terrot"
+          },
+          {
+            "label": "Thomas",
+            "value": "Thomas"
+          },
+          {
+            "label": "Time",
+            "value": "Time"
+          },
+          {
+            "label": "Titus",
+            "value": "Titus"
+          },
+          {
+            "label": "Tommaso bikes",
+            "value": "Tommaso bikes"
+          },
+          {
+            "label": "Torker",
+            "value": "Torker"
+          },
+          {
+            "label": "Trek Bicycle Corporation",
+            "value": "Trek Bicycle Corporation"
+          },
+          {
+            "label": "Trident Trikes",
+            "value": "Trident Trikes"
+          },
+          {
+            "label": "Trinx",
+            "value": "Trinx"
+          },
+          {
+            "label": "Triumph Cycle",
+            "value": "Triumph Cycle"
+          },
+          {
+            "label": "Triumph (TWN)",
+            "value": "Triumph (TWN)"
+          },
+          {
+            "label": "Tube Investments",
+            "value": "Tube Investments"
+          },
+          {
+            "label": "Tunturi",
+            "value": "Tunturi"
+          },
+          {
+            "label": "Turner Suspension Bicycles",
+            "value": "Turner Suspension Bicycles"
+          },
+          {
+            "label": "Univega",
+            "value": "Univega"
+          },
+          {
+            "label": "Urago",
+            "value": "Urago"
+          },
+          {
+            "label": "Van Dessel Sports",
+            "value": "Van Dessel Sports"
+          },
+          {
+            "label": "VanMoof",
+            "value": "VanMoof"
+          },
+          {
+            "label": "Velocite Bikes",
+            "value": "Velocite Bikes"
+          },
+          {
+            "label": "Velomotors",
+            "value": "Velomotors"
+          },
+          {
+            "label": "VéloSoleX",
+            "value": "VéloSoleX"
+          },
+          {
+            "label": "Victoria",
+            "value": "Victoria"
+          },
+          {
+            "label": "Villiger",
+            "value": "Villiger"
+          },
+          {
+            "label": "Villy Customs",
+            "value": "Villy Customs"
+          },
+          {
+            "label": "Vindec",
+            "value": "Vindec"
+          },
+          {
+            "label": "VinFast",
+            "value": "VinFast"
+          },
+          {
+            "label": "Vitus",
+            "value": "Vitus"
+          },
+          {
+            "label": "Volae",
+            "value": "Volae"
+          },
+          {
+            "label": "Volagi",
+            "value": "Volagi"
+          },
+          {
+            "label": "Wanderer",
+            "value": "Wanderer"
+          },
+          {
+            "label": "Waverley Cycles",
+            "value": "Waverley Cycles"
+          },
+          {
+            "label": "Waterford Precision Cycles",
+            "value": "Waterford Precision Cycles"
+          },
+          {
+            "label": "Western Wheel Works",
+            "value": "Western Wheel Works"
+          },
+          {
+            "label": "Whippet",
+            "value": "Whippet"
+          },
+          {
+            "label": "Wilderness Trail Bikes",
+            "value": "Wilderness Trail Bikes"
+          },
+          {
+            "label": "Wilier Triestina",
+            "value": "Wilier Triestina"
+          },
+          {
+            "label": "Witcomb Cycles",
+            "value": "Witcomb Cycles"
+          },
+          {
+            "label": "Wittson Custom Ti Cycles",
+            "value": "Wittson Custom Ti Cycles"
+          },
+          {
+            "label": "Worksman Cycles",
+            "value": "Worksman Cycles"
+          },
+          {
+            "label": "Wright Cycle Company",
+            "value": "Wright Cycle Company"
+          },
+          {
+            "label": "Whyte",
+            "value": "Whyte"
+          },
+          {
+            "label": "Xootr",
+            "value": "Xootr"
+          },
+          {
+            "label": "Yamaguchi Bicycles",
+            "value": "Yamaguchi Bicycles"
+          },
+          {
+            "label": "Yamaha",
+            "value": "Yamaha"
+          },
+          {
+            "label": "Yeti Cycles",
+            "value": "Yeti Cycles"
+          },
+          {
+            "label": "YT Industries",
+            "value": "YT Industries"
+          }
+        ],
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "bike_value",
+        "type": "currency",
+        "label": "What is the value of your bike?",
+        "props": {
+          "prefix": "£"
+        },
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          },
+          {
+            "validation": {
+              "min": 100,
+              "type": "greaterThanCurrency"
+            }
+          },
+          {
+            "validation": {
+              "max": 10000000,
+              "type": "lessThanCurrency"
+            }
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "key": "is_ebike",
+        "label": "Is this bike an electric bike?"
+      },
+      {
+        "type": "horizontal-line",
+        "key": "line"
+      }
+    ]
+  }
+]
