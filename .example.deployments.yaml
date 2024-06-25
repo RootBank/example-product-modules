@@ -1,4 +1,9 @@
-# Demo factory (internal development):
+# This file is used by the Root team to manage deployments
+# to all the different stacks and environments. These products
+# are made available as the template product modules in the
+# Root dashboard.
+
+# Demo factory (internal development of templates):
 # - ZA Stack
 # - Org ID: b701babb-a66e-444f-8974-af3fd6ba14b5
 # - ORg Name: Demo Product Factory

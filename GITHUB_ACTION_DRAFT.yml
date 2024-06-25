@@ -1,0 +1,33 @@
+name: Deployment
+run-name: ${{ github.actor }} is deploying to all the stacks
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  Deploy-All-Stacks:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The job has now started, and will deploy all the templates to all the Root platform stacks."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - name: Install npm packages
+        run: npm i
+          
+      - name: Install the Root Workbench CLI tool
+        run: npm i @rootplatform/cli -g
+
+      - name: Log the Workbench version
+        run: rp -V
+
+      - name: Execute deployment script
+        run: node deploy-script.js
+        env:
+          HOST__API_ROOTPLATFORM_COM: ${{ secrets.HOST__API_ROOTPLATFORM_COM }}
+          
+      - run: echo "🍏 This job's status is ${{ job.status }}."
