@@ -1,0 +1,206 @@
+[
+  {
+    "block": {
+      "key": "waiting_period_alert",
+      "type": "alert",
+      "color": "warning",
+      "markdown": "Date of claim is within the waiting period of 30 days"
+    },
+    "show_if": "{{ifCondition (dateDifference claim.block_states.date_of_treatment.value claim.policy.start_date measurement='days') '<' 30}}"
+  },
+  {
+    "block": {
+      "key": "incident_description_title",
+      "type": "markdown",
+      "markdown": "### Incident Description"
+    }
+  },
+  {
+    "block": {
+      "key": "incident_date",
+      "type": "input.date",
+      "title": "Incident Date",
+      "default_value": "{{dateNow}}"
+    }
+  },
+  {
+    "block": {
+      "key": "incident_cause",
+      "type": "dropdown",
+      "title": "Cause of incident",
+      "options": [
+        {
+          "key": "theft",
+          "value": "Theft"
+        },
+        {
+          "key": "accidental_damage",
+          "value": "Accidental Damage"
+        },
+        {
+          "key": "water_damage",
+          "value": "Water Damage"
+        }
+      ]
+    }
+  },
+  {
+    "block": {
+      "key": "was_device_blacklisted",
+      "type": "dropdown",
+      "title": "Was the device blacklisted?",
+      "options": [
+        {
+          "key": "yes",
+          "value": "Yes"
+        },
+        {
+          "key": "no",
+          "value": "No"
+        }
+      ]
+    },
+    "show_if": "{{#ifEquals claim.block_states.incident_cause.option_key 'theft'}}true{{else}}false{{/ifEquals}}"
+  },
+  {
+    "block": {
+      "key": "date_blacklisted",
+      "type": "input.date",
+      "title": "Date blacklisted?"
+    },
+    "show_if": "{{ifCondition claim.block_states.was_device_blacklisted.option_key '===' 'yes'}}"
+  },
+  {
+    "block": {
+      "key": "itc_reference_no",
+      "type": "input.text",
+      "title": "ITC Reference Number?"
+    },
+    "show_if": "{{ifCondition claim.block_states.was_device_blacklisted.option_key '===' 'yes'}}"
+  },
+  {
+    "block": {
+      "key": "incident_reported_to_saps",
+      "type": "dropdown",
+      "title": "Was the incident reported to the SAPS?",
+      "options": [
+        {
+          "key": "yes",
+          "value": "Yes"
+        },
+        {
+          "key": "no",
+          "value": "No"
+        }
+      ]
+    },
+    "show_if": "{{#ifEquals claim.block_states.incident_cause.option_key 'theft'}}true{{else}}false{{/ifEquals}}"
+  },
+  {
+    "block": {
+      "key": "date_reported",
+      "type": "input.date",
+      "title": "Date reported"
+    },
+    "show_if": "{{ifCondition claim.block_states.incident_reported_to_saps.option_key '===' 'yes'}}"
+  },
+  {
+    "block": {
+      "key": "saps_case_no",
+      "type": "input.text",
+      "title": "Case number"
+    },
+    "show_if": "{{ifCondition claim.block_states.incident_reported_to_saps.option_key '===' 'yes'}}"
+  },
+  {
+    "block": {
+      "key": "saps_station",
+      "type": "input.text",
+      "title": "SAPS station"
+    },
+    "show_if": "{{ifCondition claim.block_states.incident_reported_to_saps.option_key '===' 'yes'}}"
+  },
+  {
+    "block": {
+      "key": "place_of_loss",
+      "type": "input.text",
+      "title": "Place of loss or damage"
+    }
+  },
+  {
+    "block": {
+      "key": "description_of_incident",
+      "type": "input.paragraph",
+      "title": "Brief description of incident"
+    }
+  },
+  {
+    "block": {
+      "key": "address_for_collection",
+      "type": "input.text",
+      "title": "Address for collection"
+    },
+    "show_if": "{{#ifEquals claim.block_states.incident_cause.option_key 'theft'}}false{{else}}true{{/ifEquals}}"
+  },
+  {
+    "block": {
+      "key": "claim_payout_divider",
+      "type": "divider"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_details",
+      "type": "markdown",
+      "markdown": "### Payout details"
+    }
+  },
+  {
+    "block": {
+      "key": "policy_info",
+      "type": "markdown",
+      "markdown": "Sum Assured: {{formatCurrency claim.policy.sum_assured 'GBP' locale='en-ZA'}} and Excess Amount: {{formatCurrency claim.policy.module.excess_amount 'GBP' locale='en-ZA'}}"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_amount",
+      "type": "input.currency",
+      "title": "Payout amount",
+      "isoCode": "GBP"
+    }
+  },
+  {
+    "block": {
+      "key": "excess_amount",
+      "type": "input.currency",
+      "title": "Excess amount",
+      "isoCode": "GBP"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_payout_request",
+      "type": "payout_request",
+      "payee": {
+        "type": "policyholder",
+        "amount": "{{#ifIsDefined claim.block_states.payout_amount.value}}{{claim.block_states.payout_amount.value}}{{else}}0{{/ifIsDefined}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.0.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.0.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.0.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.0.payment_details.details.account_number }}"
+          }
+        },
+        "policyholder_id": "{{ claim.policy.policyholder_id }}"
+      },
+      "title": "Claim payout",
+      "amount": "{{ claim.block_states.payout_amount.value }}",
+      "description": "Details of payment to be made to policyholder"
+    },
+    "disabled_if": "{{#ifEquals claim.approval_status 'approved'}}false{{else}}true{{/ifEquals}}"
+  }
+]
