@@ -1,8 +1,6 @@
 /**
- * Generates a policy using the application, policyholder and billing day.
- * @param {PlatformApplication} application The application from which the policy will be issued.
- * @return {Policy} The policy that will be returned by the [Issue a policy](https://docs.rootplatform.com/reference/issue-a-policy-1) endpoint.
- * @see {@link https://docs.rootplatform.com/docs/policy-issue-hook Policy issue hook}
+ * Generate a policy using the application and policyholder
+ * https://docs.rootplatform.com/docs/policy-issue-hook
  */
 const getPolicy = (application) => {
   const policy = new Policy({
