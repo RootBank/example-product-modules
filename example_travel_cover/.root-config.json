@@ -91,9 +91,16 @@
     "claims": {
       "checklistItems": [],
       "documentLabels": [
-        "Travel itinerary",
-        "Proof of travel",
-        "List of members"
+        "Medical Report",
+        "Hospital Bill",
+        "Travel Itinerary",
+        "Flight Ticket",
+        "Police Report",
+        "Receipts for Expense",
+        "Baggage Claim Form",
+        "Proof of Payment",
+        "Identity Document",
+        "Other"
       ]
     },
     "billing": {
