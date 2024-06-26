@@ -1,0 +1,349 @@
+[
+  {
+    "type": "section-header",
+    "key": "sh-1",
+    "label": "Trip details"
+  },
+  {
+    "type": "radio-button",
+    "key": "trip",
+    "label": "Trip type *",
+    "options": [
+      {
+        "label": "Single trip",
+        "value": "single_trip"
+      },
+      {
+        "label": "Multi trip",
+        "value": "multi_trip"
+      },
+      {
+        "label": "Long stay",
+        "value": "long_stay"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "destination",
+    "type": "select",
+    "label": "Destination *",
+    "options": [
+      {
+        "label": "UK",
+        "value": "uk"
+      },
+      {
+        "label": "Europe",
+        "value": "europe"
+      },
+      {
+        "label": "Australia / New Zealand",
+        "value": "australia_new_zealand"
+      },
+      {
+        "label": "World Wide",
+        "value": "world_wide"
+      },
+      {
+        "label": "World Wide incl. USA & Canada",
+        "value": "world_wide_incl_usa_canada"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "type": "multiple-checkbox",
+    "key": "single_trip_extras",
+    "label": "Included extras",
+    "options": [
+      {
+        "label": "Wintersports",
+        "value": "wintersports"
+      },
+      {
+        "label": "Wedding",
+        "value": "wedding"
+      },
+      {
+        "label": "Gadget/Business",
+        "value": "gadget_business"
+      },
+      {
+        "label": "Cruise",
+        "value": "cruise"
+      },
+      {
+        "label": "Golf",
+        "value": "golf"
+      },
+      {
+        "label": "Excess Waiver",
+        "value": "excess_waiver"
+      },
+      {
+        "label": "Trip Disruption",
+        "value": "trip_disruption"
+      },
+      {
+        "label": "Extra week",
+        "value": "extra_week"
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "trip",
+        "value": "single_trip",
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "type": "multiple-checkbox",
+    "key": "multi_trip_extras",
+    "label": "Included extras",
+    "options": [
+      {
+        "label": "Wintersports",
+        "value": "wintersports"
+      },
+      {
+        "label": "Wedding",
+        "value": "wedding"
+      },
+      {
+        "label": "Gadget/Business",
+        "value": "gadget_business"
+      },
+      {
+        "label": "Cruise",
+        "value": "cruise"
+      },
+      {
+        "label": "Golf",
+        "value": "golf"
+      },
+      {
+        "label": "Excess Waiver",
+        "value": "excess_waiver"
+      },
+      {
+        "label": "Trip Disruption",
+        "value": "trip_disruption"
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "trip",
+        "value": "multi_trip",
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "type": "multiple-checkbox",
+    "key": "long_stay_extras",
+    "label": "Included extras",
+    "options": [
+      {
+        "label": "Wintersports",
+        "value": "wintersports"
+      },
+      {
+        "label": "Exam Failure",
+        "value": "exam_failure"
+      },
+      {
+        "label": "Excess Waiver",
+        "value": "excess_waiver"
+      },
+      {
+        "label": "Trip Disruption",
+        "value": "trip_disruption"
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "trip",
+        "value": "long_stay",
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "trip_start_date",
+    "type": "date-picker",
+    "label": "Trip start date *",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "trip_end_date",
+    "type": "date-picker",
+    "label": "Trip end date *",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "trip",
+        "value": "single_trip",
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "long_stay_duration_days",
+    "type": "select",
+    "label": "Long stay days *",
+    "options": [
+      {
+        "label": "31 Days",
+        "value": "31_days"
+      },
+      {
+        "label": "60 Days",
+        "value": "60_days"
+      },
+      {
+        "label": "90 Days",
+        "value": "90_days"
+      },
+      {
+        "label": "120 Days",
+        "value": "120_days"
+      },
+      {
+        "label": "150 Days",
+        "value": "150_days"
+      },
+      {
+        "label": "180 Days",
+        "value": "180_days"
+      },
+      {
+        "label": "270 Days",
+        "value": "270_days"
+      },
+      {
+        "label": "365 Days",
+        "value": "365_days"
+      },
+      {
+        "label": "730 Days (2 years)",
+        "value": "730_days"
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "trip",
+        "value": "long_stay",
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "type": "blank-space",
+    "key": "bs-1"
+  },
+  {
+    "type": "section-header",
+    "key": "sh-2",
+    "label": "Covered persons"
+  },
+  {
+    "type": "radio-button",
+    "key": "cover_type",
+    "label": "Cover type *",
+    "options": [
+      {
+        "label": "Adult(s)",
+        "value": "adult"
+      },
+      {
+        "label": "Couple",
+        "value": "couple"
+      },
+      {
+        "label": "Family",
+        "value": "family"
+      }
+    ],
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "trip",
+        "value": "long_stay",
+        "condition": "!=="
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "outputPathList": "persons",
+    "label": "Insured persons",
+    "minNumber": 1,
+    "maxNumber": 10,
+    "components": [
+      {
+        "key": "age",
+        "type": "number",
+        "label": "Person age *",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          },
+          {
+            "validation": {
+              "min": 19,
+              "type": "greaterThanNumber"
+            }
+          },
+          {
+            "validation": {
+              "max": 85,
+              "type": "lessThanNumber"
+            }
+          }
+        ]
+      }
+    ],
+    "props": {
+      "addButtonLabel": "Add person",
+      "removeButtonLabel": "Remove person"
+    }
+  },
+  {
+    "type": "blank-space",
+    "key": "bs-2"
+  }
+]

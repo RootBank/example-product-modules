@@ -124,7 +124,7 @@
       "currency": "GBP",
       "enableBillingOnSandbox": false,
       "paymentSubmissionLeadTime": 0,
-      "clientStatementReference": "PET-INS",
+      "clientStatementReference": "<set_reference>",
       "paymentMethodTypes": {
         "debitOrders": {
           "enabled": true,

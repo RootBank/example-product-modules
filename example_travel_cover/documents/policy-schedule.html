@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Travel Insurance Cover</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+  @font-face {
+    font-family: 'Lato';
+    src: url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap') format('truetype');
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Lato';
+  }
+
+  body {
+    margin: 0;
+    background: white;
+    counter-reset: count;
+  }
+
+  .header {
+    position: relative;
+    width: 100%;
+  }
+
+  .header img {
+    width: 60%;
+    padding-right: 32px;
+  }
+
+  .header div {
+    position: absolute;
+    right: 0;
+    top: 43%;
+    width: 33%;
+    font-size: 16px;
+    color: #406db0;
+    font-weight: bold;
+  }
+
+  .one-three-split {
+    line-height: 16px;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+    background-color: #f4f4f4;
+    margin-bottom: 2px;
+  }
+
+  .one-three-split> :nth-child(1) {
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+    font-weight: bold;
+  }
+
+  .one-three-split> :nth-child(2) {
+    display: inline-block;
+    margin-left: 5%;
+    width: 60%;
+  }
+
+  .one-three-split-V2 {
+    line-height: 16px;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+    background-color: #E7E7E7;
+    margin-bottom: 2px;
+  }
+
+  .one-three-split-V2> :nth-child(1) {
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+    font-weight: bold;
+  }
+
+  .one-three-split-V2> :nth-child(2) {
+    display: inline-block;
+    margin-left: 5%;
+    width: 60%;
+  }
+
+  .page {
+    width: 132.8125mm;
+    height: 196.5mm;
+    position: relative;
+    counter-increment: count;
+    page-break-after: always;
+  }
+
+  .page:after {
+    content: 'X is part of X Limited, a licensed life insurer and an authorised financial services (FSP1234) and registered credit provider (NCRCP1234).';
+    position: absolute;
+    font-size: 8px;
+    color: #999999;
+    margin-right: 36px;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .page:before {
+    content: 'Page ' counter(count);
+    position: absolute;
+    font-size: 8px;
+    color: #999999;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  .pageBody {
+    font-size: 10.5px;
+  }
+
+  .indivTitle {
+    font-family: 'Lato';
+    line-height: 1;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    color: #0B109F !important;
+    text-transform: uppercase !important;
+    position: relative;
+  }
+
+  h1 {
+    font-family: 'Lato';
+    font-size: 24px !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    color: #0B109F !important;
+    margin-bottom: 0px !important;
+  }
+
+  h2 {
+    font-family: 'Lato';
+    line-height: 1;
+    font-size: 18px !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    color: #0B109F !important;
+    padding-bottom: 5px;
+  }
+
+  h3 {
+    margin-bottom: 0px !important;
+    font-size: 12px !important;
+    font-weight: 100 !important;
+    color: #0B109F !important;
+    padding-bottom: 5px;
+  }
+
+  h4 {
+    font-size: 9px !important;
+    font-weight: 100 !important;
+    color: #0B109F !important;
+    margin-top: 0px;
+  }
+
+  table {
+    /* padding-left: 10px; */
+    /* padding-right: 20px; */
+    border-collapse: collapse;
+  }
+
+  tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  tr:last-child {
+    border-bottom: none !important;
+  }
+
+  td {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .bordered {
+    border-collapse: collapse;
+  }
+
+  .mainTitle {
+    padding-top: 114px;
+  }
+
+  .root-logo {
+    content: url('https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-insurance-logo-big.png');
+  }
+</style>
+
+<body>
+  <!-- Start of page 1: Root Funeral -->
+  <div class="page">
+    <div class="header">
+      <img class="root-logo" />
+    </div>
+    <div class="pageBody">
+      <h1>Travel Cover</h1>
+      <p>Welcome to the Travel family! We feel honored to provide this travel protection for you.</p>
+      <h2>Your Policy Summary</h2>
+      <p>This document covers all the details regarding your insurance cover.</p>
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <div class="one-three-split">
+                <div>Policy number</div>
+                <div>{{ policy.policy_number }}</div>
+              </div>
+            </tr>
+            <tr>
+              <div class="one-three-split">
+                <div>Policy start date</div>
+                <div>{{dateFormat policy.start_date format='DD/MM/YYYY'}}</div>
+              </div>
+            </tr>
+            <tr>
+              <div class="one-three-split">
+                <div>Package</div>
+                <div>{{policy.package_name}}</div>
+              </div>
+            </tr>
+            <tr>
+              <div class="one-three-split">
+                <div>Premium</div>
+                <div>{{formatCurrency policy.monthly_premium "GBP" locale="en-ZA"}}</div>
+              </div>
+            </tr>
+            <tr>
+              <div class="one-three-split">
+                <div>Government Levy</div>
+                <div>{{formatCurrency policy.module.rates.govt_levy "GBP" locale="en-ZA"}}</div>
+              </div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Policyholder</h3>
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <div class="one-three-split">
+                <div>Name</div>
+                <div>{{toStartCase policyholder.first_name}} {{toStartCase policyholder.last_name}}</div>
+              </div>
+            </tr>
+            <tr>
+              <div class="one-three-split">
+                <div>Email address</div>
+                <div>{{ policyholder.email }}</div>
+              </div>
+            </tr>
+            <tr>
+              <div class="one-three-split">
+                <div>Mobile number</div>
+                <div>{{ policyholder.cellphone }}</div>
+              </div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

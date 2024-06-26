@@ -1,0 +1,158 @@
+[
+  {
+    "block": {
+      "key": "incident_description_title",
+      "type": "markdown",
+      "markdown": "### Incident Description"
+    }
+  },
+  {
+    "block": {
+      "key": "incident_date",
+      "type": "input.date",
+      "title": "Incident Date",
+      "default_value": "{{dateNow}}"
+    }
+  },
+  {
+    "block": {
+      "key": "incident_type",
+      "type": "dropdown",
+      "title": "Type of incident",
+      "options": [
+        {
+          "key": "trip_cancellation",
+          "value": "Trip Cancellation"
+        },
+        {
+          "key": "medical_emergencies",
+          "value": "Medical Emergencies"
+        },
+        {
+          "key": "trip_interruption",
+          "value": "Trip Interruption"
+        },
+        {
+          "key": "lost_or_delayed_baggage",
+          "value": "Lost or Delayed Baggage"
+        },
+        {
+          "key": "travel_delay",
+          "value": "Travel Delay"
+        },
+        {
+          "key": "medical_evacuation",
+          "value": "Medical Evacuation"
+        },
+        {
+          "key": "accidental_death_and_dismemberment",
+          "value": "Accidental Death and Dismemberment"
+        },
+        {
+          "key": "theft_or_loss_of_personal_items",
+          "value": "Theft or Loss of Personal Items"
+        },
+        {
+          "key": "flight_cancellation",
+          "value": "Flight Cancellation"
+        },
+        {
+          "key": "rental_car_damage",
+          "value": "Rental Car Damage"
+        }
+      ]
+    }
+  },
+  {
+    "block": {
+      "key": "place_of_incident",
+      "type": "input.text",
+      "title": "Place of incident"
+    }
+  },
+  {
+    "block": {
+      "key": "description_of_incident",
+      "type": "input.paragraph",
+      "title": "Brief description of incident"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_payout_divider",
+      "type": "divider"
+    }
+  },
+  {
+    "block": {
+      "key": "b-2",
+      "type": "markdown",
+      "markdown": "### Claim payout details"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_description",
+      "type": "input.paragraph",
+      "title": "Description of claim payout"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_amount",
+      "min": "1",
+      "type": "input.currency",
+      "title": "Approved amount to pay out",
+      "isoCode": "GBP"
+    }
+  },
+  {
+    "block": {
+      "key": "alert_not_approved",
+      "type": "alert",
+      "color": "info",
+      "markdown": "Claim payout process only available once claim has been marked as 'approved'."
+    },
+    "hide_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
+  },
+  {
+    "block": {
+      "key": "claim_payout_request",
+      "type": "payout_request",
+      "payee": {
+        "type": "policyholder",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[0].percentage) 100}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.0.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.0.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.0.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.0.payment_details.details.account_number }}"
+          }
+        },
+        "policyholder_id": "{{ claim.policy.policyholder_id }}"
+      },
+      "title": "Manage payout",
+      "amount": "{{ claim.block_states.payout_amount.value }}",
+      "description": "Claim reimbursement payment."
+    },
+    "show_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
+  },
+  {
+    "block": {
+      "key": "alert_info_details",
+      "type": "alert",
+      "color": "light",
+      "markdown": "Update bank details directly on the beneficiary."
+    },
+    "show_if": "{{ifCondition (ifCondition (ifCondition claim.approval_status '===' 'approved') '||' (ifCondition claim.approval_status '===' 'goodwill')) '&&' (ifCondition (ifCondition claim.claim_status '===' 'pending_payout') '||' (ifCondition claim.claim_status '===' 'paid_out')) }}"
+  },
+  {
+    "block": {
+      "key": "d-bottom",
+      "type": "divider"
+    }
+  }
+]

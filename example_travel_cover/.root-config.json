@@ -1,0 +1,153 @@
+{
+  "$schema": "https://api.rootplatform.com/v1/cli/json-schemas/root-config",
+  "productModuleName": "Example Travel Cover",
+  "productModuleKey": "demo_factory_travel_cover",
+  "organizationId": "b701babb-a66e-444f-8974-af3fd6ba14b5",
+  "host": "api.rootplatform.com",
+  "codeFileOrder": [
+    "main.js",
+    "env.js",
+    "00-helper-csv-sheet-wrapper.js",
+    "00-helper-functions.js",
+    "00-rates-csv.js",
+    "01-pricing-single-trip.js",
+    "01-pricing-multi-trip.js",
+    "02-quote-hook.js",
+    "03-application-hook.js",
+    "04-policy-hook.js",
+    "05-alteration-hooks.js",
+    "06-scheduled-functions.js",
+    "07-reactivation-flow.js",
+    "08-lifecycle-hooks.js"
+  ],
+  "settings": {
+    "policySchemeType": "individual",
+    "dashboardIssuingEnabled": true,
+    "activatePoliciesOnEvent": "policy_issued",
+    "canReactivatePolicies": false,
+    "notTakenUpEnabled": false,
+    "welcomeLetterEnabled": false,
+    "policyDocuments": [
+      {
+        "type": "terms",
+        "fileName": "policy_{{ policy.policy_number }}_terms"
+      },
+      {
+        "type": "policy_schedule",
+        "fileName": "policy_{{ policy.policy_number }}_schedule"
+      },
+      {
+        "type": "certificate",
+        "enabled": false
+      }
+    ],
+    "canRequote": false,
+    "gracePeriod": {
+      "lapseOn": {
+        "afterFirstMissedPayment": null,
+        "consecutiveMissedPayments": null,
+        "missedPaymentsOverPolicyTerm": null,
+        "missedPaymentsWithinPeriod": null
+      },
+      "lapseExclusionRules": {
+        "lapsePolicyWithProcessingPayment": false
+      }
+    },
+    "waitingPeriod": {
+      "applyTo": {
+        "theFullPolicy": null
+      }
+    },
+    "coolingOffPeriod": {
+      "applyTo": {
+        "theFullPolicy": null
+      }
+    },
+    "policyAnniversaryNotification": null,
+    "policyholder": {
+      "individualsAllowed": true,
+      "individualsIdAllowed": false,
+      "individualsPassportAllowed": false,
+      "individualsCellphoneAllowed": false,
+      "individualsCustomIdAllowed": false,
+      "individualsEmailAllowed": true,
+      "companiesAllowed": false,
+      "individualPolicyholderFields": {
+        "address": {
+          "suburb": {
+            "required": false
+          }
+        },
+        "dateOfBirth": {
+          "required": true
+        }
+      }
+    },
+    "beneficiaries": {
+      "makePolicyholderABeneficiary": true,
+      "min": 1,
+      "max": 1
+    },
+    "claims": {
+      "checklistItems": [],
+      "documentLabels": [
+        "Medical Report",
+        "Hospital Bill",
+        "Travel Itinerary",
+        "Flight Ticket",
+        "Police Report",
+        "Receipts for Expense",
+        "Baggage Claim Form",
+        "Proof of Payment",
+        "Identity Document",
+        "Other"
+      ]
+    },
+    "billing": {
+      "allowStartDateChange": false,
+      "billBeforeWeekendEnabled": false,
+      "billingFrequency": "monthly",
+      "consecutiveFailedPaymentsAllowed": 4,
+      "currency": "GBP",
+      "enableBillingOnSandbox": false,
+      "paymentSubmissionLeadTime": 0,
+      "clientStatementReference": "<set_reference>",
+      "paymentMethodTypes": {
+        "debitOrders": {
+          "enabled": true,
+          "strategy": "best_effort",
+          "naedoPoliciesInArrears": false
+        },
+        "card": {
+          "enabled": false
+        },
+        "eft": {
+          "enabled": false
+        },
+        "external": {
+          "enabled": false,
+          "createPayments": false
+        },
+        "collectionModules": []
+      },
+      "retryFailedPayments": {
+        "enabled": true,
+        "daysBetweenRetries": 5,
+        "numberOfRetries": 1
+      },
+      "proRataBilling": {
+        "enabled": true,
+        "proRataBillingOnIssue": false,
+        "minimumAmount": 0
+      }
+    }
+  },
+  "alterationHooks": [
+    {
+      "key": "edit_policy",
+      "name": "Edit Policy"
+    }
+  ],
+  "scheduledFunctions": [],
+  "fulfillmentTypes": []
+}

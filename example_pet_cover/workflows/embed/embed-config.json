@@ -29,10 +29,10 @@
       "videoTitle": "Pet Insurance Video"
     },
     "images": {
-      "background": "https://services-images-host.s3.amazonaws.com/root-template-landing.png"
+      "background": "https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-pet-cover-background.png"
     },
     "links": {
-      "youTubeVideoId": "-m9kr7bcuEk"
+      "youTubeVideoId": "OGDvlh8lc1k"
     },
     "displayOptionalSections": {
       "displayLandingPage": true,
@@ -198,10 +198,10 @@
   },
   "footer": {
     "wording": {
-      "disclaimer": "This is a sample application by Root. The configuration source code is MIT licensed and you are free to copy and modify it. See https://rootplatform.com for more information."
+      "disclaimer": "This section is where your compliance footer note will show. This is an example white-label font-end by Root. The configuration source code of this Embed implementation is MIT licensed and you are free to copy and modify it. See https://rootplatform.com for more information."
     },
     "images": {
-      "disclaimerUrl": "https://storage.googleapis.com/root-production-public-client-images/Dinosure%20Demo/root-logo.svg"
+      "disclaimerUrl": "https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-insurance-logo-small.png"
     },
     "links": {},
     "displayOptionalSections": {
