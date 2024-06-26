@@ -1,32 +1,11 @@
 /**
- * Validates the alteration package request data.
- * @param {object} params
- * @param {string} params.alteration_hook_key The alteration hook identifier, as specified in `.root-config.json`.
- * @param {Record<string, any>} params.data The data received in the body of the
- *     [Create an alteration package](https://docs.rootplatform.com/reference/create-an-alteration-package-1) request
- *     (without the `key` property).
- * @param {PlatformPolicy} params.policy The policy to which the alteration package will be applied.
- * @param {PlatformPolicyholder} params.policyholder The policyholder linked to the policy.
- * @return {{error: any; result: any}} The [validation result](https://joi.dev/api/?v=12.1.0#validatevalue-schema-options-callback).
- *    If there are no errors, the `value` property will contain the validated data, which is passed to `getAlteration`.
- * @see {@link https://docs.rootplatform.com/docs/alteration-hooks Alteration hooks}
+ * Validates the alteration package request data before passing it to the `getAlteration` function.
+ * https://docs.rootplatform.com/docs/alteration-hooks
  */
 const validateAlterationPackageRequest = ({ alteration_hook_key, data }) => {
   switch (alteration_hook_key) {
-    case 'update_excess':
-      const result = Joi.validate(
-        data,
-        Joi.object()
-          .keys({
-            excess_amount: Joi.number()
-              .integer()
-              .valid([1000, 2000, 3000, 4000, 5000, 7500])
-              .required(),
-          })
-          .required(),
-        { abortEarly: false },
-      );
-      return result;
+    case "edit_policy":
+      return validateQuoteRequest(data);
     default:
       throw new Error(`Invalid alteration hook key "${alteration_hook_key}"`);
   }
@@ -34,39 +13,27 @@ const validateAlterationPackageRequest = ({ alteration_hook_key, data }) => {
 
 /**
  * Generates an alteration package from the alteration package request data, policy and policyholder.
- * @param {object} params
- * @param {string} params.alteration_hook_key The alteration hook identifier, as specified in `.root-config.json`.
- * @param {Record<string, any>} params.data The validated data returned by `validateAlterationPackageRequest` as `result.value`.
- * @param {PlatformPolicy} params.policy The policy to which the alteration package will be applied.
- * @param {PlatformPolicyholder} params.policyholder The policyholder linked to the policy.
- * @return {AlterationPackage} Alteration package returned by the
- *     [Create an alteration package](https://docs.rootplatform.com/reference/create-an-alteration-package-1)
- *     endpoint.
- * @see {@link https://docs.rootplatform.com/docs/alteration-hooks Alteration hooks}
+ * https://docs.rootplatform.com/docs/alteration-hooks
  */
 const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
   switch (alteration_hook_key) {
-    case 'update_excess':
-      // calculate premium
-      const basePremium = getPremium(
-        policy.module.value,
-        policy.module.gadget_type,
-      );
-      const excessAdjustedPremium = getExcessAdjustedPremium(
-        basePremium,
-        data.excess_amount,
-      );
-      const alterationPackage = new AlterationPackage({
-        input_data: data,
-        sum_assured: policy.module.value - data.excess_amount,
-        monthly_premium: excessAdjustedPremium,
-        change_description: 'Update excess payable for this gadget',
-        module: {
-          ...policy.module,
-          ...data,
-        },
-      });
-      return alterationPackage;
+    case "edit_policy":
+      const updatedQuotes = getQuote(data);
+      console.log("Updated Quotes:", updatedQuotes);
+      const alterationPackages = [];
+      for (const quote of updatedQuotes) {
+        alterationPackages.push(
+          new AlterationPackage({
+            input_data: data,
+            sum_assured: quote.sum_assured,
+            monthly_premium: quote.suggested_premium,
+            change_description: "Policy edited.",
+            module: quote.module,
+          })
+        );
+      }
+      console.log("Alteration packages:", alterationPackages);
+      return alterationPackages[0];
     default:
       throw new Error(`Invalid alteration hook key "${alteration_hook_key}"`);
   }
@@ -74,15 +41,7 @@ const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
 
 /**
  * Applies the alteration package to the policy.
- * Triggered by the [Apply alteration package](https://docs.rootplatform.com/reference/apply-alteration-package-1) endpoint.
- * @param {object} params
- * @param {string} params.alteration_hook_key The alteration hook identifier, as specified in `.root-config.json`.
- * @param {PlatformPolicy} params.policy The policy to which the alteration package will be applied.
- * @param {PlatformPolicyholder} params.policyholder The policyholder linked to the policy.
- * @param {PlatformAlterationPackage} params.alteration_package The alteration package to be applied to the policy.
- * @return {AlteredPolicy} The altered policy. This object is **not** returned over the endpoint.
- *    Instead, the alteration package is returned with a status of `applied`.
- * @see {@link https://docs.rootplatform.com/docs/alteration-hooks Alteration hooks}
+ * https://docs.rootplatform.com/docs/alteration-hooks
  */
 const applyAlteration = ({
   alteration_hook_key,
@@ -91,7 +50,7 @@ const applyAlteration = ({
   alteration_package,
 }) => {
   switch (alteration_hook_key) {
-    case 'update_excess':
+    case "edit_policy":
       const alteredPolicy = new AlteredPolicy({
         package_name: policy.package_name,
         sum_assured: policy.sum_assured,

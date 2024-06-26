@@ -1,6 +1,6 @@
 /**
- * Validates the quote request data.
- * https://docs.rootplatform.com/docs/quote-hook#validating-the-quote-parameters
+ * Validate the quote request data before passing it to the `getQuote` function.
+ * https://docs.rootplatform.com/docs/quote-hook
  */
 const validateQuoteRequest = (data) => {
   const result = Joi.validate(
@@ -95,8 +95,8 @@ const validateQuoteRequest = (data) => {
 };
 
 /**
- * Generates an array of quote packages from the quote request data.
- * https://docs.rootplatform.com/docs/quote-hook#generating-a-quote-package
+ * Generate an array of Quote Packages from the quote request data.
+ * https://docs.rootplatform.com/reference/getting-a-quote-2
  */
 const getQuote = (data) => {
 

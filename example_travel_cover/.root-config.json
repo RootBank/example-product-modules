@@ -137,8 +137,8 @@
   },
   "alterationHooks": [
     {
-      "key": "update_excess",
-      "name": "Update Excess Amount"
+      "key": "edit_policy",
+      "name": "Edit Policy"
     }
   ],
   "scheduledFunctions": [],
