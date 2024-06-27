@@ -209,29 +209,29 @@
   },
   "styles": {
     "borderRadius": {
-      "button": "50px"
+      "button": "4px"
     },
     "colors": {
       "dark": "#00000",
-      "error": "#ff2b38",
+      "error": "#E20102",
       "light": "#FFFFFF",
-      "border": "#dfdfdf",
-      "primary": "#0F1B4A",
-      "success": "#1fc881",
-      "warning": "#ffab00",
-      "disabled": "#CDD4DE",
-      "highlight": "#2969FF",
-      "policyStatusActive": "#1fc881",
-      "policyStatusLapsed": "#d50001",
-      "backgroundHighlight": "rgba(245, 247, 252, 1)",
-      "policyStatusExpired": "#ffab00",
-      "policyStatusPending": "#ffab00",
-      "policyStatusCancelled": "#d50001",
-      "policyStatusNotTakenUp": "#d50001"
+      "border": "#E7EAEE",
+      "primary": "#241080",
+      "success": "#1FC881",
+      "warning": "#FF9900",
+      "disabled": "#C3CCD8",
+      "highlight": "#E74982",
+      "policyStatusActive": "#1FC881",
+      "policyStatusLapsed": "#E20102",
+      "backgroundHighlight": "#F1F7FF",
+      "policyStatusExpired": "#FF9900",
+      "policyStatusPending": "#FF9900",
+      "policyStatusCancelled": "#E20102",
+      "policyStatusNotTakenUp": "#E20102"
     },
     "fontFamily": {
-      "title": "Lato",
-      "body": "Lato"
+      "title": "Montserrat",
+      "body": "Open Sans"
     },
     "fontSize": {
       "body": "15px",
