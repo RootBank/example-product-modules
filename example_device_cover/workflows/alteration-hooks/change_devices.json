@@ -119,133 +119,45 @@
         ]
       },
       {
-        "type": "paragraph",
-        "key": "p-1",
-        "label": "_Device details will be required after quote presented._"
+        "key": "make",
+        "type": "text",
+        "label": "Device make *",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "model",
+        "type": "text",
+        "label": "Device model *",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "serial_number",
+        "type": "text",
+        "label": "Serial number *",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
       },
       {
         "type": "horizontal-line",
-        "key": "hr-1"
+        "key": "line"
       }
     ]
-  },
-  {
-    "type": "section-header",
-    "key": "h-2",
-    "label": "Cover details",
-    "props": {
-      "headingTag": "h3"
-    }
-  },
-  {
-    "type": "radio-button",
-    "key": "cover_type",
-    "label": "What cover type would you like? *",
-    "options": [
-      {
-        "label": "Theft-only",
-        "value": "theft"
-      },
-      {
-        "label": "Comprehensive",
-        "value": "comprehensive"
-      }
-    ]
-  },
-  {
-    "type": "checkbox",
-    "key": "loaner_device",
-    "label": "Do you want the loaner unit add-on?",
-    "displayConditions": [
-      {
-        "path": "cover_type",
-        "value": "comprehensive",
-        "condition": "==="
-      }
-    ]
-  },
-  {
-    "type": "select",
-    "key": "excess",
-    "label": "How much excess would you prefer? *",
-    "options": [
-      {
-        "label": "£50",
-        "value": "£50"
-      },
-      {
-        "label": "£100",
-        "value": "£100"
-      },
-      {
-        "label": "£200",
-        "value": "£200"
-      },
-      {
-        "label": "£300",
-        "value": "£300"
-      }
-    ]
-  },
-  {
-    "type": "select",
-    "key": "claims_history",
-    "label": "How many device insurance claims have you had in the last 3 years? *",
-    "options": [
-      {
-        "label": "None",
-        "value": "0"
-      },
-      {
-        "label": "1",
-        "value": "1"
-      },
-      {
-        "label": "2",
-        "value": "2"
-      },
-      {
-        "label": "3",
-        "value": "3"
-      },
-      {
-        "label": "4+",
-        "value": "4+"
-      }
-    ]
-  },
-  {
-    "type": "text",
-    "key": "area_code",
-    "label": "What is your home area code? *",
-    "validators": [
-      {
-        "validation": {
-          "type": "required"
-        }
-      }
-    ]
-  },
-  {
-    "type": "section-header",
-    "key": "h-3",
-    "label": "Discounts",
-    "props": {
-      "headingTag": "h3"
-    }
-  },
-  {
-    "type": "text",
-    "key": "discount_code",
-    "label": "If you have a discount code, enter it here."
-  },
-  {
-    "type": "paragraph",
-    "key": "p-1",
-    "label": "_Demo note: use key DEVICE123 to showcase discount._"
-  },
-  {
-    "type": "blank-space",
-    "key": "bs-1"
   }
 ]

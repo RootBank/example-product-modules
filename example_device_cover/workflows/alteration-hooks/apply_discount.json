@@ -1,0 +1,24 @@
+[
+  {
+    "type": "section-header",
+    "key": "h-3",
+    "label": "Discounts",
+    "props": {
+      "headingTag": "h3"
+    }
+  },
+  {
+    "type": "text",
+    "key": "discount_code",
+    "label": "If you have a discount code, enter it here."
+  },
+  {
+    "type": "paragraph",
+    "key": "p-1",
+    "label": "_Demo note: use key DEVICE123 to showcase discount._"
+  },
+  {
+    "type": "blank-space",
+    "key": "bs-1"
+  }
+]

@@ -12,7 +12,8 @@
     "02-quote-hook.js",
     "03-application-hook.js",
     "04-policy-hook.js",
-    "05-alteration-hooks.js",
+    "05a-alteration-validate-request.js",
+    "05b-alteration-get.js",
     "06-scheduled-functions.js",
     "07-reactivation-flow.js",
     "08-lifecycle-hooks.js"
@@ -146,8 +147,16 @@
   },
   "alterationHooks": [
     {
-      "key": "update_excess",
-      "name": "Update Excess Amount"
+      "key": "apply_discount",
+      "name": "Apply discount code"
+    },
+    {
+      "key": "change_cover",
+      "name": "Update cover"
+    },
+    {
+      "key": "change_devices",
+      "name": "Update devices"
     }
   ],
   "scheduledFunctions": [],

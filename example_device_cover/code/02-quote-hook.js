@@ -7,6 +7,8 @@ const validateQuoteRequest = (data) => {
     data,
     Joi.object()
       .keys({
+
+        // Devices
         devices: Joi.array()
         .items(
           Joi.object().keys({
@@ -14,6 +16,8 @@ const validateQuoteRequest = (data) => {
             value: Joi.number().integer().positive().min(5000).max(1000000).required(),
           }))
         .required(),
+
+        // Cover details
         cover_type: Joi.string().valid(["theft", "comprehensive"]).required(),
         loaner_device: Joi.when("cover_type", {
           is: "comprehensive",
@@ -25,6 +29,8 @@ const validateQuoteRequest = (data) => {
           .valid(["0", "1", "2", "3", "4+"])
           .required(),
         area_code: Joi.string().required(),
+
+        // Discounts
         discount_code: Joi.string().allow(null),
       })
       .required(),
