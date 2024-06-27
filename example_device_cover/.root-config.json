@@ -1,0 +1,155 @@
+{
+  "$schema": "https://api.rootplatform.com/v1/cli/json-schemas/root-config",
+  "productModuleName": "Example Device Cover",
+  "productModuleKey": "demo_factory_device_cover",
+  "organizationId": "b701babb-a66e-444f-8974-af3fd6ba14b5",
+  "host": "api.rootplatform.com",
+  "codeFileOrder": [
+    "main.js",
+    "env.js",
+    "00-helper-functions.js",
+    "01-ratings.js",
+    "02-quote-hook.js",
+    "03-application-hook.js",
+    "04-policy-hook.js",
+    "05-alteration-hooks.js",
+    "06-scheduled-functions.js",
+    "07-reactivation-flow.js",
+    "08-lifecycle-hooks.js"
+  ],
+  "settings": {
+    "policySchemeType": "individual",
+    "dashboardIssuingEnabled": true,
+    "activatePoliciesOnEvent": "payment_method_assigned",
+    "canReactivatePolicies": true,
+    "notTakenUpEnabled": true,
+    "welcomeLetterEnabled": false,
+    "policyDocuments": [
+      {
+        "type": "terms",
+        "fileName": "policy_{{ policy.policy_number }}_terms"
+      },
+      {
+        "type": "policy_schedule",
+        "fileName": "policy_{{ policy.policy_number }}_schedule"
+      },
+      {
+        "type": "certificate",
+        "enabled": false
+      }
+    ],
+    "canRequote": false,
+    "gracePeriod": {
+      "lapseOn": {
+        "afterFirstMissedPayment": {
+          "period": 31,
+          "periodType": "days"
+        },
+        "consecutiveMissedPayments": null,
+        "missedPaymentsOverPolicyTerm": null,
+        "missedPaymentsWithinPeriod": null
+      },
+      "lapseExclusionRules": {
+        "lapsePolicyWithProcessingPayment": false
+      }
+    },
+    "waitingPeriod": {
+      "applyTo": {
+        "theFullPolicy": null
+      }
+    },
+    "coolingOffPeriod": {
+      "applyTo": {
+        "theFullPolicy": {
+          "refundType": "all_premiums",
+          "period": 31,
+          "periodType": "days"
+        }
+      }
+    },
+    "policyAnniversaryNotification": null,
+    "policyholder": {
+      "individualsAllowed": true,
+      "individualsIdAllowed": false,
+      "individualsPassportAllowed": false,
+      "individualsCellphoneAllowed": false,
+      "individualsCustomIdAllowed": false,
+      "individualsEmailAllowed": true,
+      "companiesAllowed": false,
+      "individualPolicyholderFields": {
+        "address": {
+          "suburb": {
+            "required": true
+          }
+        },
+        "dateOfBirth": {
+          "required": true
+        }
+      }
+    },
+    "beneficiaries": {
+      "makePolicyholderABeneficiary": true,
+      "min": 1,
+      "max": 1
+    },
+    "claims": {
+      "checklistItems": [
+        "Has the claim form been fully completed?",
+        "Is the detailed invoice attached?",
+        "Is the proof of payment attached?",
+        "Have all premiums been paid?"
+      ],
+      "documentLabels": [
+        "Claim form",
+        "Invoice",
+        "Proof of payment"
+      ]
+    },
+    "billing": {
+      "allowStartDateChange": false,
+      "billBeforeWeekendEnabled": false,
+      "billingFrequency": "monthly",
+      "consecutiveFailedPaymentsAllowed": 4,
+      "currency": "GBP",
+      "enableBillingOnSandbox": false,
+      "paymentSubmissionLeadTime": 0,
+      "clientStatementReference": "GADGET",
+      "paymentMethodTypes": {
+        "debitOrders": {
+          "enabled": true,
+          "strategy": "best_effort",
+          "naedoPoliciesInArrears": false
+        },
+        "card": {
+          "enabled": false
+        },
+        "eft": {
+          "enabled": false
+        },
+        "external": {
+          "enabled": false,
+          "createPayments": false
+        },
+        "collectionModules": []
+      },
+      "retryFailedPayments": {
+        "enabled": false,
+        "daysBetweenRetries": 0,
+        "numberOfRetries": 0
+      },
+      "proRataBilling": {
+        "enabled": true,
+        "proRataBillingOnIssue": false,
+        "minimumAmount": 0
+      }
+    }
+  },
+  "alterationHooks": [
+    {
+      "key": "update_excess",
+      "name": "Update Excess Amount"
+    }
+  ],
+  "scheduledFunctions": [],
+  "fulfillmentTypes": []
+}

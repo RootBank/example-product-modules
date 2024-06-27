@@ -1,6 +1,6 @@
 /**
  * Validate the quote request data before passing it to the `getQuote` function.
- * https://docs.rootplatform.com/docs/quote-hook
+ * https://docs.rootplatform.com/docs/quote-hook#validating-the-quote-parameters
  */
 const validateQuoteRequest = (data) => {
   const result = Joi.validate(
@@ -63,7 +63,7 @@ const validateQuoteRequest = (data) => {
 
 /**
  * Generate an array of Quote Packages from the quote request data.
- * https://docs.rootplatform.com/reference/getting-a-quote-2
+ * https://docs.rootplatform.com/docs/quote-hook#generating-a-quote-package
  */
 const getQuote = (data) => {
   // Determine sum assured (in pence/cents)

@@ -1,6 +1,6 @@
 /**
  * Generates an alteration package from the alteration package request data, policy and policyholder.
- * https://docs.rootplatform.com/docs/alteration-hooks
+ * https://docs.rootplatform.com/docs/alteration-hooks#creating-an-alteration-package
  */
 const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
   let changeDescription = "";
@@ -50,7 +50,7 @@ const getAlteration = ({ alteration_hook_key, data, policy, policyholder }) => {
 
 /**
  * Applies the alteration package to the policy.
- * https://docs.rootplatform.com/docs/alteration-hooks
+ * https://docs.rootplatform.com/docs/alteration-hooks#applying-an-alteration-package-to-a-policy
  */
 const applyAlteration = ({
   alteration_hook_key,

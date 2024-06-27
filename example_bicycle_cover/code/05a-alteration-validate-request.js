@@ -1,6 +1,6 @@
 /**
  * Validates the alteration package request data before passing it to the `getAlteration` function.
- * https://docs.rootplatform.com/docs/alteration-hooks
+ * https://docs.rootplatform.com/docs/alteration-hooks#validating-an-alteration-package-request
  */
 const validateAlterationPackageRequest = ({
   alteration_hook_key,

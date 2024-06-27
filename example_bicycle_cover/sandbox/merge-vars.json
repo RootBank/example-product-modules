@@ -57,7 +57,7 @@
     ],
     "current_version": 2,
     "schedule_file_id": "0cc284d8-7224-46a2-8b03-d5308a9975fa",
-    "policy_schedule_uri": "https://sandbox.root.co.za/v1/insurance/policies/c5f3c521-9ab9-48d8-aba9-b17691c80dbb/schedule/schedule_latest.pdf",
+    "policy_schedule_uri": "",
     "schedule_versions": [
       {
         "version": 1,
@@ -69,7 +69,7 @@
       }
     ],
     "terms_file_id": "0882d405-8be7-45b0-b10f-c38749dd48ad",
-    "terms_uri": "https://sandbox.root.co.za/v1/insurance/policies/c5f3c521-9ab9-48d8-aba9-b17691c80dbb/terms/terms.pdf",
+    "terms_uri": "",
     "supplementary_terms_files": [],
     "claim_ids": [
       "d1be4095-2c1a-48b0-8194-2229133f3883"

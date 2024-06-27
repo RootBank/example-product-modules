@@ -55,7 +55,7 @@
     },
     "images": {},
     "links": {
-      "supportEmail": "support@root.co.za",
+      "supportEmail": "support@rootplatform.com",
       "supportUrl": {
         "label": "",
         "url": ""
@@ -183,8 +183,8 @@
     },
     "images": {},
     "links": {
-      "openClaim": "dinoparks.net/claims",
-      "redirectOnCompletedUrl": "https://dinoparks.net/"
+      "openClaim": "exampleinsurance.com",
+      "redirectOnCompletedUrl": "https://exampleinsurance.com"
     },
     "displayOptionalSections": {
       "contactNumber": true,
@@ -246,7 +246,7 @@
   "settings": {
     "issuingFlowStartingStep": "default",
     "defaultCountryCodeFromBrowser": true,
-    "supportEmail": "support@root.co.za",
+    "supportEmail": "support@rootplatform.com",
     "supportUrl": {
       "label": "",
       "url": ""

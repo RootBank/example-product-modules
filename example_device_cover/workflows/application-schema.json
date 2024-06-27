@@ -1,0 +1,54 @@
+[
+  {
+    "type": "list",
+    "label": "Devices",
+    "maxNumber": 10,
+    "outputPathList": "devices",
+    "components": [
+      {
+        "type": "section-header",
+        "key": "h-1",
+        "label": "Device",
+        "props": {
+          "headingTag": "h4"
+        }
+      },
+      {
+        "key": "make",
+        "type": "text",
+        "label": "Device make *",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "model",
+        "type": "text",
+        "label": "Device model *",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "serial_number",
+        "type": "text",
+        "label": "Serial number *",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

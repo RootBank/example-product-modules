@@ -101,16 +101,8 @@
       color: #3fc881;
     }
 
-    .Bicycleinsurance-logo {
+    .company-logo {
       content: url('https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-insurance-logo-big.png');
-    }
-
-    .Bicycleinsurance-footer {
-      position: absolute;
-      content: url('https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-insurance-logo-big.png');
-      width: 50%;
-      right: 0;
-      bottom: 0;
     }
   </style>
 </head>
@@ -127,7 +119,7 @@
     {{/sandbox}}
     <!-- Header -->
     <div class="header">
-      <img class="Bicycleinsurance-logo" />
+      <img class="company-logo" />
       <div>POLICY SCHEDULE</div>
     </div>
     <!-- Main document body -->
@@ -150,12 +142,10 @@
         <div>Total Sum Assured</div>
         <div>{{formatCurrency policy.sum_assured "GBP" locale="en-GB"}}</div>
       </div>
-      {{#ifEquals policy.module.discount_value "0%"}}
       <div class="one-three-split">
         <div>Discount</div>
         <div>{{policy.module.discount_value}}</div>
       </div>
-      {{/ifEquals}}
       <div class="one-three-split">
         <div>Excess</div>
         <div>{{policy.module.excess}}</div>
@@ -248,7 +238,6 @@
     </div>
     <!-- Footer -->
     <div class="footer">
-      <div class="Bicycleinsurance-footer"></div>
       <div class="footer-text">
         Bicycle Insurance is a demo product by Root. Bicycle Insurance is an unauthorised
         financial services provider. non-FSP number 13371337.
