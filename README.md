@@ -5,7 +5,9 @@ This repository showcases a few example product modules designed for the [Root p
 ### Product Modules
 
 - Example Bicycle Cover
+- Example Device Cover
 - Example Pet Cover
+- Example Travel Cover
 
 ### Other Uses
 
