@@ -1,6 +1,5 @@
 // Example quote data
 const quoteData = {
-  type: "demo_factory_device_cover",
   devices: [{ device_type: "cellphone", value: 20000 }],
   cover_type: "comprehensive",
   loaner_device: true,

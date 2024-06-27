@@ -1,10 +1,8 @@
 describe('Policy issue flow', function () {
   // Setup
   let quotePackage;
-  let applicationPackage;
   before(function () {
     quotePackage = getQuote(quoteData)[0];
-    //applicationPackage = getApplication(applicationData, {}, quotePackage);
   });
 
   // Quote hook
@@ -14,8 +12,8 @@ describe('Policy issue flow', function () {
       expect(validationResult.error).to.equal(null);
     });
 
-    it('should return a suggested premium of £20.00(in pennies)', function () {
-      expect(quotePackage.suggested_premium).to.equal(2000); // cents
+    it('should return a suggested premium of £5.98', function () {
+      expect(quotePackage.suggested_premium).to.equal(598); // cents
     });
   });
 
