@@ -101,9 +101,16 @@
         "Have all premiums been paid?"
       ],
       "documentLabels": [
-        "Claim form",
-        "Invoice",
-        "Proof of payment"
+        "Proof of Purchase",
+        "Claim Form",
+        "Photo/Video Evidence",
+        "Police Report",
+        "Repair Estimate",
+        "Proof of Ownership",
+        "ID Proof",
+        "Detailed Incident Report",
+        "Insurance Policy Document",
+        "Warranty Information"
       ]
     },
     "billing": {
