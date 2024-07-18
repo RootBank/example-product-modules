@@ -1,0 +1,42 @@
+[
+  {
+    "key": "premium_waiver_header",
+    "type": "section-header",
+    "label": "Death of main member",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h2"
+    }
+  },
+  {
+    "key": "blank_space_1",
+    "type": "blank-space"
+  },
+  {
+    "key": "confirmation_of_death_message",
+    "type": "paragraph",
+    "label": "This is to confirm the death of the main member of the policy. Please confirm the date of death below.",
+    "props": {
+      "colWidth": 12
+    }
+  },
+  {
+    "key": "main_member_date_of_death",
+    "type": "date-picker",
+    "label": "Main member date of death",
+    "outputPath": "main_member_date_of_death",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "undo",
+    "type": "checkbox",
+    "label": "Undo death of main member",
+    "outputPath": "undo"
+  }
+]

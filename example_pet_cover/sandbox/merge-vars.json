@@ -18,10 +18,10 @@
       "last_name": "Smith",
       "id": {
         "type": "email",
-        "number": "john@example.com",
+        "number": "john@exampleinsurance.com",
         "country": "ZA"
       },
-      "email": "john@example.com",
+      "email": "john@exampleinsurance.com",
       "cellphone": "+447102192999",
       "phone_other": null,
       "date_of_birth": "19900101",

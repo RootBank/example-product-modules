@@ -1,0 +1,51 @@
+[
+  {
+    "key": "additional_lives_header",
+    "type": "section-header",
+    "label": "Details of additional lives",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h2"
+    },
+    "displayConditions": [
+      {
+        "path": "additional_lives_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "label": "List",
+    "maxNumber": 10,
+    "components": [
+      {
+        "key": "first_name",
+        "type": "text",
+        "label": "First name",
+        "outputPath": "additional_lives"
+      },
+      {
+        "key": "last_name",
+        "type": "text",
+        "label": "Last name",
+        "outputPath": "additional_lives"
+      },
+      {
+        "key": "id_number",
+        "type": "text",
+        "label": "ID/Passport Number",
+        "outputPath": "additional_lives"
+      }
+    ],
+    "outputPathList": "additional_lives",
+    "displayConditions": [
+      {
+        "path": "additional_lives_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  }
+]

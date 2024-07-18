@@ -1,0 +1,275 @@
+[
+  {
+    "key": "main_header",
+    "type": "section-header",
+    "label": "Main life cover",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h2"
+    }
+  },
+  {
+    "key": "total_cover_amount",
+    "type": "currency",
+    "label": "Total cover amount",
+    "props": {
+      "prefix": "£"
+    },
+    "outputPath": "main_life.total_cover_amount",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      },
+      {
+        "validation": {
+          "min": 2000000,
+          "type": "greaterThanCurrency"
+        }
+      },
+      {
+        "validation": {
+          "max": 10000000,
+          "type": "lessThanCurrency"
+        }
+      }
+    ]
+  },
+  {
+    "key": "date_of_birth",
+    "type": "date-picker",
+    "label": "Date of birth",
+    "outputPath": "main_life.date_of_birth",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "biological_sex",
+    "type": "select",
+    "label": "Biological sex",
+    "options": [
+      {
+        "label": "Male",
+        "value": "male"
+      },
+      {
+        "label": "Female",
+        "value": "female"
+      }
+    ],
+    "outputPath": "main_life.biological_sex",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "line_1",
+    "type": "horizontal-line"
+  },
+  {
+    "key": "additional_lives_header",
+    "type": "section-header",
+    "label": "Aditional lives cover",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h2"
+    }
+  },
+  {
+    "key": "additional_lives_included",
+    "type": "checkbox",
+    "label": "Do you want to add additional lives?",
+    "outputPath": "additional_lives_included"
+  },
+  {
+    "key": "blank_space_1",
+    "type": "blank-space"
+  },
+  {
+    "type": "list",
+    "label": "List",
+    "props": {
+      "addButtonLabel": "Add additional life"
+    },
+    "maxNumber": 10,
+    "components": [
+      {
+        "key": "total_cover_amount",
+        "type": "currency",
+        "label": "Total cover amount",
+        "props": {
+          "prefix": "£"
+        },
+        "outputPath": "additional_lives",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          },
+          {
+            "validation": {
+              "min": 1000000,
+              "type": "greaterThanCurrency"
+            }
+          },
+          {
+            "validation": {
+              "max": 10000000,
+              "type": "lessThanCurrency"
+            }
+          }
+        ]
+      },
+      {
+        "key": "date_of_birth",
+        "type": "date-picker",
+        "label": "Date of birth",
+        "outputPath": "additional_lives",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "biological_sex",
+        "type": "select",
+        "label": "Biological sex",
+        "options": [
+          {
+            "label": "Male",
+            "value": "male"
+          },
+          {
+            "label": "Female",
+            "value": "female"
+          }
+        ],
+        "outputPath": "additional_lives",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "relationship",
+        "type": "select",
+        "label": "Relationship",
+        "options": [
+          {
+            "label": "Spouse",
+            "value": "spouse"
+          },
+          {
+            "label": "Partner",
+            "value": "partner"
+          },
+          {
+            "label": "Daughter",
+            "value": "daughter"
+          },
+          {
+            "label": "Son",
+            "value": "son"
+          },
+          {
+            "label": "Father",
+            "value": "father"
+          },
+          {
+            "label": "Mother",
+            "value": "mother"
+          },
+          {
+            "label": "Brother",
+            "value": "brother"
+          },
+          {
+            "label": "Sister",
+            "value": "sister"
+          },
+          {
+            "label": "Mother_in_law",
+            "value": "mother_in_law"
+          },
+          {
+            "label": "Father_in_law",
+            "value": "father_in_law"
+          },
+          {
+            "label": "Son_in_law",
+            "value": "son_in_law"
+          },
+          {
+            "label": "Daughter_in_law",
+            "value": "daughter_in_law"
+          },
+          {
+            "label": "Grandparent",
+            "value": "grandparent"
+          },
+          {
+            "label": "Aunt",
+            "value": "aunt"
+          },
+          {
+            "label": "Uncle",
+            "value": "uncle"
+          },
+          {
+            "label": "Cousin",
+            "value": "cousin"
+          },
+          {
+            "label": "Employer",
+            "value": "employer"
+          },
+          {
+            "label": "Other",
+            "value": "other"
+          }
+        ],
+        "outputPath": "additional_lives",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "blank_space_2",
+        "type": "blank-space"
+      },
+      {
+        "key": "blank_space_3",
+        "type": "blank-space"
+      }
+    ],
+    "outputPathList": "additional_lives",
+    "displayConditions": [
+      {
+        "path": "additional_lives_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  }
+]

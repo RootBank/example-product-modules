@@ -1,65 +1,57 @@
 {
   "header": {
     "wording": {
-      "title": "Get Bicycle Insurance"
+      "title": "Get Funeral Insurance"
     },
     "links": {},
     "images": {
       "titleUrl": ""
     },
     "displayOptionalSections": {
-      "title": true,
+      "title": false,
       "titleImage": false,
       "premiumInProgressBar": false
     }
   },
   "landing": {
     "wording": {
-      "title": "Get Bicycle Insurance",
-      "subTitle": "Get cover for your bike and your ride",
+      "title": "Get Funeral Insurance",
+      "subTitle": "You and your loved ones deserve the best!",
       "description": [
-        "This example bicycle over has two different cover options, basic and comprehensive cover. Choose the option that suits your cycling needs the best."
+        "Funeral Insurance is a template product to show how a typical Funeral Insurance product will look like in the wild. You'll be able to issue a policy and see how benefits chosen and rating factors confirmed can dynamically give a premium."
       ],
       "descriptionBullets": [
-        "Theft",
-        "Worldwide cover",
-        "Legal expenses",
-        "Public liability",
-        "Personal accident",
-        "Accidental damange",
-        "Vandalism",
-        "Race events"
+        "Cover for multiple family members",
+        "Flexible premium options"
       ],
       "createQuoteButton": "Let's get started!",
-      "videoTitle": "Bicycle Insurance Video"
+      "videoTitle": "Funeral Insurance Video"
     },
     "images": {
-      "background": "https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-bicycle-cover-background.png"
+      "background": "https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-funeral-cover-background.png"
     },
     "links": {
       "youTubeVideoId": "-m9kr7bcuEk"
     },
     "displayOptionalSections": {
-      "displayLandingPage": false,
+      "displayLandingPage": true,
       "descriptionBullets": true,
-      "watchVideo": false
+      "watchVideo": true
     }
   },
   "quote": {
     "wording": {
       "title": "",
       "description": "Please complete the steps below to get a personalised quote. Let's dive right in!",
-      "coverRejected": "Bicycle cover",
-      "summary": [
-        "summary"
-      ],
+      "coverRejected": "funeral cover",
+      "summary": [],
       "consentDisclaimer": {
         "consentItems": [],
-        "title": "Consent"
+        "title": ""
       },
       "screeningQuestions": [],
-      "screeningQuestionsDescription": "Add your screening question description here",
-      "screeningQuestionsRejected": "Add your rejected screening message here"
+      "screeningQuestionsDescription": "Funeral Insurance Screening",
+      "screeningQuestionsRejected": "Oh no, unfortunately we won't be able to cover you"
     },
     "images": {},
     "links": {
@@ -78,8 +70,8 @@
   },
   "prePersonalDetailsCompliance": {
     "wording": {
-      "title": "Pre personal details compliance",
-      "description": "Let’s sign you up! Read the following terms and conditions before proceeding..."
+      "title": "",
+      "description": "Please provide the following:"
     },
     "images": {},
     "links": {
@@ -92,7 +84,7 @@
   "personalDetails": {
     "wording": {
       "title": "",
-      "description": "Let's get to know you. Please complete your personal details below."
+      "description": "Enter details here"
     },
     "links": {},
     "images": {},
@@ -107,7 +99,7 @@
   "application": {
     "wording": {
       "title": "",
-      "description": "Please provide some additional details."
+      "description": "Please provide the following information about your cover"
     },
     "displayOptionalSections": {},
     "images": {},
@@ -116,7 +108,7 @@
   "beneficiaries": {
     "wording": {
       "title": "",
-      "description": ""
+      "description": "Enter the details of your beneficiaries"
     },
     "images": {},
     "links": {},
@@ -126,12 +118,12 @@
   },
   "prePaymentCompliance": {
     "wording": {
-      "title": "Pre payment details compliance",
-      "description": "Let’s sign you up! Read the following terms and conditions before proceeding..."
+      "title": "",
+      "description": "Payment compliance"
     },
     "images": {},
     "links": {
-      "exitRedirect": ""
+      "exitRedirect": "https://exampleinsurance.com/"
     },
     "displayOptionalSections": {
       "displayPrePaymentCompliance": false
@@ -167,7 +159,7 @@
       ],
       "title": "",
       "description": "Almost done! Please complete the payment below.",
-      "declaration": "This is a sample application by Root. The configuration source code is MIT licensed and you are free to copy and modify it. See https://rootplatform.com for more information."
+      "declaration": "This is a sample application by Example Insurance Company. The configuration source code is MIT licensed and you are free to copy and modify it. See https://exampleinsurance.com for more information."
     },
     "images": {},
     "links": {},
@@ -191,7 +183,7 @@
     },
     "images": {},
     "links": {
-      "openClaim": "https://rootplatform.com",
+      "openClaim": "https://exampleinsurance.com",
       "redirectOnCompletedUrl": ""
     },
     "displayOptionalSections": {
@@ -205,7 +197,7 @@
   },
   "footer": {
     "wording": {
-      "disclaimer": "This section is where your compliance footer note will show. This is an example white-label font-end by Root. The configuration source code of this Embed implementation is MIT licensed and you are free to copy and modify it. See https://rootplatform.com for more information."
+      "disclaimer": "This section is where your compliance footer note will show. This is an example white-label front-end by Example Insurance Company. The configuration source code of this Embed implementation is MIT licensed and you are free to copy and modify it. See https://exampleinsurance.com for more information."
     },
     "images": {
       "disclaimerUrl": "https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-insurance-logo-small.png"

@@ -1,0 +1,778 @@
+[
+  {
+    "block": {
+      "key": "header1",
+      "type": "heading",
+      "title": "Details of the deceased"
+    }
+  },
+  {
+    "block": {
+      "key": "member_deceased",
+      "type": "dropdown",
+      "title": "Deceased individual",
+      "options": [
+        {
+          "key": "main_member",
+          "value": "Main insured member"
+        },
+        {
+          "key": "other_insured",
+          "value": "Additional insured member"
+        }
+      ],
+      "default_value": "{{#ifEquals 'main_member' claim.claimant.relationship}}main_member{{else}}other_insured{{/ifEquals}}"
+    }
+  },
+  {
+    "block": {
+      "key": "relationship",
+      "type": "dropdown",
+      "title": "Relationship to Main Member",
+      "options": [
+        {
+          "key": "spouse",
+          "value": "Spouse"
+        },
+        {
+          "key": "partner",
+          "value": "Partner"
+        },
+        {
+          "key": "mother",
+          "value": "Mother"
+        },
+        {
+          "key": "father",
+          "value": "Father"
+        },
+        {
+          "key": "son",
+          "value": "Son"
+        },
+        {
+          "key": "daughter",
+          "value": "Daughter"
+        },
+        {
+          "key": "aunt",
+          "value": "Aunt"
+        },
+        {
+          "key": "uncle",
+          "value": "Uncle"
+        },
+        {
+          "key": "grandparent",
+          "value": "Grandparent"
+        },
+        {
+          "key": "cousin",
+          "value": "Cousin"
+        },
+        {
+          "key": "brother",
+          "value": "Brother"
+        },
+        {
+          "key": "sister",
+          "value": "Sister"
+        },
+        {
+          "key": "son_in_law",
+          "value": "Son in law"
+        },
+        {
+          "key": "daughter_in_law",
+          "value": "Daughter in law"
+        },
+        {
+          "key": "mother_in_law",
+          "value": "Mother in law"
+        },
+        {
+          "key": "father_in_law",
+          "value": "Father in law"
+        },
+        {
+          "key": "other",
+          "value": "Other"
+        }
+      ],
+      "default_value": ""
+    },
+    "show_if": "{{ifCondition claim.block_states.member_deceased.option_key '===' 'other_insured'}}"
+  },
+  {
+    "block": {
+      "key": "deceased_name",
+      "type": "input.text",
+      "title": "Deceased's First Name",
+      "max_length": 20,
+      "min_length": 1,
+      "placeholder": "Elrich"
+    }
+  },
+  {
+    "block": {
+      "key": "deceased_surname",
+      "type": "input.text",
+      "title": "Deceased's Surname",
+      "max_length": 20,
+      "min_length": 1,
+      "placeholder": "Aviato"
+    }
+  },
+  {
+    "block": {
+      "key": "deceased_id_number",
+      "type": "input.text",
+      "title": "Deceased ID Number",
+      "max_length": 13,
+      "min_length": 13,
+      "placeholder": "Enter South African ID Number here"
+    }
+  },
+  {
+    "block": {
+      "key": "child_date_of_birth",
+      "type": "input.date",
+      "title": "For children with no ID Number please provide their date of birth",
+      "placeholder": "Enter date here"
+    },
+    "show_if": "{{if (ifCondition claim.block_states.relationship.option_key '===' 'son') '||' (ifCondition claim.block_states.relationship.option_key '===' 'daughter')}}"
+  },
+  {
+    "block": {
+      "key": "date_warning_start",
+      "type": "alert",
+      "color": "warning",
+      "markdown": "Warning: Date of incident is before the cover start date."
+    },
+    "show_if": "{{#dateBetween (dateFormat (dateAdd claim.block_states.incident_date.value days=1) format='YYYYMMDD') claim.policy.start_date (dateAdd claim.policy.start_date years=5) includeStart=true}}false{{else}}true{{/dateBetween}}"
+  },
+  {
+    "block": {
+      "key": "date_warning_past",
+      "type": "alert",
+      "color": "warning",
+      "markdown": "Warning: Claims should be logged within 90 days of the incident occurring"
+    },
+    "show_if": "{{#ifEquals (maxValue (dateDifference claim.created_at claim.block_states.incident_date.value) 90) 90 }}false{{else}}true{{/ifEquals}}"
+  },
+  {
+    "block": {
+      "key": "date_warning_future",
+      "type": "alert",
+      "color": "danger",
+      "markdown": "Warning: Incident date cannot be in the future"
+    },
+    "show_if": "{{if (dateDifference claim.block_states.incident_date.value  claim.created_at) '>' 0}}"
+  },
+  {
+    "block": {
+      "key": "incident_date",
+      "type": "input.date",
+      "title": "Date of death"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_type",
+      "type": "dropdown",
+      "title": "Type of Claim",
+      "options": [
+        {
+          "key": "accidental",
+          "value": "Accidental"
+        },
+        {
+          "key": "natural",
+          "value": "Natural"
+        },
+        {
+          "key": "suicide",
+          "value": "Suicide"
+        }
+      ],
+      "default_value": ""
+    }
+  },
+  {
+    "block": {
+      "key": "accidental_incident_cause",
+      "type": "dropdown",
+      "title": "Cause",
+      "options": [
+        {
+          "key": "Assault",
+          "value": "Assault"
+        },
+        {
+          "key": "Burns ",
+          "value": "Burns "
+        },
+        {
+          "key": "Drowning",
+          "value": "Drowning"
+        },
+        {
+          "key": "Electrocution ",
+          "value": "Electrocution "
+        },
+        {
+          "key": "Fraud – Beneficiary Involvement",
+          "value": "Fraud – Beneficiary Involvement"
+        },
+        {
+          "key": "Fraud – Falsification of Documents",
+          "value": "Fraud – Falsification of Documents"
+        },
+        {
+          "key": "Fraud – Syndicate Involvement",
+          "value": "Fraud – Syndicate Involvement"
+        },
+        {
+          "key": "Injury",
+          "value": "Injury"
+        },
+        {
+          "key": "Murder – Shooting",
+          "value": "Murder – Shooting"
+        },
+        {
+          "key": "Murder – Stabbing",
+          "value": "Murder – Stabbing"
+        },
+        {
+          "key": "MVA – Bicycle",
+          "value": "MVA – Bicycle"
+        },
+        {
+          "key": "MVA – Driver",
+          "value": "MVA – Driver"
+        },
+        {
+          "key": "MVA – Motorbike",
+          "value": "MVA – Motorbike"
+        },
+        {
+          "key": "MVA – Passenger",
+          "value": "MVA – Passenger"
+        },
+        {
+          "key": "MVA – Pedestrian",
+          "value": "MVA – Pedestrian"
+        },
+        {
+          "key": "MVA – Public Transport",
+          "value": "MVA – Public Transport"
+        },
+        {
+          "key": "Under Investigation",
+          "value": "Under Investigation"
+        },
+        {
+          "key": "Unknown",
+          "value": "Unknown"
+        },
+        {
+          "key": "Violation of the Law – Committing a Crime",
+          "value": "Violation of the Law – Committing a Crime"
+        },
+        {
+          "key": "Violation of the Law – Over the Blood Alcohol Level",
+          "value": "Violation of the Law – Over the Blood Alcohol Level"
+        }
+      ]
+    },
+    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'accidental'}}"
+  },
+  {
+    "block": {
+      "key": "accidental_description",
+      "type": "input.paragraph",
+      "title": "Accidental Death - description of events",
+      "max_length": 500,
+      "min_length": 20,
+      "placeholder": "Enter details here"
+    },
+    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'accidental'}}"
+  },
+  {
+    "block": {
+      "key": "death_incident_cause",
+      "type": "dropdown",
+      "title": "Cause",
+      "options": [
+        {
+          "key": "Aids",
+          "value": "Aids"
+        },
+        {
+          "key": "Alzheimers Disease",
+          "value": "Alzheimers Disease"
+        },
+        {
+          "key": "Anaemia",
+          "value": "Anaemia"
+        },
+        {
+          "key": "Aneurysm",
+          "value": "Aneurysm"
+        },
+        {
+          "key": "Asthma",
+          "value": "Asthma"
+        },
+        {
+          "key": "Cancer - Breast",
+          "value": "Cancer - Breast"
+        },
+        {
+          "key": "Cancer - Carcinoma",
+          "value": "Cancer - Carcinoma"
+        },
+        {
+          "key": "Cancer - Genito-urinary",
+          "value": "Cancer - Genito-urinary"
+        },
+        {
+          "key": "Cancer - Lung",
+          "value": "Cancer - Lung"
+        },
+        {
+          "key": "Cancer - lymph nodes",
+          "value": "Cancer - lymph nodes"
+        },
+        {
+          "key": "Cancer - Metastasis",
+          "value": "Cancer - Metastasis"
+        },
+        {
+          "key": "Cancer - Ovarian",
+          "value": "Cancer - Ovarian"
+        },
+        {
+          "key": "Cancer - Pancreas",
+          "value": "Cancer - Pancreas"
+        },
+        {
+          "key": "Cancer - Prostate",
+          "value": "Cancer - Prostate"
+        },
+        {
+          "key": "Cancer - Rectal",
+          "value": "Cancer - Rectal"
+        },
+        {
+          "key": "Cancer - Renal",
+          "value": "Cancer - Renal"
+        },
+        {
+          "key": "Cancer - Stomach",
+          "value": "Cancer - Stomach"
+        },
+        {
+          "key": "Cancer - Tumour",
+          "value": "Cancer - Tumour"
+        },
+        {
+          "key": "Cancer - Vaginal",
+          "value": "Cancer - Vaginal"
+        },
+        {
+          "key": "COAD",
+          "value": "COAD"
+        },
+        {
+          "key": "Congestive Cardiac Failure",
+          "value": "Congestive Cardiac Failure"
+        },
+        {
+          "key": "COPD",
+          "value": "COPD"
+        },
+        {
+          "key": "CVA",
+          "value": "CVA"
+        },
+        {
+          "key": "Dementia",
+          "value": "Dementia"
+        },
+        {
+          "key": "Depression",
+          "value": "Depression"
+        },
+        {
+          "key": "Diabetes (related)",
+          "value": "Diabetes (related)"
+        },
+        {
+          "key": "Gastro Intestinal Related",
+          "value": "Gastro Intestinal Related"
+        },
+        {
+          "key": "Genetic Disorder - Down Syndrome",
+          "value": "Genetic Disorder - Down Syndrome"
+        },
+        {
+          "key": "Genetic Disorder - Other",
+          "value": "Genetic Disorder - Other"
+        },
+        {
+          "key": "Heart Attack",
+          "value": "Heart Attack"
+        },
+        {
+          "key": "Hypertension",
+          "value": "Hypertension"
+        },
+        {
+          "key": "Kidney Failure",
+          "value": "Kidney Failure"
+        },
+        {
+          "key": "Lupus",
+          "value": "Lupus"
+        },
+        {
+          "key": "Maternity / Pregnancy",
+          "value": "Maternity / Pregnancy"
+        },
+        {
+          "key": "Meningitis",
+          "value": "Meningitis"
+        },
+        {
+          "key": "Muscular Dystrophy",
+          "value": "Muscular Dystrophy"
+        },
+        {
+          "key": "Other",
+          "value": "Other"
+        },
+        {
+          "key": "Paraplegia/Quadrapleiga",
+          "value": "Paraplegia/Quadrapleiga"
+        },
+        {
+          "key": "Parkinson`s Disease",
+          "value": "Parkinson`s Disease"
+        },
+        {
+          "key": "Pneumonia",
+          "value": "Pneumonia"
+        },
+        {
+          "key": "Renal Failure",
+          "value": "Renal Failure"
+        },
+        {
+          "key": "Respiratory Failure",
+          "value": "Respiratory Failure"
+        },
+        {
+          "key": "Respiratory - PTB",
+          "value": "Respiratory - PTB"
+        },
+        {
+          "key": "Rheumatoid Arthritis",
+          "value": "Rheumatoid Arthritis"
+        },
+        {
+          "key": "RVD",
+          "value": "RVD"
+        },
+        {
+          "key": "Septicaemia",
+          "value": "Septicaemia"
+        },
+        {
+          "key": "Spinal / Back Conditions",
+          "value": "Spinal / Back Conditions"
+        },
+        {
+          "key": "Stroke",
+          "value": "Stroke"
+        },
+        {
+          "key": "Urinary Tract / Kidneys - Bladder Disorder",
+          "value": "Urinary Tract / Kidneys - Bladder Disorder"
+        },
+        {
+          "key": "Urinary Tract / Kidneys - Gallbladder",
+          "value": "Urinary Tract / Kidneys - Gallbladder"
+        }
+      ]
+    },
+    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '===' 'natural'}}"
+  },
+  {
+    "block": {
+      "key": "funeral_parlour",
+      "type": "input.text",
+      "title": "Name of Funeral Parlour",
+      "max_length": 25,
+      "min_length": 1
+    }
+  },
+  {
+    "block": {
+      "key": "header2",
+      "type": "heading",
+      "title": "Doctor's Details"
+    }
+  },
+  {
+    "block": {
+      "key": "doctor_block",
+      "type": "group",
+      "title": "Provide the following details of the doctor who attended to the deceased:",
+      "blocks": [
+        {
+          "block": {
+            "key": "doctor_first_name",
+            "type": "input.text",
+            "title": "Doctor's first name",
+            "max_length": 25,
+            "min_length": 1
+          }
+        },
+        {
+          "block": {
+            "key": "doctor_surname",
+            "type": "input.text",
+            "title": "Doctor's surname",
+            "max_length": 25,
+            "min_length": 1
+          }
+        },
+        {
+          "block": {
+            "key": "doctor_address",
+            "type": "input.text",
+            "title": "Doctor’s surgery address",
+            "max_length": 200,
+            "min_length": 1
+          }
+        },
+        {
+          "block": {
+            "key": "dha_serial_number",
+            "type": "input.text",
+            "title": "DHA Serial Number",
+            "max_length": 25,
+            "min_length": 5
+          }
+        }
+      ],
+      "collapsible": false
+    }
+  },
+  {
+    "block": {
+      "key": "header3",
+      "type": "heading",
+      "title": "Police Report"
+    },
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.option_key '===' 'accidental') '||' (ifCondition claim.block_states.claim_type.option_key '===' 'suicide')}}"
+  },
+  {
+    "block": {
+      "key": "police_block",
+      "type": "group",
+      "title": "Provide the following details:",
+      "blocks": [
+        {
+          "block": {
+            "key": "police_station",
+            "type": "input.text",
+            "title": "Police station reported",
+            "max_length": 25,
+            "min_length": 0
+          }
+        },
+        {
+          "block": {
+            "key": "case_number",
+            "type": "input.text",
+            "title": "Case Number",
+            "max_length": 25,
+            "min_length": 0
+          }
+        }
+      ],
+      "collapsible": false
+    },
+    "show_if": "{{if (ifCondition claim.block_states.claim_type.option_key '===' 'accidental') '||' (ifCondition claim.block_states.claim_type.option_key '===' 'suicide')}}"
+  },
+  {
+    "block": {
+      "key": "eligible_claim_payout_amount_accidental",
+      "type": "alert",
+      "color": "info",
+      "markdown": " {{ claim.app_data.benefits.accidental_cover_amount }} "
+    },
+    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '==='  'accidental'}}"
+  },
+  {
+    "block": {
+      "key": "eligible_claim_payout_amount_natural",
+      "type": "alert",
+      "color": "info",
+      "markdown": "{{ claim.app_data.benefits.natural_cover_amount }}"
+    },
+    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '==='  'natural'}}"
+  },
+  {
+    "block": {
+      "key": "eligible_claim_payout_amount_suicide",
+      "type": "alert",
+      "color": "info",
+      "markdown": "{{ claim.app_data.benefits.suicide_cover_amount }}"
+    },
+    "show_if": "{{ifCondition claim.block_states.claim_type.option_key '==='  'suicide'}}"
+  },
+  {
+    "block": {
+      "key": "payout_amount",
+      "max": 10000000,
+      "min": 0,
+      "type": "input.currency",
+      "title": "Claim Payout Amount",
+      "isoCode": "GBP"
+    }
+  },
+  {
+    "block": {
+      "key": "lump_sum_payout_request_1",
+      "type": "payout_request",
+      "payee": {
+        "type": "beneficiary",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[0].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.0.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.0.last_name}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.0.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.0.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.0.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.0.payment_details.details.account_number }}"
+          }
+        }
+      },
+      "title": "Payout request for the 1st Beneficiary",
+      "amount": "{{ claim.policy.module.replacement_value }}",
+      "description": "To be paid out to the first beneficiary: {{claim.policy.beneficiaries.0.first_name}} {{claim.policy.beneficiaries.0.last_name}}"
+    },
+    "show_if": "{{ifCondition claim.approval_status '===' 'approved' }}"
+  },
+  {
+    "block": {
+      "key": "lump_sum_payout_request_2",
+      "type": "payout_request",
+      "payee": {
+        "type": "beneficiary",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[1].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.1.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.1.last_name}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.1.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.1.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.1.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.1.payment_details.details.account_number }}"
+          }
+        }
+      },
+      "title": "Payout request for the 2nd Beneficiary",
+      "amount": "{{ claim.policy.module.replacement_value }}",
+      "description": "To be paid out to the second beneficiary: {{claim.policy.beneficiaries.1.first_name}} {{claim.policy.beneficiaries.1.last_name}}"
+    },
+    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.1.relationship)}}"
+  },
+  {
+    "block": {
+      "key": "lump_sum_payout_request_3",
+      "type": "payout_request",
+      "payee": {
+        "type": "beneficiary",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[2].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.2.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.2.last_name}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.2.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.2.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.2.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.2.payment_details.details.account_number }}"
+          }
+        }
+      },
+      "title": "Payout request for the 3rd Beneficiary",
+      "amount": "{{ claim.policy.module.replacement_value }}",
+      "description": "To be paid out to the third beneficiary: {{claim.policy.beneficiaries.2.first_name}} {{claim.policy.beneficiaries.2.last_name}}"
+    },
+    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.2.relationship)}}"
+  },
+  {
+    "block": {
+      "key": "lump_sum_payout_request_4",
+      "type": "payout_request",
+      "payee": {
+        "type": "beneficiary",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[3].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.3.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.3.last_name}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.3.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.3.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.3.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.3.payment_details.details.account_number }}"
+          }
+        }
+      },
+      "title": "Payout request for the 4th Beneficiary",
+      "amount": "{{ claim.policy.module.replacement_value }}",
+      "description": "To be paid out to the fourth beneficiary: {{claim.policy.beneficiaries.3.first_name}} {{claim.policy.beneficiaries.3.last_name}}"
+    },
+    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.3.relationship)}}"
+  },
+  {
+    "block": {
+      "key": "lump_sum_payout_request_5",
+      "type": "payout_request",
+      "payee": {
+        "type": "beneficiary",
+        "amount": "{{ divide (multiply claim.block_states.payout_amount.value  claim.policy.beneficiaries.[4].percentage) 100}}",
+        "last_name": "{{ claim.policy.beneficiaries.4.first_name}}",
+        "first_name": "{{ claim.policy.beneficiaries.4.last_name}}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.policy.beneficiaries.4.payment_details.details.bank_name }}",
+            "branch_code": "{{ claim.policy.beneficiaries.4.payment_details.details.branch_code }}",
+            "account_type": "{{ claim.policy.beneficiaries.4.payment_details.details.account_type }}",
+            "account_number": "{{ claim.policy.beneficiaries.4.payment_details.details.account_number }}"
+          }
+        }
+      },
+      "title": "Payout request for the 5th Beneficiary",
+      "amount": "{{ claim.policy.module.replacement_value }}",
+      "description": "To be paid out to the fifth beneficiary: {{claim.policy.beneficiaries.4.first_name}} {{claim.policy.beneficiaries.4.last_name}}"
+    },
+    "show_if": "{{if (ifCondition claim.approval_status '===' 'approved') '&&' (ifIsDefined claim.policy.beneficiaries.4.relationship)}}"
+  }
+]

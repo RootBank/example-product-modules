@@ -94,10 +94,10 @@
     "last_name": "Barnard",
     "id": {
       "type": "email",
-      "number": "sarah@example.com",
+      "number": "sarah@exampleinsurance.com",
       "country": "GB"
     },
-    "email": "sarah@example.com",
+    "email": "sarah@exampleinsurance.com",
     "cellphone": null,
     "phone_other": null,
     "date_of_birth": "20230503",

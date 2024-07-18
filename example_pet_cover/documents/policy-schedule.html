@@ -101,11 +101,11 @@
       color: #3fc881;
     }
 
-    .petinsurance-logo {
+    .example-logo {
       content: url('https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-insurance-logo-big.png');
     }
 
-    .petinsurance-footer {
+    .example-footer {
       position: absolute;
       content: url('https://storage.googleapis.com/root-production-public-client-images/example-insurance/example-insurance-logo-big.png');
       width: 50%;
@@ -127,7 +127,7 @@
     {{/sandbox}}
     <!-- Header -->
     <div class="header">
-      <img class="petinsurance-logo" />
+      <img class="example-logo" />
       <div>POLICY SCHEDULE</div>
     </div>
     <!-- Main document body -->
@@ -172,19 +172,19 @@
         <div>Discounts applied</div>
         <div>
           {{#ifEquals policy.module.discount_options.military true}}
-            Military discount<br />
+          Military discount<br />
           {{/ifEquals}}
           {{#ifEquals policy.module.discount_options.neutered true}}
-            Neutered discount<br />
+          Neutered discount<br />
           {{/ifEquals}}
           {{#ifEquals policy.module.discount_options.multi_pet true}}
-            Multi-Pet discount<br />
+          Multi-Pet discount<br />
           {{/ifEquals}}
           {{#ifEquals policy.module.discount_options.micro_chipped true}}
-            Micro-Chipped discount<br />
+          Micro-Chipped discount<br />
           {{/ifEquals}}
           {{#ifEquals policy.module.discount_options.affinity_group true}}
-            Affinity Group discount<br />
+          Affinity Group discount<br />
           {{/ifEquals}}
         </div>
       </div>
@@ -212,7 +212,7 @@
     </div>
     <!-- Footer -->
     <div class="footer">
-      <div class="petinsurance-footer"></div>
+      <div class="example-footer"></div>
       <div class="footer-text">
         Pet Insurance is a demo application by Root. The app source code is open- sourced and MIT licensed. Pet
         Insurance is an unauthorised financial services provider. FSP number 13371337. 100 Bishops Gate, London.

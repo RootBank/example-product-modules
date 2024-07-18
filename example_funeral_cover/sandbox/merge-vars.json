@@ -1,0 +1,258 @@
+{
+  "policy": {
+    "policy_id": "c04da4f9-4459-4a26-b936-d6780c6e945c",
+    "scheme_type": "individual",
+    "created_at": "2024-07-18T07:11:29.042Z",
+    "created_by": {
+      "type": "user",
+      "id": "b705fe2a-8ec9-11e8-a573-ab2eeaa657b7"
+    },
+    "policy_number": "16D915493C",
+    "policyholder_id": "760c34ba-fcd0-4e87-a087-b106be4068c4",
+    "package_name": "Funeral Cover",
+    "sum_assured": 12000000,
+    "base_premium": 81590,
+    "monthly_premium": 81590,
+    "billing_amount": 81590,
+    "billing_frequency": "monthly",
+    "billing_month": null,
+    "billing_day": 1,
+    "next_billing_date": "2024-08-01T00:00:00.000Z",
+    "next_collection_date": "2024-08-01T00:00:00.000Z",
+    "start_date": "2024-07-19T07:11:29.000Z",
+    "end_date": null,
+    "cancelled_at": null,
+    "reason_cancelled": null,
+    "app_data": null,
+    "module": {
+      "type": "demo_factory_funeral_cover",
+      "main_life": {
+        "id": "5490d376-088f-4eba-8f61-2b6723ced834",
+        "cover": {
+          "natural_cover_amount": 0,
+          "suicide_cover_amount": 0,
+          "accidental_cover_amount": 2000000
+        },
+        "events": [
+          {
+            "id": "73ff04c0-b440-4108-9637-5b401919a86d",
+            "date": "2024-07-18T07:10:51Z",
+            "type": "cover_initiated",
+            "total_cover": 2000000
+          }
+        ],
+        "tranches": [
+          {
+            "id": "29ab55b5-6c6a-4b87-91fb-b3c58d5c0459",
+            "premium": 5799,
+            "created_at": "2024-07-18T07:10:51Z",
+            "cover_amount": 2000000
+          }
+        ],
+        "date_of_birth": "2004-06-30T22:00:00.000Z",
+        "total_premium": 5799,
+        "biological_sex": "male",
+        "total_cover_amount": 2000000
+      },
+      "additional_lives": [
+        {
+          "id": "0b610a17-6dff-49b1-82f9-544d795e6850",
+          "cover": {
+            "natural_cover_amount": 0,
+            "suicide_cover_amount": 0,
+            "accidental_cover_amount": 10000000
+          },
+          "events": [
+            {
+              "id": "5b0ca175-33b1-4711-ab2a-9b85123105d0",
+              "date": "2024-07-18T07:10:51Z",
+              "type": "cover_initiated",
+              "total_cover": 10000000
+            }
+          ],
+          "tranches": [
+            {
+              "id": "356f954b-4985-43a7-8bd5-ce3186d266ee",
+              "premium": 75791,
+              "created_at": "2024-07-18T07:10:51Z",
+              "cover_amount": 10000000
+            }
+          ],
+          "id_number": "9010101010101",
+          "last_name": "Smith",
+          "first_name": "Sarah",
+          "relationship": "daughter",
+          "date_of_birth": "1960-07-20T22:00:00.000Z",
+          "total_premium": 75791,
+          "biological_sex": "female",
+          "total_cover_amount": 10000000
+        }
+      ],
+      "additional_lives_included": true,
+      "policy_alteration_allowed": true
+    },
+    "product_module_id": "c4738b5f-e38c-4e43-abf7-79d294c9e307",
+    "product_module_definition_id": "d2e595d9-175c-4254-8607-cb88ca8071fb",
+    "beneficiaries": [
+      {
+        "beneficiary_id": "49be1280-1f74-4ae3-b577-e27c23fe1b8a",
+        "policyholder_id": "760c34ba-fcd0-4e87-a087-b106be4068c4",
+        "percentage": 100,
+        "relationship": "policyholder"
+      }
+    ],
+    "current_version": 2,
+    "schedule_file_id": "25d463b8-5032-46da-b8f4-7aba95fc2941",
+    "policy_schedule_uri": "https://sandbox.rootplatform.com/v1/insurance/policies/c04da4f9-4459-4a26-b936-d6780c6e945c/schedule/schedule_latest.pdf",
+    "schedule_versions": [
+      {
+        "version": 1,
+        "created_at": "2024-07-18T07:11:30.490Z"
+      },
+      {
+        "version": 2,
+        "created_at": "2024-07-18T07:11:31.733Z"
+      }
+    ],
+    "terms_file_id": "bc550c62-f575-45b5-89b6-0cd1805cbb67",
+    "terms_uri": "https://sandbox.rootplatform.com/v1/insurance/policies/c04da4f9-4459-4a26-b936-d6780c6e945c/terms/terms.pdf",
+    "supplementary_terms_files": [],
+    "claim_ids": [],
+    "complaint_ids": [],
+    "status": "active",
+    "balance": -34215,
+    "currency": "GBP",
+    "payment_method_id": "db688ebc-9871-4bd9-a484-95f5cb6ad877",
+    "status_updated_at": "2024-07-18T07:11:29.204Z",
+    "updated_at": "2024-07-18T07:11:31.733Z",
+    "covered_people": [],
+    "application_id": "15f673bf-9f2f-4690-bfb8-2931653371f7",
+    "charges": []
+  },
+  "policyholder": {
+    "policyholder_id": "760c34ba-fcd0-4e87-a087-b106be4068c4",
+    "type": "individual",
+    "initials": "E",
+    "first_name": "Erlich",
+    "last_name": "Bachman",
+    "id": {
+      "type": "id",
+      "number": "6801015800084",
+      "country": "ZA"
+    },
+    "email": "erlich@aviato.com",
+    "cellphone": "+27823048184",
+    "phone_other": null,
+    "gender": "male",
+    "created_at": "2017-10-12T15:47:34.834Z",
+    "app_data": {
+      "key": "value"
+    },
+    "policy_ids": [
+      "c04da4f9-4459-4a26-b936-d6780c6e945c"
+    ],
+    "created_by": {
+      "type": "user",
+      "id": "00000000-0000-0000-0000-000000000001"
+    },
+    "address": {
+      "line_1": "5230 Penfield Avenue",
+      "suburb": "Woodland Hills",
+      "city": "Los Angeles",
+      "country": "US",
+      "area_code": "CA 91364"
+    },
+    "updated_at": "2017-10-12T15:47:34.834Z"
+  },
+  "application": {
+    "application_id": "dd1f2974-af7e-4caf-8105-2b093416d8f0",
+    "policyholder_id": "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
+    "payment_method_id": "0157b955-8ffd-4a14-8625-8b2787a1684c",
+    "package_name": "Example package name",
+    "sum_assured": 1199900,
+    "monthly_premium": 50000,
+    "base_premium": 50000,
+    "module": {
+      "type": "example_module_type",
+      "key": "value"
+    },
+    "created_at": "2017-10-05T18:40:47.831Z",
+    "created_by": {
+      "type": "user",
+      "id": "00000000-0000-0000-0000-000000000001"
+    },
+    "currency": "ZAR",
+    "product_module_definition_id": "02e3d37d-05b7-4b88-9c64-e40766e64217",
+    "billing_frequency": "monthly",
+    "status": "pending",
+    "beneficiaries": [
+      {
+        "beneficiary_id": "dac0da11-cf95-47f5-af07-b45ecf546baa",
+        "policyholder_id": "e3ea736e-fb3e-4628-90d2-72eae2772c25",
+        "first_name": "Bachman",
+        "last_name": "Erlich",
+        "id": {
+          "type": "id",
+          "number": "6801015800084",
+          "country": "ZA"
+        },
+        "date_of_birth": "1994-10-07",
+        "percentage": 90,
+        "email": "erlich@aviato.com",
+        "relationship": "policyholder"
+      }
+    ]
+  },
+  "payment_method": {
+    "payment_method_id": "0157b955-8ffd-4a14-8625-8b2787a1684c",
+    "type": "debit_order",
+    "created_at": "2021-05-04T18:40:47.831Z",
+    "organization_id": "5b87186a-4215-46cd-9a43-b0150dc9818b",
+    "policyholder_id": "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
+    "policyholder": {
+      "policyholder_id": "bf1ada91-eecb-4f47-9bfa-1258bb1e0055",
+      "type": "individual",
+      "initials": "E",
+      "first_name": "Erlich",
+      "last_name": "Bachman",
+      "id": {
+        "type": "id",
+        "number": "6801015800084",
+        "country": "ZA"
+      },
+      "email": "erlich@aviato.com",
+      "cellphone": "+27823048184",
+      "phone_other": null,
+      "gender": "male",
+      "created_at": "2017-10-12T15:47:34.834Z",
+      "app_data": {
+        "key": "value"
+      },
+      "policy_ids": [
+        "dd1f2974-af7e-4caf-8105-2b093416d8f0"
+      ],
+      "created_by": {
+        "type": "user",
+        "id": "00000000-0000-0000-0000-000000000001"
+      },
+      "address": {
+        "line_1": "5230 Penfield Avenue",
+        "suburb": "Woodland Hills",
+        "city": "Los Angeles",
+        "country": "US",
+        "area_code": "CA 91364"
+      },
+      "updated_at": "2017-10-12T15:47:34.834Z"
+    },
+    "updated_at": "2021-05-04T18:40:47.831Z",
+    "bank_details": {
+      "account_holder": "E Bachman",
+      "bank": "absa",
+      "branch_code": "123456",
+      "account_number": "123456",
+      "account_type": "savings",
+      "banv_status": "verified",
+      "payment_method_id": "0157b955-8ffd-4a14-8625-8b2787a1684c"
+    }
+  }
+}

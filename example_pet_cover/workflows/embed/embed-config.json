@@ -56,7 +56,7 @@
     },
     "images": {},
     "links": {
-      "supportEmail": "support@example.com",
+      "supportEmail": "support@exampleinsurance.com",
       "supportUrl": {
         "label": "",
         "url": ""
@@ -247,7 +247,7 @@
   "settings": {
     "issuingFlowStartingStep": "default",
     "defaultCountryCodeFromBrowser": true,
-    "supportEmail": "support@example.com",
+    "supportEmail": "support@exampleinsurance.com",
     "supportUrl": {
       "label": "",
       "url": ""

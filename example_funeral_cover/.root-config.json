@@ -1,0 +1,178 @@
+{
+  "$schema": "https://api.rootplatform.com/v1/cli/json-schemas/root-config",
+  "productModuleName": "Example Funeral Cover",
+  "productModuleKey": "demo_factory_funeral_cover",
+  "organizationId": "b701babb-a66e-444f-8974-af3fd6ba14b5",
+  "host": "api.rootplatform.com",
+  "codeFileOrder": [
+    "main.js",
+    "env.js",
+    "00-helper-functions.js",
+    "01-ratings.js",
+    "02-quote-hook.js",
+    "03-application-hook.js",
+    "04-policy-hook.js",
+    "05-alteration-hooks.js",
+    "06-scheduled-functions.js",
+    "07-reactivation-flow.js",
+    "08-lifecycle-hooks.js"
+  ],
+  "settings": {
+    "policySchemeType": "individual",
+    "dashboardIssuingEnabled": true,
+    "activatePoliciesOnEvent": "policy_issued",
+    "canReactivatePolicies": true,
+    "notTakenUpEnabled": true,
+    "welcomeLetterEnabled": true,
+    "policyDocuments": [
+      {
+        "type": "terms",
+        "fileName": "policy_{{ policy.policy_number }}_terms"
+      },
+      {
+        "type": "policy_schedule",
+        "fileName": "policy_{{ policy.policy_number }}_schedule"
+      },
+      {
+        "type": "certificate",
+        "enabled": false
+      }
+    ],
+    "canRequote": false,
+    "gracePeriod": {
+      "lapseOn": {
+        "afterFirstMissedPayment": {
+          "period": 60,
+          "periodType": "days"
+        },
+        "consecutiveMissedPayments": {
+          "number": 6
+        },
+        "missedPaymentsOverPolicyTerm": {
+          "number": 10
+        },
+        "missedPaymentsWithinPeriod": {
+          "number": 6,
+          "period": 12,
+          "periodType": "months"
+        }
+      },
+      "lapseExclusionRules": {
+        "lapsePolicyWithProcessingPayment": false
+      }
+    },
+    "waitingPeriod": {
+      "applyTo": {
+        "theFullPolicy": null
+      }
+    },
+    "coolingOffPeriod": {
+      "applyTo": {
+        "theFullPolicy": {
+          "refundType": "all_premiums",
+          "period": 31,
+          "periodType": "days"
+        }
+      }
+    },
+    "policyAnniversaryNotification": {
+      "daysBeforeToSend": 31
+    },
+    "policyholder": {
+      "individualsAllowed": true,
+      "individualsIdAllowed": false,
+      "individualsPassportAllowed": false,
+      "individualsCellphoneAllowed": false,
+      "individualsCustomIdAllowed": false,
+      "individualsEmailAllowed": true,
+      "companiesAllowed": false,
+      "individualPolicyholderFields": {
+        "address": {
+          "suburb": {
+            "required": true
+          }
+        },
+        "dateOfBirth": {
+          "required": true
+        }
+      }
+    },
+    "beneficiaries": {
+      "makePolicyholderABeneficiary": true,
+      "min": 1,
+      "max": 3
+    },
+    "claims": {
+      "checklistItems": [
+        "Has the claim form been fully completed?",
+        "Is the detailed invoice attached?",
+        "Is the proof of payment attached?",
+        "Have all premiums been paid?"
+      ],
+      "documentLabels": [
+        "Death Certificate",
+        "Claim Form",
+        "Proof of Identity",
+        "Policy Document",
+        "Beneficiary’s Bank Details",
+        "Medical Certificate or Report",
+        "Proof of Relationship",
+        "Funeral Invoice or Receipts",
+        "Police Report",
+        "Post-Mortem Report",
+        "Employer’s Report",
+        "Legal Documents"
+      ]
+    },
+    "billing": {
+      "allowStartDateChange": false,
+      "billBeforeWeekendEnabled": false,
+      "billingFrequency": "monthly",
+      "consecutiveFailedPaymentsAllowed": 4,
+      "currency": "GBP",
+      "enableBillingOnSandbox": false,
+      "paymentSubmissionLeadTime": 0,
+      "clientStatementReference": "FUN-INS",
+      "paymentMethodTypes": {
+        "debitOrders": {
+          "enabled": true,
+          "strategy": "best_effort",
+          "naedoPoliciesInArrears": false
+        },
+        "card": {
+          "enabled": false
+        },
+        "eft": {
+          "enabled": false
+        },
+        "external": {
+          "enabled": false,
+          "createPayments": false
+        },
+        "collectionModules": []
+      },
+      "retryFailedPayments": {
+        "enabled": true,
+        "daysBetweenRetries": 5,
+        "numberOfRetries": 1
+      },
+      "proRataBilling": {
+        "enabled": true,
+        "proRataBillingOnIssue": false,
+        "minimumAmount": 0
+      }
+    }
+  },
+  "alterationHooks": [
+    {
+      "key": "premium_waiver",
+      "name": "Premium Waiver"
+    },
+    {
+      "key": "update_covered_lives",
+      "name": "Update Covered Lives"
+    }
+  ],
+  "scheduledFunctions": [],
+  "fulfillmentTypes": []
+}
