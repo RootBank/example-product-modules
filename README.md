@@ -8,6 +8,7 @@ This repository showcases a few example product modules designed for the [Root p
 - Example Device Cover
 - Example Pet Cover
 - Example Travel Cover
+- Example Funeral Cover
 
 ### Other Uses
 
