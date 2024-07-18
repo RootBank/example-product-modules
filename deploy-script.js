@@ -129,6 +129,9 @@ const deployProduct = async (product, host) => {
   config.productModuleKey = product.destinationProductKey;
   config.settings.billing.currency = host.currencyCode;
   config.settings.policyholder.idCountry = host.country;
+  if (host.country === 'ZA') {
+    config.settings.policyholder.individualsIdAllowed = true;
+  }
   await fs.writeFile(rootConfigPath, JSON.stringify(config, null, 2), "utf8");
 
   // Update .root-auth file with the ROOT_API_KEY

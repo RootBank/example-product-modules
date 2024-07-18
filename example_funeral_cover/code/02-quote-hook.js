@@ -31,7 +31,7 @@ function validateQuoteRequest(data) {
             biological_sex: Joi.string().valid(['male', 'female']).required(),
             total_cover_amount: Joi.number()
               .integer()
-              .min(20000 * 100)
+              .min(1000 * 100)
               .max(100000 * 100)
               .required(),
           })

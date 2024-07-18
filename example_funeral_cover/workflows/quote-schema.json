@@ -24,7 +24,7 @@
       },
       {
         "validation": {
-          "min": 2000000,
+          "min": 100000,
           "type": "greaterThanCurrency"
         }
       },
