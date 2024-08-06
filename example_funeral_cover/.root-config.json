@@ -105,8 +105,8 @@
     "claims": {
       "checklistItems": [
         "Has the claim form been fully completed?",
-        "Is the detailed invoice attached?",
-        "Is the proof of payment attached?",
+        "Have we received the deceased's ID and death certificate?",
+        "Has the claim been checked against the fraudulent doctors list?",
         "Have all premiums been paid?"
       ],
       "documentLabels": [
