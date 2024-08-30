@@ -124,7 +124,7 @@
     },
     "images": {},
     "links": {
-      "exitRedirect": "https://rootplatform.com/"
+      "exitRedirect": "https://exampleinsurance.com"
     },
     "displayOptionalSections": {
       "displayPrePaymentCompliance": false
@@ -184,7 +184,7 @@
     },
     "images": {},
     "links": {
-      "openClaim": "https://rootplatform.com",
+      "openClaim": "https://exampleinsurance.com",
       "redirectOnCompletedUrl": ""
     },
     "displayOptionalSections": {
