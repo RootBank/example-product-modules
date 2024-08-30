@@ -42,20 +42,27 @@ const prepareProductForCurrency = async (productDirectory, host) => {
   // - 'GB' with country
 
   // Helper function to convert currency amounts using the currency multiplier
-  const convertCurrencyAmount = (rawCode, currencySymbol, currencyMultiplier) => {
+  const convertCurrencyAmount = (
+    rawCode,
+    currencySymbol,
+    currencyMultiplier
+  ) => {
     return rawCode.replace(/£([\d,]+)/g, (match, p1) => {
-      const amount = parseFloat(p1.replace(/,/g, ''));
+      const amount = parseFloat(p1.replace(/,/g, ""));
       const newAmount = (amount * currencyMultiplier).toLocaleString();
       return `${currencySymbol}${newAmount}`;
     });
   };
   // Helper function to convert base cover amount using the currency multiplier
   const convertBaseAmount = (rawCode, currencySymbol, currencyMultiplier) => {
-    return rawCode.replace(/(const\s+baseAmount\s*=\s*)(\d+)(\s*;\s*\/\/\s*£)/g, (match, p1, p2, p3) => {
-      const amount = parseFloat(p2);
-      const newAmount = amount * currencyMultiplier;
-      return `${p1}${newAmount}${p3.replace('£', currencySymbol)}`;
-    });
+    return rawCode.replace(
+      /(const\s+baseAmount\s*=\s*)(\d+)(\s*;\s*\/\/\s*£)/g,
+      (match, p1, p2, p3) => {
+        const amount = parseFloat(p2);
+        const newAmount = amount * currencyMultiplier;
+        return `${p1}${newAmount}${p3.replace("£", currencySymbol)}`;
+      }
+    );
   };
 
   // Loop through all code files in {productDirectory}/code
@@ -65,13 +72,16 @@ const prepareProductForCurrency = async (productDirectory, host) => {
     const codeFilePath = path.join(codeDirectory, codeFile);
     let rawCode = await fs.readFile(codeFilePath, "utf8");
     rawCode = convertBaseAmount(rawCode, currencySymbol, currencyMultiplier);
-    rawCode = convertCurrencyAmount(rawCode, currencySymbol, currencyMultiplier);
+    rawCode = convertCurrencyAmount(
+      rawCode,
+      currencySymbol,
+      currencyMultiplier
+    );
     rawCode = rawCode.replace(/£/g, currencySymbol);
     rawCode = rawCode.replace(/GBP/g, currencyCode);
     rawCode = rawCode.replace(/GB/g, country);
     await fs.writeFile(codeFilePath, rawCode, "utf8");
   }
-
 
   // Loop through all html document files in {productDirectory}/documents
   const documentsDirectory = path.join(productDirectory, "documents");
@@ -79,7 +89,11 @@ const prepareProductForCurrency = async (productDirectory, host) => {
   for (const documentFile of documentsFiles) {
     const documentFilePath = path.join(documentsDirectory, documentFile);
     let rawHTML = await fs.readFile(documentFilePath, "utf8");
-    rawHTML = convertCurrencyAmount(rawHTML, currencySymbol, currencyMultiplier);
+    rawHTML = convertCurrencyAmount(
+      rawHTML,
+      currencySymbol,
+      currencyMultiplier
+    );
     rawHTML = rawHTML.replace(/£/g, currencySymbol);
     rawHTML = rawHTML.replace(/GBP/g, currencyCode);
     rawHTML = rawHTML.replace(/GB/g, country);
@@ -92,7 +106,11 @@ const prepareProductForCurrency = async (productDirectory, host) => {
   for (const workflowFile of workflowFiles) {
     const workflowFilePath = path.join(workflowsDirectory, workflowFile);
     let rawWorkflow = await fs.readFile(workflowFilePath, "utf8");
-    rawWorkflow = convertCurrencyAmount(rawWorkflow, currencySymbol, currencyMultiplier);
+    rawWorkflow = convertCurrencyAmount(
+      rawWorkflow,
+      currencySymbol,
+      currencyMultiplier
+    );
     rawWorkflow = rawWorkflow.replace(/£/g, currencySymbol);
     rawWorkflow = rawWorkflow.replace(/GBP/g, currencyCode);
     rawWorkflow = rawWorkflow.replace(/GB/g, country);
@@ -129,7 +147,7 @@ const deployProduct = async (product, host) => {
   config.productModuleKey = product.destinationProductKey;
   config.settings.billing.currency = host.currencyCode;
   config.settings.policyholder.idCountry = host.country;
-  if (host.country === 'ZA') {
+  if (host.country === "ZA") {
     config.settings.policyholder.individualsIdAllowed = true;
   }
   await fs.writeFile(rootConfigPath, JSON.stringify(config, null, 2), "utf8");
@@ -141,10 +159,10 @@ const deployProduct = async (product, host) => {
   // Run deployment command in the subdirectory
   const deployCommand = await shellDeploy(buildProductDirectory);
   if (deployCommand.error) {
-    console.error(`❌ Error deploying ${product.directory} to ${host.organizationName} (${host.host})`);
+    console.error(`❌ Error deploying ${product.directory}`);
     console.error(deployCommand.error.message);
   } else {
-    console.log(`✅ Deployed ${product.directory} to ${host.organizationName} (${host.host})`);
+    console.log(`✅ Deployed ${product.directory}`);
   }
 };
 
@@ -153,10 +171,10 @@ const publishProduct = async (product, host) => {
   // Run the publish command in the subdirectory
   const publishCommand = await shellPublish(buildProductDirectory);
   if (publishCommand.error) {
-    console.error(`❌ Error publishing ${product.directory} to ${host.organizationName} (${host.host})`);
+    console.error(`❌ Error publishing ${product.directory}`);
     console.error(publishCommand.error.message);
   } else {
-    console.log(`✅ Published ${product.directory} to ${host.organizationName} (${host.host})`);
+    console.log(`✅ Published ${product.directory}`);
   }
 };
 
@@ -166,19 +184,35 @@ async function main() {
     const deployments = yaml.load(deploymentsFileContent);
     let hosts = deployments.hosts;
 
-    if (process.argv.includes('--factory'))
-      hosts = [hosts[0]]; // Only deploy the factory
+    if (process.argv.includes("--factory")) hosts = [hosts[0]]; // Only deploy the factory
+    console.time("Total time");
 
     for (const host of hosts) {
-      for (const product of host.products) {
-        // Reset the build space
-        await prepareBuildDirectory();
+      console.time(`Completed ${host.host} - ${host.organizationName}`);
+      console.log(
+        `\x1b[1mProcessing ${host.host} - ${host.organizationName}\x1b[0m`
+      );
+      console.log(`----------------------------------------`);
+
+      // Reset the build space
+      await prepareBuildDirectory();
+      console.log("✅ Build directory reset");
+
+      const productPromises = host.products.map(async (product) => {
         // Deploy the product
         await deployProduct(product, host);
         // Publish the product
         await publishProduct(product, host);
-      }
+      });
+
+      // Wait until all products for the current host are done
+      await Promise.all(productPromises);
+
+      console.timeEnd(`Completed ${host.host} - ${host.organizationName}`);
+      console.log('\n');
     }
+
+    console.timeEnd("Total time");
   } catch (error) {
     console.error("An error occurred:", error.message);
   }
