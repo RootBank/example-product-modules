@@ -180,8 +180,15 @@ const publishProduct = async (product, host) => {
 
 async function main() {
   try {
-    const deploymentsFileContent = await fs.readFile(deploymentsFile, "utf8");
-    const deployments = yaml.load(deploymentsFileContent);
+    let rawYamlConfigContent;
+    if (process.env.YAML_DEPLOYMENTS_CONFIG) {
+      console.log("Using GitHub Action variables for deployments");
+      rawYamlConfigContent = process.env.YAML_DEPLOYMENTS_CONFIG;
+    } else {
+      console.log("Using local deployments file for deployments");
+      rawYamlConfigContent = await fs.readFile(deploymentsFile, "utf8");
+    }
+    const deployments = yaml.load(rawYamlConfigContent);
     let hosts = deployments.hosts;
 
     if (process.argv.includes("--factory")) hosts = [hosts[0]]; // Only deploy the factory
