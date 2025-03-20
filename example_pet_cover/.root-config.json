@@ -1,5 +1,6 @@
 {
   "$schema": "https://api.rootplatform.com/v1/cli/json-schemas/root-config",
+  "stack": "root-node-20",
   "productModuleName": "Example Pet Cover",
   "productModuleKey": "demo_factory_pet_cover",
   "organizationId": "b701babb-a66e-444f-8974-af3fd6ba14b5",

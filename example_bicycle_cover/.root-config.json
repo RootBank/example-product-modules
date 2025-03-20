@@ -4,6 +4,7 @@
   "productModuleKey": "demo_factory_bicycle_cover",
   "organizationId": "b701babb-a66e-444f-8974-af3fd6ba14b5",
   "host": "api.rootplatform.com",
+  "stack": "root-node-20",
   "codeFileOrder": [
     "main.js",
     "00-helper-functions.js",
