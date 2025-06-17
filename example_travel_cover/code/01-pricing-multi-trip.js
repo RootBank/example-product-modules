@@ -17,7 +17,7 @@ const getQuoteForMultiTrip = (data) => {
   ];
   const quotePackages = [];
 
-  for (const package of packages) {
+  for (const pkg of packages) {
     // Determine what column the rates are in
     let ratesColumn = "G"; // default to most expensive in case there's an issue
     switch (data.destination) {
@@ -46,23 +46,23 @@ const getQuoteForMultiTrip = (data) => {
     // Windersports rates
     if (data.multi_trip_extras.wintersports) baseRateRow += 6; // jump 6 rows down to next table
     const baseRate = parseFloat(
-      package.sheet.getCell(`${ratesColumn}${baseRateRow}`)
+      pkg.sheet.getCell(`${ratesColumn}${baseRateRow}`)
     );
 
     // Get extras rate
     let extrasRate = 0;
     if (data.multi_trip_extras.wedding)
-      extrasRate += parseFloat(package.sheet.getCell(`${ratesColumn}46`)) || 0;
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}46`)) || 0;
     if (data.multi_trip_extras.gadget_business)
-      extrasRate += parseFloat(package.sheet.getCell(`${ratesColumn}49`)) || 0;
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}49`)) || 0;
     if (data.multi_trip_extras.cruise)
-      extrasRate += parseFloat(package.sheet.getCell(`${ratesColumn}50`)) || 0;
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}50`)) || 0;
     if (data.multi_trip_extras.golf)
-      extrasRate += parseFloat(package.sheet.getCell(`${ratesColumn}47`)) || 0;
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}47`)) || 0;
     if (data.multi_trip_extras.excess_waiver)
-      extrasRate += parseFloat(package.sheet.getCell(`${ratesColumn}48`)) || 0;
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}48`)) || 0;
     if (data.multi_trip_extras.trip_disruption)
-      extrasRate += parseFloat(package.sheet.getCell(`${ratesColumn}51`)) || 0;
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}51`)) || 0;
 
     // Calculate the rate per person based on age
     const perPersonRates = data.persons.map((p, index) => {
@@ -83,7 +83,7 @@ const getQuoteForMultiTrip = (data) => {
 
     quotePackages.push(
       new QuotePackage({
-        package_name: `Multi Trip ${package.name} Cover`,
+        package_name: `Multi Trip ${pkg.name} Cover`,
         sum_assured: 100, // This is a placeholder amount
         base_premium: Math.round(premium * 100), // Cents
         suggested_premium: Math.round(premium * 100), // Cents
