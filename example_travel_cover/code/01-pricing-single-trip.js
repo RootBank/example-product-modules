@@ -21,7 +21,7 @@ const getQuoteForSingleTrip = (data) => {
     "days"
   );
 
-  for (const package of packages) {
+  for (const pkg of packages) {
     // Determine what column the rates are in
     let ratesColumn = "G"; // default to most expensive in case there's an issue
     switch (data.destination) {
@@ -48,24 +48,26 @@ const getQuoteForSingleTrip = (data) => {
     else if (tripDays <= 10) baseRateRow = 6;
     else if (tripDays <= 19) baseRateRow = 6;
     else baseRateRow = 6;
-    const baseRate = parseFloat(package.sheet.getCell(`${ratesColumn}${baseRateRow}`));
+    const baseRate = parseFloat(
+      pkg.sheet.getCell(`${ratesColumn}${baseRateRow}`)
+    );
 
     // Get extras rate
     let extrasRate = 0;
     if (data.single_trip_extras.wedding)
-      extrasRate += (parseFloat(package.sheet.getCell(`${ratesColumn}14`)) || 0);
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}14`)) || 0;
     if (data.single_trip_extras.gadget_business)
-      extrasRate += (parseFloat(package.sheet.getCell(`${ratesColumn}15`)) || 0);
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}15`)) || 0;
     if (data.single_trip_extras.cruise)
-      extrasRate += (parseFloat(package.sheet.getCell(`${ratesColumn}16`)) || 0);
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}16`)) || 0;
     if (data.single_trip_extras.golf)
-      extrasRate += (parseFloat(package.sheet.getCell(`${ratesColumn}17`)) || 0);
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}17`)) || 0;
     if (data.single_trip_extras.excess_waiver)
-      extrasRate += (parseFloat(package.sheet.getCell(`${ratesColumn}18`)) || 0);
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}18`)) || 0;
     if (data.single_trip_extras.trip_disruption)
-      extrasRate += (parseFloat(package.sheet.getCell(`${ratesColumn}19`)) || 0);
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}19`)) || 0;
     if (data.single_trip_extras.extra_week)
-      extrasRate += (parseFloat(package.sheet.getCell(`${ratesColumn}13`)) || 0);
+      extrasRate += parseFloat(pkg.sheet.getCell(`${ratesColumn}13`)) || 0;
 
     // Get winter sports loading
     const winterSportsLoading = data.single_trip_extras.wintersports
@@ -94,7 +96,7 @@ const getQuoteForSingleTrip = (data) => {
 
     quotePackages.push(
       new QuotePackage({
-        package_name: `Single Trip ${package.name} Cover`,
+        package_name: `Single Trip ${pkg.name} Cover`,
         sum_assured: 100, // This is a placeholder amount
         base_premium: Math.round(premium * 100), // Cents
         suggested_premium: Math.round(premium * 100), // Cents
