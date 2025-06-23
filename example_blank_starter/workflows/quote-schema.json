@@ -1,0 +1,89 @@
+[
+  {
+    "key": "cover_option",
+    "type": "select",
+    "label": "Cover option *",
+    "options": [
+      {
+        "label": "Standard (R30 000)",
+        "value": "standard"
+      },
+      {
+        "label": "Premium (R50 000)",
+        "value": "premium"
+      }
+    ],
+    "outputPath": "cover_option",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "species",
+    "type": "select",
+    "label": "Species *",
+    "options": [
+      {
+        "label": "Dog",
+        "value": "dog"
+      },
+      {
+        "label": "Cat",
+        "value": "cat"
+      }
+    ],
+    "outputPath": "species",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "birth_year",
+    "type": "number",
+    "label": "Birth year *",
+    "outputPath": "birth_year",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "high_risk_breed",
+    "type": "checkbox",
+    "label": "High risk breed *",
+    "outputPath": "high_risk_breed",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "defaultValue": false
+  },
+  {
+    "key": "sterilised",
+    "type": "checkbox",
+    "label": "Sterilised *",
+    "outputPath": "sterilised",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "defaultValue": false
+  }
+]
